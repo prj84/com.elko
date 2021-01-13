@@ -1,0 +1,132 @@
+{
+  "name": {
+    "en": "ESH Super TR Thermostat RF",
+    "no": "ESH Super TR Thermostat RF"
+  },
+  "class": "thermostat",
+  "capabilities": [
+    "target_temperature",
+    "measure_temperature",
+    "measure_temperature.air",
+    "measure_temperature.floor",
+    "maxFloorTemp",
+    "measure_power",
+    "meter_power",
+    "childLock",
+    "childLockSensor",
+    "heat",
+    "sensorMode",
+    "dim.regulator",
+    "operatingMode",
+    "thermostatLoad",
+    "regulatorTime",
+    "dateTime",
+    "tempCalibration",
+    "displayText",
+    "button.reset_kwh_meter",
+    "dateTime"
+  ],
+  "capabilitiesOptions": {
+    "target_temperature": {
+      "min": 5,
+      "max": 50,
+      "step": 0.5
+    },
+    "measure_temperature.air": {
+      "title": {
+        "en": "Air",
+        "no": "Luft"
+      }
+    },
+    "measure_temperature.floor": {
+      "title": {
+        "en": "Floor",
+        "no": "Gulv"
+      }
+    },
+    "dim.regulator": {
+      "title": {
+        "en": "Regulator %",
+        "no": "Regulator %"
+      },
+      "min": 0,
+      "max": 1
+    },
+    "maxFloorTemp": {
+      "min": 20,
+      "max": 40,
+      "step": 1
+    },
+        "button.reset_kwhMeter": {
+           "maintenanceAction": true,
+           "title": {
+              "en": "Reset power meter",
+              "no": "Nullstill kw/t teller"
+           },
+           "desc": {
+              "en": "Reset the accumulated power usage (kWh), note that this can not be reversed.",
+              "no": "Nullstill kwt teller, OBS! Data blir slettet!"
+           }
+         }
+  },
+  "mobile": {
+    "components": [
+      {
+        "id": "icon",
+        "capabilities": [
+        ]
+      },
+      {
+        "id": "sensor",
+        "capabilities": [
+          "heat",
+          "measure_temperature.air",
+          "measure_temperature.floor",
+          "childLockSensor"
+        ],
+        "options": {
+          "icons": {
+            "heat": "/drivers/ESHSUPERTR/assets/heating.svg",
+            "childLockSensor": "/drivers/ESHSUPERTR/assets/child.svg"
+
+          },
+          "showTitle": true
+        }
+      },
+      {
+        "id": "thermostat",
+        "capabilities": [
+          "target_temperature"
+        ]
+      }
+    ]
+  },
+  "zigbee": {
+    "manufacturerName": "ELKO",
+    "productId": "Super TR",
+    "learnmode": {
+      "image": "/drivers/ESHSUPERTR/assets/include.svg",
+      "instruction": {
+        "en": "Click on and hold arrow up and M Button (1) until joining/pairing is displayed. Wait for Homey to list device",
+        "no": "Klikk og hold pil opp og M knappen (1.) inntil Joining/pairing vises i displayet. Vent på at Homey legger til enheten"
+      }
+    },
+    "endpoints": {
+      "1": {
+        "clusters": [
+          0,
+          3,
+          513
+        ],
+        "bindings": [
+          3,
+          513
+        ]
+      }
+    }
+  },
+  "images": {
+    "large": "/drivers/ESHSUPERTR/assets/images/Large.png",
+    "small": "/drivers/ESHSUPERTR/assets/images/Small.png"
+  }
+}

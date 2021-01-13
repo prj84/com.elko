@@ -1,0 +1,48 @@
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:10 PM: debug Parse returned [name:lock, value:locked, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad lock is locked]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:10 PM: debug CHILDLOCK=01
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:10 PM: debug Desc Map: [raw:B4B00102010813041001, dni:B4B0, endpoint:01, cluster:0201, size:08, attrId:0413, encoding:10, value:01, isValidForDataType:true, clusterInt:513, attrInt:1043]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:10 PM: debug Parse description read attr - raw: B4B00102010813041001, dni: B4B0, endpoint: 01, cluster: 0201, size: 08, attrId: 0413, encoding: 10, value: 01
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:10 PM: debug Parse description read attr - raw: B4B00102010813041001, dni: B4B0, endpoint: 01, cluster: 0201, size: 08, attrId: 0413, encoding: 10, value: 01
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:09 PM: debug Parse returned [:]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:09 PM: debug Desc Map: [raw:0104 0201 01 01 0140 00 B4B0 00 00 0000 04 01 00, profileId:0104, clusterId:0201, sourceEndpoint:01, destinationEndpoint:01, options:0140, messageType:00, dni:B4B0, isClusterSpecific:false, isManufacturerSpecific:false, manufacturerId:0000, command:04, direction:01, data:[00], clusterInt:513, commandInt:4]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:09 PM: debug Parse description catchall: 0104 0201 01 01 0140 00 B4B0 00 00 0000 04 01 00
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:37:08 PM: debug Lock Child lock
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Parse returned [name:lock, value:unlocked, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad lock is unlocked]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug CHILDLOCK=00
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Desc Map: [raw:B4B00102010813041000, dni:B4B0, endpoint:01, cluster:0201, size:08, attrId:0413, encoding:10, value:00, isValidForDataType:true, clusterInt:513, attrInt:1043]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Parse description read attr - raw: B4B00102010813041000, dni: B4B0, endpoint: 01, cluster: 0201, size: 08, attrId: 0413, encoding: 10, value: 00
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Parse returned [:]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Desc Map: [raw:0104 0201 01 01 0140 00 B4B0 00 00 0000 04 01 00, profileId:0104, clusterId:0201, sourceEndpoint:01, destinationEndpoint:01, options:0140, messageType:00, dni:B4B0, isClusterSpecific:false, isManufacturerSpecific:false, manufacturerId:0000, command:04, direction:01, data:[00], clusterInt:513, commandInt:4]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Parse description catchall: 0104 0201 01 01 0140 00 B4B0 00 00 0000 04 01 00
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Parse description catchall: 0104 0201 01 01 0140 00 B4B0 00 00 0000 04 01 00
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:57 PM: debug Unlock Child lock
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:50 PM: debug Parse returned [name:power, value:117, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad power is 117]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:50 PM: debug POWER
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:50 PM: debug Desc Map: [raw:B4B00102010A0804217500, dni:B4B0, endpoint:01, cluster:0201, size:0A, attrId:0408, encoding:21, value:0075, isValidForDataType:true, clusterInt:513, attrInt:1032]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:50 PM: debug Parse description read attr - raw: B4B00102010A0804217500, dni: B4B0, endpoint: 01, cluster: 0201, size: 0A, attrId: 0408, encoding: 21, value: 0075
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:20 PM: debug Parse returned [name:temperature, value:28.5, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad temperature is 28.5]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:20 PM: debug MEASURED FLOOR TEMPERATURE - floor sensor mode
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:20 PM: debug Desc Map: [raw:B4B00102010A090429220B, dni:B4B0, endpoint:01, cluster:0201, size:0A, attrId:0409, encoding:29, value:0b22, isValidForDataType:true, clusterInt:513, attrInt:1033]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:20 PM: debug Parse description read attr - raw: B4B00102010A090429220B, dni: B4B0, endpoint: 01, cluster: 0201, size: 0A, attrId: 0409, encoding: 29, value: 0b22
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:36:20 PM: debug Parse description read attr - raw: B4B00102010A090429220B, dni: B4B0, endpoint: 01, cluster: 0201, size: 0A, attrId: 0409, encoding: 29, value: 0b22
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:34:08 PM: debug Parse returned [name:temperatureMeasurement, value:24.2° Luft temperatur, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad temperature measurement is 24.2° Luft temperatur]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:34:08 PM: debug MEASURED AIR TEMPERATURE - floor sensor mode
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:34:08 PM: debug Desc Map: [raw:B4B00102010A0000297409, dni:B4B0, endpoint:01, cluster:0201, size:0A, attrId:0000, encoding:29, value:0974, isValidForDataType:true, clusterInt:513, attrInt:0]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:34:08 PM: debug Parse description read attr - raw: B4B00102010A0000297409, dni: B4B0, endpoint: 01, cluster: 0201, size: 0A, attrId: 0000, encoding: 29, value: 0974
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:33:02 PM: debug Parse returned [name:temperature, value:28.4, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad temperature is 28.4]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:33:02 PM: debug MEASURED FLOOR TEMPERATURE - floor sensor mode
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:33:02 PM: debug Desc Map: [raw:B4B00102010A090429180B, dni:B4B0, endpoint:01, cluster:0201, size:0A, attrId:0409, encoding:29, value:0b18, isValidForDataType:true, clusterInt:513, attrInt:1033]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:33:02 PM: debug Parse description read attr - raw: B4B00102010A090429180B, dni: B4B0, endpoint: 01, cluster: 0201, size: 0A, attrId: 0409, encoding: 29, value: 0b18
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:46 PM: debug Parse returned [name:heating, value:idle, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad heating is idle]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:46 PM: debug HEATING=00
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:46 PM: debug Desc Map: [raw:B4B00102010815041000, dni:B4B0, endpoint:01, cluster:0201, size:08, attrId:0415, encoding:10, value:00, isValidForDataType:true, clusterInt:513, attrInt:1045]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:46 PM: debug Parse description read attr - raw: B4B00102010815041000, dni: B4B0, endpoint: 01, cluster: 0201, size: 08, attrId: 0415, encoding: 10, value: 00
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:11 PM: debug Parse returned [name:heating, value:heating, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad heating is heating]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:11 PM: debug HEATING=01
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:11 PM: debug Desc Map: [raw:B4B00102010815041001, dni:B4B0, endpoint:01, cluster:0201, size:08, attrId:0415, encoding:10, value:01, isValidForDataType:true, clusterInt:513, attrInt:1045]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:11 PM: debug Parse description read attr - raw: B4B00102010815041001, dni: B4B0, endpoint: 01, cluster: 0201, size: 08, attrId: 0415, encoding: 10, value: 01
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:32:11 PM: debug Parse description read attr - raw: B4B00102010815041001, dni: B4B0, endpoint: 01, cluster: 0201, size: 08, attrId: 0415, encoding: 10, value: 01
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:30:51 PM: debug Parse returned [name:temperature, value:28.5, isStateChange:true, displayed:true, linkText:Gulvvarme Bad, descriptionText:Gulvvarme Bad temperature is 28.5]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:30:51 PM: debug MEASURED FLOOR TEMPERATURE - floor sensor mode
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:30:51 PM: debug Desc Map: [raw:B4B00102010A090429220B, dni:B4B0, endpoint:01, cluster:0201, size:0A, attrId:0409, encoding:29, value:0b22, isValidForDataType:true, clusterInt:513, attrInt:1033]
+42372f7b-73f2-464a-86d6-e0b5c1f74c3c  3:30:51 PM: debug Parse description read attr - raw: B4B00102010A090429220B, dni: B4B0, endpoint: 01, cluster: 0201, size: 0A, attrId: 0409, encoding: 29, value: 0b22

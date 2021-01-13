@@ -1,0 +1,103 @@
+{
+  "id": "SmartSwitchPush",
+  "name": {
+    "en": "SmartSwitch Push 10A",
+    "no": "SmartBryter 10A"
+  },
+  "class": "light",
+  "capabilities": [
+    "onoff"
+  ],
+  "images": {
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
+  },
+  "zigbee": {
+    "manufacturerName": "Schneider Electric",
+    "productId": "NHPB/SWITCH/1",
+    "learnmode": {
+      "instruction": {
+        "en": "Click x3 times on Setup/Reset button to start inclution",
+        "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
+      }
+    },
+    "endpoints": {
+      "1": {
+        "clusters": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          8,
+          769
+        ],
+        "bindings": [
+          6,
+          8,
+          769
+        ]
+      },
+      "21": {
+        "clusters": [
+
+        ],
+        "bindings": [
+
+        ]
+      }
+    }
+  },
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "Timer"
+      },
+      "children": [
+        {
+          "id": "onoff_offtimer",
+          "type": "number",
+          "label": {
+            "en": "Off timer",
+            "no": "Off timer"
+          },
+          "hint": {
+            "en": "0=disabled",
+            "no": "0=deaktivert"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 86400
+          }
+        },
+        {
+          "id": "onoff_prewarning",
+          "type": "number",
+          "label": {
+            "en": "Prewarning",
+            "no": "Forvarsel"
+          },
+          "hint": {
+            "en": "Indicates the end of the timer by slowly dimming down 0=disabled",
+            "no": "Indikerer slutten på timeren ved å langsomt dimme ned, 0=deaktivert"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 86400
+          }
+        }
+      ]
+    }
+  ]
+}

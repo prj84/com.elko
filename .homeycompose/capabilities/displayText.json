@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "title": {
+    "en": "Display Text",
+    "no": "Skjerm tekst"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": false
+}

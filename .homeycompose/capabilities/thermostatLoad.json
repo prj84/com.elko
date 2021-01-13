@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Thermostat Heating cable effect",
+    "no": "Termostat Varmekabel effekt"
+  },
+  "getable": true,
+  "setable": true,
+  "insights": false,
+  "uiComponent": null
+}

@@ -1,0 +1,37 @@
+{
+  "id": "com.elko",
+  "version": "1.0.2",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "brandColor": "#be0000",
+  "name": {
+    "en": "ELKO Smart",
+    "no": "ELKO Smart"
+  },
+  "description": {
+    "en": "Take it easy - it's a ELKO Smart Home",
+    "no": "Ta det med ro - det er et ELKO smarthjem"
+  },
+  "category": [
+    "lights",
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/Large.jpg",
+    "small": "/assets/images/small.jpg"
+  },
+  "author": {
+    "name": "Pål Raymond Johansen",
+    "email": "prj_84@hotmail.com"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "prj84"
+      }
+    }
+  },
+  "homeyCommunityTopicId": 33262,
+  "homepage": "https://nordic.elko.no/elko-smart"
+}

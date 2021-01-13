@@ -1,0 +1,52 @@
+{
+  "name": {
+    "en": "ESH 316GLED Dimmer RF PF",
+    "no": "ESH 316GLED Dimmer RF PF"
+  },
+  "class": "light",
+  "capabilities": [
+    "onoff",
+    "dim"
+  ],
+  "energy": {},
+  "capabilitiesOptions": {
+    "dim": {
+      "setOnDim": "true"
+    }
+  },
+
+  "zigbee": {
+    "manufacturerName": "ELKO",
+    "productId": "ElkoDimmerZHA",
+    "learnmode": {
+      "image": "/drivers/ESH316GLED/assets/images/include.svg",
+      "instruction": {
+        "en": "Click on and hold dimmer wheel 1. and pushbutton 2. Until green LED 3. flashes. Wait for Homey to list device",
+        "no": "Klikk og hold dimmerhjulet (1.) og knapp (2.) inntil det grønne lyset (3.), blinker. Vent på at Homey legger til enheten"
+      }
+    },
+    "endpoints": {
+      "1": {
+        "clusters": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          8,
+          25
+        ],
+        "bindings": [
+          4,
+          5,
+          6,
+          8
+        ]
+      }
+    }
+  },
+  "images": {
+    "large": "/drivers/ESH316GLED/assets/images/Large.png",
+    "small": "/drivers/ESH316GLED/assets/images/Small.png"
+  }
+}

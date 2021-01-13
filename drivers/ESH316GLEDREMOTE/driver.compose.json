@@ -1,0 +1,43 @@
+{
+    "name": {
+      "en": "ELKO Smart 316GLED Dimmer REMOTE RF PF",
+      "no": "ELKO Smart 316GLED Endevender RF PF"
+    },
+    "class": "sensor",
+    "capabilities": [],
+    "energy" : {
+      "batteries": [
+        "CR2032","CR2032"
+        ]
+      },
+    "zigbee": {
+      "manufacturerName": "ELKO",
+      "productId": "ElkoDimmerRemoteZHA",
+      "learnmode": {
+        "image": "/drivers/ESH316GLEDREMOTE/assets/images/pair.png",
+        "instruction": {
+          "en": "Click on and hold pushbutton 1. Unntil green LED 2. flashes. Wait for Homey to list device",
+          "no": "Klikk og hold knapp 1 inntill LED 2 blinker. Vent til Homey legger til enheten"
+        }
+      },
+      "endpoints": {
+        "1": {
+          "clusters": [
+            0,
+            3,
+            6,
+            8
+          ],
+          "bindings": [
+            3,
+            6,
+            8
+          ]
+        }
+      }
+    },
+    "images": {
+      "large": "/drivers/ESH316GLEDREMOTE/assets/images/Large.png",
+      "small": "/drivers/ESH316GLEDREMOTE/assets/images/Small.png"
+    }
+}

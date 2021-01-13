@@ -1,0 +1,25 @@
+{
+  "triggers": [
+    {
+      "id": "ESH316GLEDREMOTE_toggle",
+      "title": {
+        "en": "Toggle-button pressed",
+        "no": "Dimme hjul presset"
+      }
+    },
+    {
+      "id": "ESH316GLEDREMOTE_dim_up",
+      "title": {
+        "en": "Dimmer turned right",
+        "no": "Dimme hjul mot høyre"
+      }
+    },
+    {
+      "id": "ESH316GLEDREMOTE_dim_down",
+      "title": {
+        "en": "Dimmer turned left",
+        "no": "Dimme hjul mot venste"
+      }
+    }
+  ]
+}

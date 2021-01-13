@@ -1,0 +1,64 @@
+Raw code from elko dimmer-endevender: 
+01 0104 0104 00 02 0000 0003 03 0003 0006 0008
+
+01 er endpointId
+0104 er hvilken zigbee standard (usikker på hvorfor denne er repetert), 
+00 er jeg usikker på. 
+02 betyr at de neste 2 er inclusters (0000 og 0003). 
+03 betyr at de neste 3 er outclusters (0003, 0006, 0008).
+
+
+Trykk gir: 
+catchall: 0104 0006 01 01 0140 00 1499 01 00 0000 02 00
+hex: 68 06 1 1 8C 0 5BD 1 0 00 2 0
+
+
+Vri med klokken: 
+catchall: 0104 0008 01 01 0140 00 1499 01 00 0000 02 00 000CFFFF
+hex: 68 06 1 1 8C 0 5BD 1 0 00 2 0 - 000CFFFF
+
+Vri mot klokken:
+catchall: 0104 0008 01 01 0140 00 1499 01 00 0000 02 00 010CFFFF
+hex: 68 06 1 1 8C 0 5BD 1 0 00 2 0 - 010CFFFF
+
+
+
+FIELD       BYTES
+profile ID: 2
+cluster ID: 2
+source EP:  1
+dest EP:    1
+options:    2
+type:       1
+source:     2
+clustersp:  1
+mfgsp:      1
+mfgcode:    2
+cmd ID:     1
+direction:  1
+
+
+
+ESH316GLED Dimmer - Zigbee shephard update:
+https://github.com/Koenkk/zigbee-shepherd-converters/blob/0ed087666982fcdb0263aed04351abbae90077eb/devices.js
+
+    // ELKO
+    {
+        zigbeeModel: ['ElkoDimmerZHA'],
+        model: '316GLEDRF',
+        vendor: 'ELKO',
+        description: 'ZigBee in-wall smart dimmer',
+        supports: 'on/off, brightness',
+        fromZigbee: [fz.brightness, fz.ignore_onoff_change, fz.state],
+        toZigbee: [tz.on_off, tz.light_brightness, tz.ignore_transition],
+        configure: (ieeeAddr, shepherd, coordinator, callback) => {
+            const cfg = {direction: 0, attrId: 0, dataType: 16, minRepIntval: 0, maxRepIntval: 1000, repChange: 0};
+            const device = shepherd.find(ieeeAddr, 1);
+            const actions = [
+                (cb) => device.bind('genOnOff', coordinator, cb),
+                (cb) => device.foundation('genOnOff', 'configReport', [cfg], foundationCfg, cb),
+            ];
+
+            execute(device, actions, callback);
+        },
+    },

@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Date and time",
+    "no": "Dato og tid"
+  },
+  "getable": false,
+  "setable": true,
+  "insights": false,
+  "uiComponent": null
+}

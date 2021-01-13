@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Floor guard Max temp",
+    "no": "Makstemperatur ved bruk av gulvvakt"
+  },
+  "getable": true,
+  "setable": true,
+  "insights": false,
+  "uiComponent": null
+}

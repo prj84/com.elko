@@ -1,0 +1,212 @@
+{
+  "id": "SmartDimUniversalPush",
+  "name": {
+    "en": "Push Dimmer",
+    "no": "Trykk Dimmer"
+  },
+  "class": "light",
+  "capabilities": [
+    "dim",
+    "onoff"
+  ],
+  "images": {
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
+  },
+  "zigbee": {
+    "manufacturerName": "Schneider Electric",
+    "productId": "1GANG/DIMMER/1",
+    "learnmode": {
+      "instruction": {
+        "en": "Click x3 times on Setup/Reset button to start inclution",
+        "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
+      }
+    },
+    "endpoints": {
+      "3": {
+        "clusters": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          8,
+          769
+        ],
+        "bindings": [
+          6,
+          8,
+          769
+        ]
+      },
+      "21": {
+        "clusters": [
+
+        ],
+        "bindings": [
+
+        ]
+      }
+    }
+  },
+  "settings": [
+    {
+      "id": "transition_time",
+      "type": "number",
+      "label": {
+        "en": "Dim duration"
+      },
+      "hint": {
+        "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
+        "no": "Bestemmer tiden i sekunder fra et dimmer intervall til et annet. OBS: Denne innstillingen kan overstyres ved hjelp av Flow"
+      },
+      "value": 0,
+      "units": {
+        "en": "s",
+        "no": "s"
+      },
+      "attr": {
+        "min": 0,
+        "max": 6553
+      }
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Switch-on Mode",
+        "no": "Påslagsmodus"
+      },
+      "children": [
+        {
+          "id": "onlevel_memory",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Remember brigthness level",
+            "no": "Husk Dim %"
+          }
+        },
+        {
+          "id": "onlevel_level",
+          "type": "number",
+          "label": {
+            "en": "Manual dim level",
+            "no": "Manuell dim %"
+          },
+          "value": 100,
+          "units": {
+            "en": "%",
+            "no": "%"
+          },
+          "attr": {
+            "min": 1,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Min/Max Brightness",
+        "no": "Min/Max Dim"
+      },
+      "children": [
+        {
+          "id": "brightness_min",
+          "type": "number",
+          "value": 1,
+          "label": {
+            "en": "Minimum Brigthness",
+            "no": "Minimum Dim %"
+          },
+          "units": {
+            "en": "%",
+            "no": "%"
+          },
+          "attr": {
+            "min": 1,
+            "max": 40
+          }
+        },
+        {
+          "id": "brightness_max",
+          "type": "number",
+          "label": {
+            "en": "Maximum Brigthness",
+            "no": "Maximum Dim %"
+          },
+          "value": 100,
+          "units": {
+            "en": "%",
+            "no": "%"
+          },
+          "attr": {
+            "min": 60,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "id": "rl_mode",
+      "type": "checkbox",
+      "value": false,
+      "label": {
+        "en": "RL Mode",
+        "no": "RL Modus"
+      }
+    },
+    {
+      "type": "group",
+      "label": {
+        "en": "Timer",
+        "no": "Timer"
+      },
+      "children": [
+        {
+          "id": "onoff_offtimer",
+          "type": "number",
+          "label": {
+            "en": "Off timer",
+            "no": "Off timer"
+          },
+          "hint": {
+            "en": "0=disabled",
+            "no": "0=deaktivert"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 86400
+          }
+        },
+        {
+          "id": "onoff_prewarning",
+          "type": "number",
+          "label": {
+            "en": "Prewarning",
+            "no": "Forvarsel"
+          },
+          "hint": {
+            "en": "Indicates the end of the timer by slowly dimming down 0=disabled",
+            "no": "Indikerer slutten på timeren ved å langsomt dimme ned, 0=deaktivert"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 86400
+          }
+        }
+      ]
+    }
+  ]
+}

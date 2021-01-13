@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Thermostat temperature calibration",
+    "no": "Termostat temperatur kalibrering"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": false,
+  "uiComponent": null
+}

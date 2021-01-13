@@ -1,0 +1,33 @@
+{
+  "type": "boolean",
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "title": {
+    "en": "Child Lock",
+    "no": "Barnesikkring"
+  },
+  "desc": {
+    "en": "Child Lock",
+    "no": "Barnesikkring"
+  },
+  "titleTrue": {
+    "en": "Locked",
+    "no": "Aktivert"
+  },
+  "titleFalse": {
+    "en": "Unlocked",
+    "no": "Deaktivert"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Locked",
+    "no": "Aktivert"
+  },
+  "insightsTitleFalse": {
+    "en": "Unlocked",
+    "no": "Deaktivert"
+  },
+  "icon": "/drivers/ESHSUPERTR/assets/child.svg"
+}

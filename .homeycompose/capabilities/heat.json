@@ -1,0 +1,33 @@
+{
+  "type": "boolean",
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "title": {
+    "en": "Heating",
+    "no": "Varmer"
+  },
+  "desc": {
+    "en": "Heating",
+    "no": "Varmer"
+  },
+  "titleTrue": {
+    "en": "Heating",
+    "no": "Varmer"
+  },
+  "titleFalse": {
+    "en": "Idle",
+    "no": "Inaktiv"
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Heating",
+    "nl": "Varmer"
+  },
+  "insightsTitleFalse": {
+    "en": "Idle",
+    "nl": "Inaktiv"
+  },
+  "icon": "/drivers/ESHSUPERTR/assets/heating.svg"
+}

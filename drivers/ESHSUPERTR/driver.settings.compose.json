@@ -1,0 +1,59 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Thermostat Settings",
+      "no": "Termostat innstillinger"
+    },
+    "children": [
+      {
+        "id": "floor_watt",
+        "type": "number",
+        "label": {
+          "en": "Heating cable effect",
+          "no": "Varmekabel effekt"
+        },
+        "value": 2000,
+        "min": 1,
+        "max": 9999,
+        "units": "Watt"
+      },
+      {
+        "id": "regulator_time",
+        "type": "number",
+        "label": {
+          "en": "Time between each in/out connection of relay",
+          "no": "Tid mellom inn/utslag av rele"
+        },
+        "value": 15,
+        "min": 1,
+        "max": 20,
+        "units": "Minuttes"
+      },
+      {
+        "id": "maxfloortemp",
+        "type": "number",
+        "label": {
+          "en": "Max floor temperature when usin floor guard",
+          "no": "Maks temperatur ved bruk av gulvvakt"
+        },
+        "value": 40,
+        "min": 20,
+        "max": 40,
+        "units": "C"
+      },
+      {
+        "id": "temp_calibration",
+        "type": "number",
+        "label": {
+          "en": "Temperature Calibration",
+          "no": "Temperatur kalibrering"
+        },
+        "value": 20,
+        "min": -100,
+        "max": 100,
+        "units": "C"
+      }
+    ]
+  }
+]

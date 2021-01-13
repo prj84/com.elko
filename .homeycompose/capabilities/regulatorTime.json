@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Time between on/off connection of relay",
+    "no": "Tid mellom av/påslag av relé"
+  },
+  "getable": true,
+  "setable": true,
+  "insights": false,
+  "uiComponent": null
+}
