@@ -1,24 +1,76 @@
 'use strict';
-const Homey = require('homey');
-const { ZigBeeDevice } = require('homey-zigbeedriver');
-const { CLUSTER } = require('zigbee-clusters');
-class SmartSensorPIR extends ZigBeeDevice {
-async onNodeInit({ zclNode }) {
-    this.enableDebug();
-    this.printNode();
-    const node = await this.homey.zigbee.getNode(this);
-    node.handleFrame = (endpointId, clusterId, frame, meta) => {
-        this.log("frame data! endpointId:", endpointId,", clusterId:", clusterId,", frame:", frame, ", meta:", meta);
-    };
-    //Reset/start enrollment
-    await zclNode.endpoints[1].clusters.iasZone.writeAttributes({iasCIEAddress: 0x0000000000000000});
-    //Set CIE address
-    await zclNode.endpoints[1].clusters.iasZone.writeAttributes({iasCIEAddress: 0x124b001eeada5f});
-    const currentzoneid =  await zclNode.endpoints[1].clusters.iasZone.readAttributes('zoneId');
-    this.log('zoneId in attribute is:', currentzoneid.zoneid);
 
-  }
+const { ZigBeeDevice } = require('homey-zigbeedriver');
+const { debug, CLUSTER } = require('zigbee-clusters');
+
+class SmartSensorPIR extends ZigBeeDevice {
+
+	async onNodeInit({ zclNode }) {
+
+		this.printNode();
+		debug(true);
+
+		if (this.isFirstInit()){
+			await this.configureAttributeReporting([
+				{
+					endpointId: 1,
+					cluster: CLUSTER.IAS_ZONE,
+					attributeName: 'zoneStatus',
+					minInterval: 65535,
+					maxInterval: 0,
+					minChange: 1,
+				},{
+					endpointId: 1,
+					cluster: CLUSTER.POWER_CONFIGURATION,
+					attributeName: 'batteryPercentageRemaining',
+					minInterval: 65535,
+					maxInterval: 0,
+					minChange: 1,
+				}
+			]);
+		}
+
+		// alarm_motion & alarm_tamper
+		zclNode.endpoints[1].clusters[CLUSTER.IAS_ZONE.NAME]
+		.on('attr.zoneStatus', this.onZoneStatusAttributeReport.bind(this));
+
+		// measure_battery // alarm_battery
+		zclNode.endpoints[1].clusters[CLUSTER.POWER_CONFIGURATION.NAME]
+		.on('attr.batteryPercentageRemaining', this.onBatteryPercentageRemainingAttributeReport.bind(this));
+
+    // measure_luminance
+    if (this.hasCapability('measure_luminance')) {
+    await this.registerCapability('measure_luminance', CLUSTER.ILLUMINANCE_MEASUREMENT, {
+      reportOpts: {
+        configureAttributeReporting: {
+          minInterval: 0,
+          maxInterval: 300,//testvalue
+          minChange: 1,
+          },
+        }
+    });
+  };
+
+	}
+
+	onZoneStatusAttributeReport(status) {
+		this.log("Motion status: ", status.alarm1);
+		this.setCapabilityValue('alarm_motion', status.alarm1);
+	}
+
+	onBatteryPercentageRemainingAttributeReport(batteryPercentageRemaining) {
+		const batteryThreshold = this.getSetting('batteryThreshold') || 20;
+		this.log("measure_battery | powerConfiguration - batteryPercentageRemaining (%): ", batteryPercentageRemaining/2);
+		this.setCapabilityValue('measure_battery', batteryPercentageRemaining/2);
+		this.setCapabilityValue('alarm_battery', (batteryPercentageRemaining/2 < batteryThreshold) ? true : false)
+	}
+
+	onDeleted(){
+		this.log("SmartSensorPIR removed")
+	}
+
 }
+
 module.exports = SmartSensorPIR;
 
 /*'use strict';
