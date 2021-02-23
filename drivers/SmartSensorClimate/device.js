@@ -50,7 +50,7 @@ class SmartSensorClimate extends ZigBeeDevice {
       this.registerCapability('measure_temperature', CLUSTER.TEMPERATURE_MEASUREMENT, {
         reportOpts: {
           configureAttributeReporting: {
-            minInterval: 0, // No minimum reporting interval
+            minInterval: 1800, // No minimum reporting interval
             maxInterval: 3600, // Maximally every ~1 hours
             minChange: 100, // Report when value changed by 1c
           },
@@ -62,7 +62,7 @@ class SmartSensorClimate extends ZigBeeDevice {
       this.registerCapability('measure_humidity', CLUSTER.RELATIVE_HUMIDITY_MEASUREMENT, {
         reportOpts: {
           configureAttributeReporting: {
-            minInterval: 0, // No minimum reporting interval
+            minInterval: 1800, // No minimum reporting interval
             maxInterval: 3600, // Maximally every ~1 hours
             minChange: 100, // Report when value changed by 1%
           },

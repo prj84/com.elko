@@ -2,6 +2,7 @@
 
 const { ZigBeeDevice } = require('homey-zigbeedriver');
 const { debug, CLUSTER } = require('zigbee-clusters');
+const IASZoneBoundCluster = require('../../lib/IASZoneBoundCluster');
 
 class SmartSensorPIR extends ZigBeeDevice {
 
@@ -11,32 +12,51 @@ class SmartSensorPIR extends ZigBeeDevice {
 		debug(true);
 
 		if (this.isFirstInit()){
-			await this.configureAttributeReporting([
-				{
-					endpointId: 1,
-					cluster: CLUSTER.IAS_ZONE,
-					attributeName: 'zoneStatus',
-					minInterval: 65535,
-					maxInterval: 0,
-					minChange: 1,
-				},{
-					endpointId: 1,
-					cluster: CLUSTER.POWER_CONFIGURATION,
-					attributeName: 'batteryPercentageRemaining',
-					minInterval: 65535,
-					maxInterval: 0,
-					minChange: 1,
-				}
-			]);
+
+      //Trigger IASZONE Inclusion
+			await zclNode.endpoints[1].clusters.iasZone.writeAttributes({iasCIEAddress: '00:00:00:00:00:00:00:00'});
+			//Send IASZONE CIA address
+			await zclNode.endpoints[1].clusters.iasZone.writeAttributes({iasCIEAddress: '00:12:4b:00:18:dd:63:58'});
+      //Read IASZONE zoneState to confirm enrollment
+      await zclNode.endpoints[1].clusters.iasZone.readAttributes('zoneState');
+
+		};
+
+		//alarm_motion
+		// add alarm_motion capabilities if needed
+		if (!this.hasCapability('alarm_motion')) {
+			this.addCapability('alarm_motion');
 		}
+		zclNode.endpoints[1].clusters[CLUSTER.IAS_ZONE.NAME].onZoneStatusChangeNotification = payload => {
+				this.onIASZoneStatusChangeNoficiation(payload);
+			};
 
-		// alarm_motion & alarm_tamper
-		zclNode.endpoints[1].clusters[CLUSTER.IAS_ZONE.NAME]
-		.on('attr.zoneStatus', this.onZoneStatusAttributeReport.bind(this));
+    // Register measure_battery capability and configure attribute reporting
+    this.batteryThreshold = 20;
+    if (this.hasCapability('alarm_battery')) {
+    await this.registerCapability('alarm_battery', CLUSTER.POWER_CONFIGURATION, {
+          reportOpts: {
+            configureAttributeReporting: {
+              minInterval: 6000, // No minimum reporting interval
+              maxInterval: 60000, // Maximally every ~16 hours
+              minChange: 5, // Report when value changed by 5
+            },
+          },
+        });
+      };
 
-		// measure_battery // alarm_battery
-		zclNode.endpoints[1].clusters[CLUSTER.POWER_CONFIGURATION.NAME]
-		.on('attr.batteryPercentageRemaining', this.onBatteryPercentageRemainingAttributeReport.bind(this));
+    // measure_battery
+    if (this.hasCapability('measure_battery')) {
+    await this.registerCapability('measure_battery', CLUSTER.POWER_CONFIGURATION, {
+            reportOpts: {
+              configureAttributeReporting: {
+                minInterval: 6000,
+                maxInterval: 60000,
+                minChange: 1,
+              },
+            },
+          });
+        };
 
     // measure_luminance
     if (this.hasCapability('measure_luminance')) {
@@ -53,17 +73,13 @@ class SmartSensorPIR extends ZigBeeDevice {
 
 	}
 
-	onZoneStatusAttributeReport(status) {
-		this.log("Motion status: ", status.alarm1);
-		this.setCapabilityValue('alarm_motion', status.alarm1);
-	}
-
-	onBatteryPercentageRemainingAttributeReport(batteryPercentageRemaining) {
-		const batteryThreshold = this.getSetting('batteryThreshold') || 20;
-		this.log("measure_battery | powerConfiguration - batteryPercentageRemaining (%): ", batteryPercentageRemaining/2);
-		this.setCapabilityValue('measure_battery', batteryPercentageRemaining/2);
-		this.setCapabilityValue('alarm_battery', (batteryPercentageRemaining/2 < batteryThreshold) ? true : false)
-	}
+	onIASZoneStatusChangeNoficiation({
+    zoneStatus, extendedStatus, zoneId, delay,
+  }) {
+    this.log('IASZoneStatusChangeNotification received:', zoneStatus, extendedStatus, zoneId, delay);
+    // deConz indikerer at alarm2 brukes this.setCapabilityValue('alarm_motion', zoneStatus.alarm1);
+		this.setCapabilityValue('alarm_motion', zoneStatus.alarm2);
+  }
 
 	onDeleted(){
 		this.log("SmartSensorPIR removed")
