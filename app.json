@@ -168,8 +168,6 @@
               8
             ],
             "bindings": [
-              0,
-              3,
               6,
               8
             ]
@@ -994,6 +992,59 @@
           ]
         }
       ]
+    },
+    {
+      "id": "SmartPlug",
+      "name": {
+        "en": "Smart Plug 16A",
+        "no": "Smartplugg 16A"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "meter_power",
+        "measure_power"
+      ],
+      "images": {
+        "large": "/drivers/SmartPlug/assets/images/large.png",
+        "small": "/drivers/SmartPlug/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": "Schneider Electric",
+        "productId": "SMARTPLUG/1",
+        "learnmode": {
+          "instruction": {
+            "en": "Click x3 times on Setup/Reset button to start inclution",
+            "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
+          }
+        },
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              25,
+              1794,
+              2820,
+              2821
+            ],
+            "bindings": [
+              6,
+              1794,
+              2820
+            ]
+          },
+          "242": {
+            "clusters": [
+              33
+            ],
+            "bindings": []
+          }
+        }
+      }
     },
     {
       "id": "SmartRelayPuck",
