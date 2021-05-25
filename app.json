@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.elko",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#be0000",
@@ -594,7 +594,7 @@
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
-        "productId": "1GANG/DIMMER/1",
+        "productId": "NHPB/DIMMER/1",
         "learnmode": {
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
@@ -1198,247 +1198,6 @@
       "id": "SmartSensorClimate"
     },
     {
-      "name": {
-        "en": "SmartSensor Door Window",
-        "no": "SmartSensor Dør Vindu"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "measure_temperature",
-        "measure_humidity",
-        "measure_battery",
-        "alarm_battery"
-      ],
-      "energy": {
-        "batteries": [
-          "CR2032"
-        ]
-      },
-      "zigbee": {
-        "manufacturerName": "Schneider Electric",
-        "productId": [
-          "CCT591011_AS"
-        ],
-        "endpoints": {
-          "1": {
-            "clusters": [
-              0,
-              1,
-              3,
-              25,
-              32,
-              1026,
-              1029,
-              2821
-            ],
-            "bindings": [
-              1,
-              1026,
-              1029
-            ]
-          }
-        },
-        "learnmode": {
-          "image": "/drivers/SmartSensor/assets/images/include.svg",
-          "instruction": {
-            "en": "Click x3 times on Setup/Reset button to start inclution",
-            "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
-          }
-        }
-      },
-      "images": {
-        "large": "/drivers/SmartSensor/assets/images/Large.png",
-        "small": "/drivers/SmartSensor/assets/images/Small.png"
-      },
-      "id": "SmartSensorDoorWindow"
-    },
-    {
-      "name": {
-        "en": "SmartSensor PIR Wireless",
-        "no": "SmartSensor Bevegelse Trådløs"
-      },
-      "class": "sensor",
-      "capabilities": [
-        "measure_luminance",
-        "measure_battery",
-        "alarm_motion",
-        "alarm_battery"
-      ],
-      "energy": {
-        "batteries": [
-          "AAA",
-          "AAA"
-        ]
-      },
-      "zigbee": {
-        "manufacturerName": "Schneider Electric",
-        "productId": [
-          "CCT595011_AS"
-        ],
-        "endpoints": {
-          "1": {
-            "clusters": [
-              0,
-              1,
-              3,
-              25,
-              32,
-              1024,
-              1280,
-              2821
-            ],
-            "bindings": [
-              1,
-              1024,
-              1280
-            ]
-          }
-        },
-        "learnmode": {
-          "image": "/drivers/SmartSensor/assets/images/include.svg",
-          "instruction": {
-            "en": "Click x3 times on Setup/Reset button to start inclution",
-            "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
-          }
-        }
-      },
-      "images": {
-        "large": "/drivers/SmartSensor/assets/images/Large.png",
-        "small": "/drivers/SmartSensor/assets/images/Small.png"
-      },
-      "id": "SmartSensorPIR"
-    },
-    {
-      "id": "SmartSwitchPIR",
-      "name": {
-        "en": "SmartSwitch Push 10A - PIR",
-        "no": "SmartBryter 10A - PIR"
-      },
-      "class": "light",
-      "capabilities": [
-        "onoff",
-        "measure_luminance",
-        "alarm_motion"
-      ],
-      "images": {
-        "large": "/drivers/SmartSwitchPIR/assets/images/large.png",
-        "small": "/drivers/SmartSwitchPIR/assets/images/small.png"
-      },
-      "zigbee": {
-        "manufacturerName": "Schneider Electric",
-        "productId": "NHMOTION/SWITCH/1",
-        "learnmode": {
-          "instruction": {
-            "en": "Click x3 times on Setup/Reset button to start inclution",
-            "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
-          }
-        },
-        "endpoints": {
-          "1": {
-            "clusters": [
-              0,
-              3,
-              4,
-              5,
-              6,
-              2821
-            ],
-            "bindings": [
-              6
-            ]
-          },
-          "37": {
-            "clusters": [
-              0,
-              3,
-              1024,
-              1030,
-              2821,
-              65305
-            ],
-            "bindings": [
-              1024,
-              1030
-            ]
-          }
-        }
-      },
-      "settings": [
-        {
-          "type": "group",
-          "label": {
-            "en": "PIR Settings",
-            "no": "PIR Instillinger"
-          },
-          "children": [
-            {
-              "id": "pirOccupiedToUnoccupiedDelay",
-              "type": "number",
-              "label": {
-                "en": "PIR timer",
-                "no": "PIR timer"
-              },
-              "hint": {
-                "en": "Time from Occupied to Unoccupied. 0=disabled",
-                "no": "Tid fra aktiv til inaktiv, 0=deaktivert"
-              },
-              "value": 0,
-              "units": {
-                "en": "s",
-                "no": "s"
-              },
-              "attr": {
-                "min": 0,
-                "max": 86400
-              }
-            },
-            {
-              "id": "onTime",
-              "type": "number",
-              "label": {
-                "en": "Active Time",
-                "no": "Aktiv Tid"
-              },
-              "hint": {
-                "en": "Indicates how long the relay is turned on after movment, 0=disabled",
-                "no": "Indikerer hvor lenge relé er aktivt etter bevegelse, 0=deaktivert"
-              },
-              "value": 0,
-              "units": {
-                "en": "s",
-                "no": "s"
-              },
-              "attr": {
-                "min": 0,
-                "max": 86400
-              }
-            },
-            {
-              "id": "offWaitTime",
-              "type": "number",
-              "label": {
-                "en": "Wait time for PIR",
-                "no": "Ventetid"
-              },
-              "hint": {
-                "en": "Indicates how long the PIR should be inactive after movment, 0=disabled",
-                "no": "Indikerer hvor lenge PIr skal være inaktiv etter bevegelse, 0=deaktivert"
-              },
-              "value": 0,
-              "units": {
-                "en": "s",
-                "no": "s"
-              },
-              "attr": {
-                "min": 0,
-                "max": 86400
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
       "id": "SmartSwitchPush",
       "name": {
         "en": "SmartSwitch Push 10A",
@@ -1536,6 +1295,106 @@
           ]
         }
       ]
+    },
+    {
+      "name": {
+        "en": "ELKO Smart Switch Wireless",
+        "no": "ELKO Smart Bryter Trådløs"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "energy": {
+        "batteries": [
+          "CR2032"
+        ]
+      },
+      "zigbee": {
+        "manufacturerName": "Schneider Electric",
+        "productId": "FLS/AIRLINK/4",
+        "learnmode": {
+          "image": "/drivers/ESH316GLEDREMOTE/assets/images/pair.png",
+          "instruction": {
+            "en": "3x Click on pushbutton 1. Unntil green LED flashes. Wait for Homey to list device",
+            "no": "3x Klikk knapp 1 inntill LED blinker. Vent til Homey legger til enheten"
+          }
+        },
+        "endpoints": {
+          "21": {
+            "clusters": [
+              0,
+              1,
+              3,
+              32,
+              65303
+            ],
+            "bindings": [
+              3,
+              4,
+              5,
+              6,
+              8,
+              25,
+              258
+            ]
+          },
+          "22": {
+            "clusters": [
+              0,
+              1,
+              3,
+              65303
+            ],
+            "bindings": [
+              3,
+              4,
+              5,
+              6,
+              8,
+              258
+            ]
+          },
+          "23": {
+            "clusters": [
+              0,
+              1,
+              3,
+              65303
+            ],
+            "bindings": [
+              3,
+              4,
+              5,
+              6,
+              8,
+              258
+            ]
+          },
+          "24": {
+            "clusters": [
+              0,
+              1,
+              3,
+              65303
+            ],
+            "bindings": [
+              3,
+              4,
+              5,
+              6,
+              8,
+              258
+            ]
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/ESH316GLEDREMOTE/assets/images/Large.png",
+        "small": "/drivers/ESH316GLEDREMOTE/assets/images/Small.png"
+      },
+      "id": "SmartSwitchWireless"
     }
   ],
   "flow": {
@@ -1579,6 +1438,146 @@
             "type": "device",
             "name": "device",
             "filter": "driver_id=ESH316GLEDREMOTE"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_setOn_21",
+        "title": {
+          "en": "Button 1 - Pressed",
+          "no": "Knapp 1 - Trykk"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_setOff_21",
+        "title": {
+          "en": "Button 2 - Pressed",
+          "no": "Knapp 2 - Trykk"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_setOn_22",
+        "title": {
+          "en": "Button 3 - Pressed",
+          "no": "Knapp 3 - Trykk"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_setOff_22",
+        "title": {
+          "en": "Button 4 - Pressed",
+          "no": "Knapp 4 - Trykk"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_moveWithOnOff_21",
+        "title": {
+          "en": "Button 1 - Press and hold",
+          "no": "Knapp 1 - Trykk og hold"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_move_21",
+        "title": {
+          "en": "Button 2 - Press and hold",
+          "no": "Knapp 2 - Trykk og hold"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_moveWithOnOff_22",
+        "title": {
+          "en": "Button 3 - Press and hold",
+          "no": "Knapp 3 - Trykk og hold"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_move_22",
+        "title": {
+          "en": "Button 4 - Press and hold",
+          "no": "Knapp 4 - Trykk og hold"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_stop_21",
+        "title": {
+          "en": "Button 1 or 2 - Released",
+          "no": "Knapp 1 eller 2 - Sluppet"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      },
+      {
+        "id": "SmartSwitchWireless_stop_22",
+        "title": {
+          "en": "Button 3 or 4 - Released",
+          "no": "Knapp 3 eller 4 - Sluppet"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=SmartSwitchWireless"
           }
         ]
       }

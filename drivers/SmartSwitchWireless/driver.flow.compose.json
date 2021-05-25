@@ -1,0 +1,74 @@
+{
+  "triggers": [
+    {
+      "id": "SmartSwitchWireless_setOn_21",
+      "title": {
+        "en": "Button 1 - Pressed",
+        "no": "Knapp 1 - Trykk"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_setOff_21",
+      "title": {
+        "en": "Button 2 - Pressed",
+        "no": "Knapp 2 - Trykk"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_setOn_22",
+      "title": {
+        "en": "Button 3 - Pressed",
+        "no": "Knapp 3 - Trykk"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_setOff_22",
+      "title": {
+        "en": "Button 4 - Pressed",
+        "no": "Knapp 4 - Trykk"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_moveWithOnOff_21",
+      "title": {
+        "en": "Button 1 - Press and hold",
+        "no": "Knapp 1 - Trykk og hold"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_move_21",
+      "title": {
+        "en": "Button 2 - Press and hold",
+        "no": "Knapp 2 - Trykk og hold"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_moveWithOnOff_22",
+      "title": {
+        "en": "Button 3 - Press and hold",
+        "no": "Knapp 3 - Trykk og hold"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_move_22",
+      "title": {
+        "en": "Button 4 - Press and hold",
+        "no": "Knapp 4 - Trykk og hold"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_stop_21",
+      "title": {
+        "en": "Button 1 or 2 - Released",
+        "no": "Knapp 1 eller 2 - Sluppet"
+      }
+    },
+    {
+      "id": "SmartSwitchWireless_stop_22",
+      "title": {
+        "en": "Button 3 or 4 - Released",
+        "no": "Knapp 3 eller 4 - Sluppet"
+      }
+    }
+  ]
+}

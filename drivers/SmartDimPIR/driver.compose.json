@@ -1,0 +1,135 @@
+{
+  "id": "SmartSwitchPush",
+  "name": {
+    "en": "SmartSwitch Push 10A - PIR",
+    "no": "SmartBryter 10A - PIR"
+  },
+  "class": "light",
+  "capabilities": [
+    "onoff",
+    "measure_luminance",
+    "alarm_motion"
+  ],
+  "images": {
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
+  },
+  "zigbee": {
+    "manufacturerName": "Schneider Electric",
+    "productId": "NHMOTION/SWITCH/1",
+    "learnmode": {
+      "instruction": {
+        "en": "Click x3 times on Setup/Reset button to start inclution",
+        "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
+      }
+    },
+    "endpoints": {
+      "1": {
+        "clusters": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          2821
+        ],
+        "bindings": [
+          6
+        ]
+      },
+      "37": {
+        "clusters": [
+          0,
+          3,
+          1024,
+          1030,
+          2821,
+          65305
+
+        ],
+        "bindings": [
+          1024,
+          1030
+        ]
+      }
+    }
+  },
+  "settings": [
+    {
+      "type": "group",
+      "label": {
+        "en": "PIR Settings",
+        "no": "PIR Instillinger"
+      },
+      "children": [
+        {
+          "id": "pirOccupiedToUnoccupiedDelay",
+          "type": "number",
+          "label": {
+            "en": "PIR timer",
+            "no": "PIR timer"
+          },
+          "hint": {
+            "en": "0=disabled",
+            "no": "0=deaktivert"
+          },
+          "hint": {
+            "en": "Time from Occupied to Unoccupied. 0=disabled",
+            "no": "Tid fra aktiv til inaktiv, 0=deaktivert"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 86400
+          }
+        },
+        {
+          "id": "onTime",
+          "type": "number",
+          "label": {
+            "en": "Active Time",
+            "no": "Aktiv Tid"
+          },
+          "hint": {
+            "en": "Indicates how long the relay is turned on after movment, 0=disabled",
+            "no": "Indikerer hvor lenge relé er aktivt etter bevegelse, 0=deaktivert"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 86400
+          }
+        },
+        {
+          "id": "offWaitTime",
+          "type": "number",
+          "label": {
+            "en": "Wait time for PIR",
+            "no": "Ventetid"
+          },
+          "hint": {
+            "en": "Indicates how long the PIR should be inactive after movment, 0=disabled",
+            "no": "Indikerer hvor lenge PIr skal være inaktiv etter bevegelse, 0=deaktivert"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 86400
+          }
+        }
+      ]
+    }
+  ]
+}
