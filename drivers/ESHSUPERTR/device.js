@@ -14,10 +14,6 @@ class ESHSUPERTR extends ZigBeeDevice {
         //this.enableDebug();
         //this.printNode();
         this.setAvailable();
-
-        //this.enableDebug();
-        //this.printNode();
-        //this.setAvailable();
         let settings =   this.getSettings();
 
 
@@ -439,7 +435,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 
     //Flowcard Action
-    async onUpdateFanMode(value, opts) {
+    async set_regulator(value, opts) {
       try {
         await this.setCapabilityValue('dim.regulator', value);
         this.log(`set fan mode OK: ${value}`);
