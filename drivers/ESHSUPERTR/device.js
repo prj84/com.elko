@@ -19,7 +19,7 @@ class ESHSUPERTR extends ZigBeeDevice {
         //this.printNode();
         //this.setAvailable();
         let settings =   this.getSettings();
-        await this.registerFlowCards();
+
 
         // This is for the raw logging of zigbee trafic. Otherwise not used.
         // const { Util } = require('homey-zigbeedriver');

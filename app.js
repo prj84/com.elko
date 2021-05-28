@@ -12,7 +12,7 @@ module.exports = class ELKOSMARTAPP extends Homey.App {
 
 	async _initFlows() {
 	 this.homey.flow.getActionCard('set_regulator')
-		 .registerRunListener((args, state) => args.device.triggerCapabilityListener('dim.regulator', args.regulator, {}));
+		 .registerRunListener((args, state) => args.device.triggerCapabilityListener('dim.regulator', args.set_regulator, {}));
 
 	};
 

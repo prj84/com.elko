@@ -2051,7 +2051,6 @@
           "en": "Set Regulator %",
           "no": "Sett Regulator %"
         },
-        "filter": "driver_id=ESHSUPERTR&capabilities=dim",
         "args": [
           {
             "type": "device",
@@ -2059,15 +2058,12 @@
             "filter": "driver_id=ESHSUPERTR"
           },
           {
-            "name": "device",
-            "type": "device"
-          },
-          {
             "name": "set_regulator",
             "type": "number",
+            "filter": "driver_id=ESHSUPERTR&capabilities=dim",
             "min": 0,
             "max": 100,
-            "step": 0.1,
+            "step": 1,
             "label": "%",
             "title": {
               "en": "Regulator %",
