@@ -624,7 +624,7 @@
               },
               "attr": {
                 "min": 1,
-                "max": 100
+                "max": 40
               }
             },
             {
@@ -640,7 +640,7 @@
                 "no": "%"
               },
               "attr": {
-                "min": 1,
+                "min": 60,
                 "max": 100
               }
             }
@@ -885,13 +885,43 @@
           ]
         },
         {
-          "id": "rl_mode",
-          "type": "checkbox",
-          "value": false,
+          "id": "Control_mode",
+          "type": "dropdown",
+          "value": "Automatic",
           "label": {
-            "en": "RL Mode",
-            "no": "RL Modus"
-          }
+            "en": "Default mode",
+            "no": "Dimmer modus"
+          },
+          "values": [
+            {
+              "id": "Automatic",
+              "label": {
+                "en": "Automatic",
+                "no": "Automatisk"
+              }
+            },
+            {
+              "id": "RC_Mode",
+              "label": {
+                "en": "RC Mode",
+                "no": "RC Modus"
+              }
+            },
+            {
+              "id": "RL_Mode",
+              "label": {
+                "en": "RL Mode",
+                "no": "RL Modus"
+              }
+            },
+            {
+              "id": "RL_LED_Mode",
+              "label": {
+                "en": "RL LED Mode",
+                "no": "RL LED Modus"
+              }
+            }
+          ]
         },
         {
           "type": "group",
@@ -1070,7 +1100,7 @@
               },
               "attr": {
                 "min": 1,
-                "max": 100
+                "max": 40
               }
             },
             {
@@ -1086,7 +1116,7 @@
                 "no": "%"
               },
               "attr": {
-                "min": 1,
+                "min": 60,
                 "max": 100
               }
             }
@@ -2010,6 +2040,43 @@
             "type": "device",
             "name": "device",
             "filter": "driver_id=SmartSwitchWireless"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "set_regulator",
+        "title": {
+          "en": "Set Regulator %",
+          "no": "Sett Regulator %"
+        },
+        "filter": "driver_id=ESHSUPERTR&capabilities=dim",
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=ESHSUPERTR"
+          },
+          {
+            "name": "device",
+            "type": "device"
+          },
+          {
+            "name": "set_regulator",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "step": 0.1,
+            "label": "%",
+            "title": {
+              "en": "Regulator %",
+              "no": "Regulator %"
+            },
+            "placeholder": {
+              "en": "Ex. 50%",
+              "no": "F.eks 50%"
+            }
           }
         ]
       }

@@ -52,7 +52,12 @@ class ESHSUPERTR extends ZigBeeDevice {
         //this.removeCapability('frostGuard');
         //this.removeCapability('frostGuardSensor');
 
-        
+
+        //Capability listner
+  /*      this.registerCapabilityListener('dim.regulator', (value, opts) => {
+          return this.onUpdateRegulator(value, opts);
+        });*/
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Sensor mode
@@ -432,24 +437,14 @@ class ESHSUPERTR extends ZigBeeDevice {
 
      }
 
-    //Register Regulator Flow Card
-      async registerFlowCards() {
-           new Homey.FlowCardAction('set_regulator')
-               .register()
-               .registerRunListener(this.set_regulator.bind(this));
-             }
 
     //Flowcard Action
-       async set_regulator(args, state) {
-           if (!args.set_regulator || args.set_regulator < 1 || args.set_regulator > 100) {
-               this.logger.error('Invalid regulato value', args.set_regulator);
-               throw new Error(Homey.__('device.set_regulator'))
-           }
-           this.logger.info('set_regulator', args.set_regulator);
-           this.setCapabilityValue('dim.regulator', arg.set_regulator);
-           this.log('Regulator %', arg.set_regulator);
-           return true;
-       }
+    async onUpdateFanMode(value, opts) {
+      try {
+        await this.setCapabilityValue('dim.regulator', value);
+        this.log(`set fan mode OK: ${value}`);
+      }
+    }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 }

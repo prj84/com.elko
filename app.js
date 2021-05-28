@@ -2,12 +2,19 @@
 
 const Homey = require('homey');
 
-class MyApp extends Homey.App {
-	
-	onInit() {
-		this.log('MyApp is running...');
-	}
-	
-}
+module.exports = class ELKOSMARTAPP extends Homey.App {
 
-module.exports = MyApp;
+	async onInit() {
+		await this._initFlows();
+		this.log('ELKO Smart app is running...');
+		this.log('Initiating flow cards...');
+	}
+
+	async _initFlows() {
+	 this.homey.flow.getActionCard('set_regulator')
+		 .registerRunListener((args, state) => args.device.triggerCapabilityListener('dim.regulator', args.regulator, {}));
+
+	};
+
+
+}

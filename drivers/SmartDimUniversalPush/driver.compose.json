@@ -149,13 +149,43 @@
       ]
     },
     {
-      "id": "rl_mode",
-      "type": "checkbox",
-      "value": false,
+      "id": "Control_mode",
+      "type": "dropdown",
+      "value": "Automatic",
       "label": {
-        "en": "RL Mode",
-        "no": "RL Modus"
-      }
+        "en": "Default mode",
+        "no": "Dimmer modus"
+      },
+      "values": [
+        {
+          "id": "Automatic",
+          "label": {
+            "en": "Automatic",
+            "no": "Automatisk"
+           }
+        },
+        {
+          "id": "RC_Mode",
+          "label": {
+            "en": "RC Mode",
+            "no": "RC Modus"
+          }
+        },
+        {
+          "id": "RL_Mode",
+          "label": {
+            "en": "RL Mode",
+            "no": "RL Modus"
+          }
+        },
+        {
+          "id": "RL_LED_Mode",
+          "label": {
+            "en": "RL LED Mode",
+            "no": "RL LED Modus"
+          }
+        }
+      ]
     },
     {
       "type": "group",
