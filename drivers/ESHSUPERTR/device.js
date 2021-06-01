@@ -48,12 +48,19 @@ class ESHSUPERTR extends ZigBeeDevice {
         //this.removeCapability('frostGuard');
         //this.removeCapability('frostGuardSensor');
 
+//----------------------------------------------------------------------------------------------------------------------------------------------
+// Action Flowcard
 
-        //Capability listner
-  /*      this.registerCapabilityListener('dim.regulator', (value, opts) => {
-          return this.onUpdateRegulator(value, opts);
-        });*/
+        this.StartSetRegulatorAction = this.homey.flow.getActionCard('set_regulator');
+        this.StartSetRegulatorAction.registerRunListener(async( args, state) => {
+          var SetPoint = args.set_regulator;
+          this.log ('Regulator % set to:', SetPoint)
+          await args.device.zclNode.endpoints[1].clusters.thermostat
+            .writeAttributes({ occupiedHeatingSetpoint: Math.round ((SetPoint * 100)) });
+          this.setCapabilityValue('dim.regulator', SetPoint);
 
+          this.log ('Regulator % set to:', SetPoint)
+        })
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Sensor mode
@@ -241,7 +248,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Set point with dim
 
-    // Setpoint of thermostat
+    // Setpoint of regulator
         if(this.hasCapability('dim.regulator')) {
           this.registerCapabilityListener('dim.regulator', async (value) => {
             const setTemp = await zclNode.endpoints[1].clusters.thermostat
@@ -433,15 +440,15 @@ class ESHSUPERTR extends ZigBeeDevice {
 
      }
 
-
+/*
     //Flowcard Action
-    async set_regulator(value, opts) {
+    async Set_regulator(value) {
       try {
         await this.setCapabilityValue('dim.regulator', value);
         this.log(`set fan mode OK: ${value}`);
       }
     }
-
+*/
 //---------------------------------------------------------------------------------------------------------------------------------------------
 }
 

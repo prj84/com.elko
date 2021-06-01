@@ -2058,9 +2058,13 @@
             "filter": "driver_id=ESHSUPERTR"
           },
           {
+            "name": "device",
+            "type": "device",
+            "filter": "driver_id=ESHSUPERTR"
+          },
+          {
             "name": "set_regulator",
             "type": "number",
-            "filter": "driver_id=ESHSUPERTR&capabilities=dim",
             "min": 0,
             "max": 100,
             "step": 1,
