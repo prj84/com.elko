@@ -376,6 +376,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                 this.log ('night_switching trying to set to:', value);
                   zclNode.endpoints[1].clusters.thermostat
                     .writeAttributes({ night_switching : value });
+                    this.setSettings({
+                      night_switching: value,
+                    });
                     this.log ('night_switching set to:', value)
                 });
           };
@@ -405,6 +408,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                 this.log ('frost_guard trying to set to:', value);
                   zclNode.endpoints[1].clusters.thermostat
                     .writeAttributes({ frost_guard : value });
+                    this.setSettings({
+                      frost_guard: value,
+                    });
                     this.log ('frost_guard set to:', value)
                 });
           };
@@ -436,6 +442,9 @@ class ESHSUPERTR extends ZigBeeDevice {
               this.log ('childLock trying to set to:', value);
                 zclNode.endpoints[1].clusters.thermostat
                   .writeAttributes({ childLock : value });
+                  this.setSettings({
+                    childLock: value,
+                  });
                   this.log ('childLock set to:', value)
               });
 
