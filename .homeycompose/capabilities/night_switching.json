@@ -1,0 +1,33 @@
+{
+  "type": "boolean",
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "title": {
+    "en": "Night Mode",
+    "no": "Nattmodus"
+  },
+  "desc": {
+    "en": "Night Mode",
+    "no": "Nattmodus"
+  },
+  "titleTrue": {
+    "en": "Night Mode Activated",
+    "no": "Nattmodus aktivert"
+  },
+  "titleFalse": {
+    "en": "Night Mode Deactivated",
+    "no": "Nattmodus deaktivert"
+  },
+  "getable": true,
+  "setable": true,
+  "insights": true,
+  "insightsTitleTrue": {
+    "en": "Night Mode Activated",
+    "no": "Nattmodus Aktivert"
+  },
+  "insightsTitleFalse": {
+    "en": "Night Mode Deactivated",
+    "no": "Nattmodus Deaktivert"
+  },
+  "icon": "/drivers/ESHSUPERTR/assets/night_mode.svg"
+}

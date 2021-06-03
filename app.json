@@ -194,19 +194,21 @@
         "maxFloorTemp",
         "measure_power",
         "meter_power",
+        "power_status",
         "childLock",
-        "childLockSensor",
         "heat",
         "sensorMode",
         "dim.regulator",
-        "operatingMode",
+        "regulatorMode",
         "thermostatLoad",
         "regulatorTime",
         "dateTime",
         "tempCalibration",
         "displayText",
         "button.reset_kwh_meter",
-        "dateTime"
+        "dateTime",
+        "night_switching",
+        "frost_guard"
       ],
       "capabilitiesOptions": {
         "target_temperature": {
@@ -319,6 +321,31 @@
           },
           "children": [
             {
+              "id": "regulatorMode",
+              "type": "dropdown",
+              "value": "regulatorMode",
+              "label": {
+                "en": "Operating Mode",
+                "no": "Termostat/Regulator"
+              },
+              "values": [
+                {
+                  "id": "Thermostat",
+                  "label": {
+                    "en": "Termostat mode",
+                    "no": "Termostat modus"
+                  }
+                },
+                {
+                  "id": "Regulator",
+                  "label": {
+                    "en": "Regulator mode",
+                    "no": "Regulator modus"
+                  }
+                }
+              ]
+            },
+            {
               "id": "floor_watt",
               "type": "number",
               "label": {
@@ -365,6 +392,113 @@
               "min": -100,
               "max": 100,
               "units": "C"
+            },
+            {
+              "id": "SensorMode",
+              "type": "dropdown",
+              "value": "SensorMode",
+              "label": {
+                "en": "Sensor Mode",
+                "no": "Sensor Modus"
+              },
+              "values": [
+                {
+                  "id": "Air",
+                  "label": {
+                    "en": "Air Sensor",
+                    "no": "Luft Sensor"
+                  }
+                },
+                {
+                  "id": "Floor",
+                  "label": {
+                    "en": "Floor Sensor",
+                    "no": "Gulv Sensor"
+                  }
+                },
+                {
+                  "id": "Supervisor_Floor",
+                  "label": {
+                    "en": "Supervisor_Floor",
+                    "no": "Gulvvakt"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "frost_guard",
+              "type": "dropdown",
+              "value": "frost_guard",
+              "label": {
+                "en": "Frost Guard Activated?",
+                "no": "Frost Vakt Aktivert"
+              },
+              "values": [
+                {
+                  "id": "Yes",
+                  "label": {
+                    "en": "Yes",
+                    "no": "Ja"
+                  }
+                },
+                {
+                  "id": "No",
+                  "label": {
+                    "en": "No",
+                    "no": "Nei"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "night_switching",
+              "type": "dropdown",
+              "value": "night_switching",
+              "label": {
+                "en": "Night Mode Activated?",
+                "no": "Natt Modus Aktivert"
+              },
+              "values": [
+                {
+                  "id": "Yes",
+                  "label": {
+                    "en": "Yes",
+                    "no": "Ja"
+                  }
+                },
+                {
+                  "id": "No",
+                  "label": {
+                    "en": "No",
+                    "no": "Nei"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "childLock",
+              "type": "dropdown",
+              "value": "childlock",
+              "label": {
+                "en": "Child Lock Activated?",
+                "no": "Barnesikkring Aktivert"
+              },
+              "values": [
+                {
+                  "id": "Yes",
+                  "label": {
+                    "en": "Yes",
+                    "no": "Ja"
+                  }
+                },
+                {
+                  "id": "No",
+                  "label": {
+                    "en": "No",
+                    "no": "Nei"
+                  }
+                }
+              ]
             }
           ]
         }
@@ -2079,6 +2213,49 @@
             }
           }
         ]
+      },
+      {
+        "id": "Power",
+        "title": {
+          "en": "Set Power Status",
+          "no": "Skru Av/På termostat"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=ESHSUPERTR"
+          },
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=ESHSUPERTR"
+          },
+          {
+            "type": "dropdown",
+            "name": "Power",
+            "title": {
+              "en": "Set Power Status",
+              "sv": "Skru Av/På termostat"
+            },
+            "values": [
+              {
+                "id": "Yes",
+                "label": {
+                  "en": "Yes",
+                  "no": "Ja"
+                }
+              },
+              {
+                "id": "No",
+                "label": {
+                  "en": "No",
+                  "no": "Nei"
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -2104,48 +2281,15 @@
         "no": "Deaktivert"
       },
       "getable": true,
-      "setable": false,
+      "setable": true,
       "insights": true,
       "insightsTitleTrue": {
-        "en": "Locked",
-        "no": "Aktivert"
+        "en": "Child Lock Activated",
+        "no": "Barnesikkring Aktivert"
       },
       "insightsTitleFalse": {
-        "en": "Unlocked",
-        "no": "Deaktivert"
-      },
-      "icon": "/drivers/ESHSUPERTR/assets/child.svg"
-    },
-    "childLockSensor": {
-      "type": "boolean",
-      "uiComponent": "sensor",
-      "uiQuickAction": false,
-      "title": {
-        "en": "Child Lock",
-        "no": "Barnesikkring"
-      },
-      "desc": {
-        "en": "Child Lock",
-        "no": "Barnesikkring"
-      },
-      "titleTrue": {
-        "en": "Locked",
-        "no": "Aktivert"
-      },
-      "titleFalse": {
-        "en": "Unlocked",
-        "no": "Deaktivert"
-      },
-      "getable": true,
-      "setable": false,
-      "insights": true,
-      "insightsTitleTrue": {
-        "en": "Locked",
-        "no": "Aktivert"
-      },
-      "insightsTitleFalse": {
-        "en": "Unlocked",
-        "no": "Deaktivert"
+        "en": "Child Lock Deactivated",
+        "no": "Barnesikkring Deaktivert"
       },
       "icon": "/drivers/ESHSUPERTR/assets/child.svg"
     },
@@ -2169,6 +2313,39 @@
       "getable": true,
       "setable": false,
       "insights": false
+    },
+    "frost_guard": {
+      "type": "boolean",
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "title": {
+        "en": "Frost Guard",
+        "no": "Frostvakt"
+      },
+      "desc": {
+        "en": "Frost Guard",
+        "no": "Frostvakt"
+      },
+      "titleTrue": {
+        "en": "Frost Guard Activated",
+        "no": "Frostvakt Aktivert"
+      },
+      "titleFalse": {
+        "en": "Frost Guard Deactivated",
+        "no": "Frostvakt Deaktivert"
+      },
+      "getable": true,
+      "setable": true,
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Frost Guard Activated",
+        "no": "Frost Vakt Aktivert"
+      },
+      "insightsTitleFalse": {
+        "en": "Frost Guard Deactivated",
+        "no": "Frostvakt Deaktivert"
+      },
+      "icon": "/drivers/ESHSUPERTR/assets/frost_guard.svg"
     },
     "heat": {
       "type": "boolean",
@@ -2214,14 +2391,71 @@
       "insights": false,
       "uiComponent": null
     },
-    "operatingMode": {
-      "type": "string",
+    "night_switching": {
+      "type": "boolean",
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
       "title": {
-        "en": "Operating mode",
-        "no": "Driftsmodus"
+        "en": "Night Mode",
+        "no": "Nattmodus"
+      },
+      "desc": {
+        "en": "Night Mode",
+        "no": "Nattmodus"
+      },
+      "titleTrue": {
+        "en": "Night Mode Activated",
+        "no": "Nattmodus aktivert"
+      },
+      "titleFalse": {
+        "en": "Night Mode Deactivated",
+        "no": "Nattmodus deaktivert"
       },
       "getable": true,
-      "setable": false,
+      "setable": true,
+      "insights": true,
+      "insightsTitleTrue": {
+        "en": "Night Mode Activated",
+        "no": "Nattmodus Aktivert"
+      },
+      "insightsTitleFalse": {
+        "en": "Night Mode Deactivated",
+        "no": "Nattmodus Deaktivert"
+      },
+      "icon": "/drivers/ESHSUPERTR/assets/night_mode.svg"
+    },
+    "power_status": {
+      "type": "boolean",
+      "uiComponent": "toggle",
+      "uiQuickAction": true,
+      "title": {
+        "en": "Power",
+        "no": "Power"
+      },
+      "desc": {
+        "en": "Power Status",
+        "no": "Power Status"
+      },
+      "titleTrue": {
+        "en": "On",
+        "no": "På"
+      },
+      "titleFalse": {
+        "en": "Off",
+        "no": "Av"
+      },
+      "getable": true,
+      "setable": true,
+      "insights": false
+    },
+    "regulatorMode": {
+      "type": "boolean",
+      "title": {
+        "en": "Regulator mode",
+        "no": "Regulator modus"
+      },
+      "getable": true,
+      "setable": true,
       "insights": false,
       "uiComponent": null
     },
@@ -2243,7 +2477,7 @@
         "no": "Sensor modus"
       },
       "getable": true,
-      "setable": false,
+      "setable": true,
       "insights": false,
       "uiComponent": null
     },

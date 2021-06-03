@@ -12,19 +12,21 @@
     "maxFloorTemp",
     "measure_power",
     "meter_power",
+    "power_status",
     "childLock",
-    "childLockSensor",
     "heat",
     "sensorMode",
     "dim.regulator",
-    "operatingMode",
+    "regulatorMode",
     "thermostatLoad",
     "regulatorTime",
     "dateTime",
     "tempCalibration",
     "displayText",
     "button.reset_kwh_meter",
-    "dateTime"
+    "dateTime",
+    "night_switching",
+    "frost_guard"
   ],
   "capabilitiesOptions": {
     "target_temperature": {

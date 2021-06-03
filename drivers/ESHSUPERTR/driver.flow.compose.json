@@ -30,6 +30,44 @@
       }
     }
   ]
+},
+{
+    "id": "Power",
+    "title": {
+    "en": "Set Power Status",
+    "no": "Skru Av/På termostat"
+    },
+    "args": [
+        {
+          "type": "device",
+          "name": "device",
+          "filter": "driver_id=ESHSUPERTR"
+        },
+        {
+          "type": "dropdown",
+          "name": "Power",
+          "title": {
+            "en": "Set Power Status",
+            "sv": "Skru Av/På termostat"
+          },
+          "values": [
+            {
+              "id": "Yes",
+              "label": {
+                "en": "Yes",
+                "no": "Ja"
+              }
+            },
+            {
+              "id": "No",
+              "label": {
+                "en": "No",
+                "no": "Nei"
+              }
+            }
+          ]
+        }
+      ]
 }
 ]
 }

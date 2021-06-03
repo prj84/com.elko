@@ -1,0 +1,24 @@
+{
+  "type": "boolean",
+  "uiComponent": "toggle",
+  "uiQuickAction": true,
+  "title": {
+    "en": "Power",
+    "no": "Power"
+  },
+  "desc": {
+    "en": "Power Status",
+    "no": "Power Status"
+  },
+  "titleTrue": {
+    "en": "On",
+    "no": "På"
+  },
+  "titleFalse": {
+    "en": "Off",
+    "no": "Av"
+  },
+  "getable": true,
+  "setable": true,
+  "insights": false
+}

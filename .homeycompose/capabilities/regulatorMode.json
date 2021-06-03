@@ -1,8 +1,8 @@
 {
-  "type": "string",
+  "type": "boolean",
   "title": {
-    "en": "Sensor mode",
-    "no": "Sensor modus"
+    "en": "Regulator mode",
+    "no": "Regulator modus"
   },
   "getable": true,
   "setable": true,

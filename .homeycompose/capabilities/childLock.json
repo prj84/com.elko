@@ -19,15 +19,15 @@
     "no": "Deaktivert"
   },
   "getable": true,
-  "setable": false,
+  "setable": true,
   "insights": true,
   "insightsTitleTrue": {
-    "en": "Locked",
-    "no": "Aktivert"
+    "en": "Child Lock Activated",
+    "no": "Barnesikkring Aktivert"
   },
   "insightsTitleFalse": {
-    "en": "Unlocked",
-    "no": "Deaktivert"
+    "en": "Child Lock Deactivated",
+    "no": "Barnesikkring Deaktivert"
   },
   "icon": "/drivers/ESHSUPERTR/assets/child.svg"
 }
