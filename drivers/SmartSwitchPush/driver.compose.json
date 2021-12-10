@@ -4,7 +4,7 @@
     "en": "SmartSwitch Push 10A",
     "no": "SmartBryter 10A"
   },
-  "class": "light",
+  "class": "socket",
   "capabilities": [
     "onoff"
   ],

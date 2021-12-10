@@ -4,7 +4,7 @@
     "en": "Smart Relay Puck 10A",
     "no": "Smart Relé Puck 10A"
   },
-  "class": "light",
+  "class": "socket",
   "capabilities": [
     "onoff"
   ],
