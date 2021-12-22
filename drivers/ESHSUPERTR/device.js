@@ -132,9 +132,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                 };
           this.log ('SetPower value:', SetPower);
           await args.device.zclNode.endpoints[1].clusters.thermostat
-            .writeAttributes({ frost_guard: SetPower });
+            .writeAttributes({ power_status: SetPower });
           let SetPower_Capability = false;
-            switch (args.Child_Lock) {
+            switch (args.Power) {
               case 'Yes':
                 SetPower_Capability = true;
                 break;
@@ -144,7 +144,7 @@ class ESHSUPERTR extends ZigBeeDevice {
             };
           await this.setCapabilityValue('power_status', SetPower_Capability);
         } catch (err) {
-          this.error('Error in run listener for set night mode: ', err)
+          this.error('Error in run listener for set Power: ', err)
         }
           });
 
@@ -340,7 +340,6 @@ class ESHSUPERTR extends ZigBeeDevice {
 // Set point with temperature wheel
 
     // Setpoint of thermostat
-        if(this.hasCapability('target_temperature')) {
           this.registerCapabilityListener('target_temperature', async (value) => {
             try {
               const setTemp =  await zclNode.endpoints[1].clusters.thermostat
@@ -363,20 +362,19 @@ class ESHSUPERTR extends ZigBeeDevice {
               // And listen for incoming attribute reports by binding a listener on the cluster
               zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.occupiedHeatingSetpoint', (occupiedHeatingSetpoint) => {
                 try {
-                  const setTemp = (((occupiedHeatingSetpoint / 100) * 10) /10)
+                  const setTemp = (((occupiedHeatingSetpoint / 100) * 10) /10);
                   this.setCapabilityValue('target_temperature', setTemp);
                   this.log('target_temperature', setTemp)
                 } catch (err) {
                   this.error('Error in reading or setting target_temperature: ', err)
                 }
               });
-            };
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Set point with dim
 
     // Setpoint of regulator
-        if(this.hasCapability('dim.regulator')) {
           this.registerCapabilityListener('dim.regulator', async (value) => {
             try {
               const setTemp = await zclNode.endpoints[1].clusters.thermostat
@@ -399,18 +397,18 @@ class ESHSUPERTR extends ZigBeeDevice {
               // And listen for incoming attribute reports by binding a listener on the cluster
               zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.occupiedHeatingSetpoint', (occupiedHeatingSetpoint) => {
                 try {
-                  setTemp = (((occupiedHeatingSetpoint / 10000) * 10) /10)
+                  const setTemp = (((occupiedHeatingSetpoint / 10000) * 10) /10);
                   this.setCapabilityValue('dim.regulator', setTemp);
                   this.log('Regulator %', setTemp)
                 } catch (err) {
                   this.error('Error in setting target dim value: ', err)
                 }
               });
-            };
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 
-// Heating status
+// Heating status - Relay On/Off - Setting Power Load - Metering power calculation
           if (this.hasCapability('heat')) {
             try {
                 zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
@@ -424,6 +422,29 @@ class ESHSUPERTR extends ZigBeeDevice {
               zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.relayState', (currentRelayState) => {
                 this.log('Relay state?: ', currentRelayState);
                 this.setCapabilityValue('heat', currentRelayState);
+                const Load = this.getCapabilityValue('thermostatLoad');
+                const thisUpdate = Date.now();
+                const lastUpdate = this.getStoreValue('lastUpdate');
+                switch (currentRelayState) {
+                  case true:
+                    this.setCapabilityValue('measure_power', Load);
+                    this.log('Power load: ', Load);
+                    this.setStoreValue('lastUpdate', thisUpdate);
+                    this.log('lastUpdate set to: ', thisUpdate)
+                    break;
+                  case false:
+                    this.setCapabilityValue('measure_power', 0);
+                    this.log('Power load: ', 0);
+                    if (lastUpdate) {
+                      const curMeterPowerkWh = this.getCapabilityValue('meter_power') || 0;
+                      this.log('Current meter_power value: ', curMeterPowerkWh);
+                      const newMeterPowerkWh = Load * (thisUpdate - lastUpdate) / (1000 * 3600000) + curMeterPowerkWh;
+                      this.log('New meter_power value: ', newMeterPowerkWh);
+                      this.setCapabilityValue('meter_power', newMeterPowerkWh);
+                      this.log('meter_power set to: ', newMeterPowerkWh)
+                    }
+                    break;
+                  };
               });
             } catch (err) {
               this.error('Error in setting relaystate: ', err)
@@ -613,7 +634,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Power
-        if(this.hasCapability('measure_power')) {
+/*        if(this.hasCapability('measure_power')) {
           try {
           this.registerCapability('measure_power', CLUSTER.THERMOSTAT, {
             get: 'measure_power',
@@ -629,10 +650,11 @@ class ESHSUPERTR extends ZigBeeDevice {
           this.error('Error in getting measure_power: ', err);
         }
         };
+*/
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Meter Power
-        if(this.hasCapability('meter_power')) {
+/*        if(this.hasCapability('meter_power')) {
           try {
             this.registerCapability('meter_power', CLUSTER.THERMOSTAT, {
               get: 'measure_power',
@@ -649,7 +671,7 @@ class ESHSUPERTR extends ZigBeeDevice {
           }
         };
 
-
+*/
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------

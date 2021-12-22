@@ -7,11 +7,12 @@
     "no": "Sett Regulator %"
   },
 
+
   "args": [
     {
       "name": "device",
       "type": "device",
-      "filter": "driver_id=ESHSUPERTR"
+      "$filter": "driver_id=ESHSUPERTR"
     },
     {
       "name": "set_regulator",
@@ -37,11 +38,13 @@
     "en": "Set Power Status",
     "no": "Skru Av/På termostat"
     },
+
+
     "args": [
         {
           "type": "device",
           "name": "device",
-          "filter": "driver_id=ESHSUPERTR"
+          "$filter": "driver_id=ESHSUPERTR"
         },
         {
           "type": "dropdown",

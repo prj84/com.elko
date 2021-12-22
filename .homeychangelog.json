@@ -7,5 +7,17 @@
   },
   "1.0.6": {
     "en": "Added support for ELKO Smart Wirless Switch"
+  },
+  "1.0.7": {
+    "en": "Added error handling to prevent some device to get unavailable."
+  },
+  "1.0.8": {
+    "en": "Added error handling to prevent some devices to get unavailable"
+  },
+  "1.0.9": {
+    "en": "Added error handling to prevent some devices to get unavailable"
+  },
+  "1.0.10": {
+    "en": "Redesigned Power meter and metering. It now uses the defined thermostat load in settings to calculate the metering based on relay. Power meter uses defined load to give a more preciese value in Energy tab. Fixed a error with regulator mode and flow. Fixed a error not able to set Power status on unit in flows"
   }
 }
