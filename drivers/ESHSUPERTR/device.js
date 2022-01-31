@@ -438,7 +438,7 @@ class ESHSUPERTR extends ZigBeeDevice {
                     if (lastUpdate) {
                       const curMeterPowerkWh = this.getCapabilityValue('meter_power') || 0;
                       this.log('Current meter_power value: ', curMeterPowerkWh);
-                      const newMeterPowerkWh = Load * (thisUpdate - lastUpdate) / (1000 * 3600000) + curMeterPowerkWh;
+                      const newMeterPowerkWh = ((Load * ((thisUpdate - lastUpdate) / (1000 * 3600000))) + curMeterPowerkWh);
                       this.log('New meter_power value: ', newMeterPowerkWh);
                       this.setCapabilityValue('meter_power', newMeterPowerkWh);
                       this.log('meter_power set to: ', newMeterPowerkWh)
