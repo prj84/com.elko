@@ -9,7 +9,7 @@
     "onoff"
   ],
   "images": {
-    "large": "{{driverAssetsPath}}/images/large.png",
+    "large": "{{driverAssetsPath}}/images/Large.png",
     "small": "{{driverAssetsPath}}/images/small.png"
   },
   "zigbee": {

@@ -516,8 +516,8 @@
         "onoff"
       ],
       "images": {
-        "large": "/drivers/SmartDimPuck/assets/images/large.png",
-        "small": "/drivers/SmartDimPuck/assets/images/small.png"
+        "large": "/drivers/SmartDimPuck/assets/images/Large.png",
+        "small": "/drivers/SmartDimPuck/assets/images/Small.png"
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
@@ -754,8 +754,8 @@
         "onoff"
       ],
       "images": {
-        "large": "/drivers/SmartDimUniversalPush/assets/images/large.png",
-        "small": "/drivers/SmartDimUniversalPush/assets/images/small.png"
+        "large": "/drivers/SmartDimUniversalPush/assets/images/Large.png",
+        "small": "/drivers/SmartDimUniversalPush/assets/images/Small.png"
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
@@ -992,8 +992,8 @@
         "onoff"
       ],
       "images": {
-        "large": "/drivers/SmartDimUniversalTurn/assets/images/large.png",
-        "small": "/drivers/SmartDimUniversalTurn/assets/images/small.png"
+        "large": "/drivers/SmartDimUniversalTurn/assets/images/Large.png",
+        "small": "/drivers/SmartDimUniversalTurn/assets/images/Small.png"
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
@@ -1282,8 +1282,8 @@
         "onoff"
       ],
       "images": {
-        "large": "/drivers/SmartRelayPuck/assets/images/large.png",
-        "small": "/drivers/SmartRelayPuck/assets/images/small.png"
+        "large": "/drivers/SmartRelayPuck/assets/images/Large.png",
+        "small": "/drivers/SmartRelayPuck/assets/images/Small.png"
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
@@ -1417,8 +1417,8 @@
         }
       },
       "images": {
-        "large": "/drivers/SmartSensorClimate/assets/images/large.png",
-        "small": "/drivers/SmartSensorClimate/assets/images/small.png"
+        "large": "/drivers/SmartSensorClimate/assets/images/Large.png",
+        "small": "/drivers/SmartSensorClimate/assets/images/Small.png"
       },
       "id": "SmartSensorClimate"
     },
@@ -1433,7 +1433,7 @@
         "onoff"
       ],
       "images": {
-        "large": "/drivers/SmartSwitchPush/assets/images/large.png",
+        "large": "/drivers/SmartSwitchPush/assets/images/Large.png",
         "small": "/drivers/SmartSwitchPush/assets/images/small.png"
       },
       "zigbee": {
