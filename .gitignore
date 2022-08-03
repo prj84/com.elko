@@ -1,5 +1,9 @@
 env.json
-node_modules
+node_modules/
 devices\NEW\
 NEW
 build
+
+
+# Added by Homey CLI
+/.homeybuild/

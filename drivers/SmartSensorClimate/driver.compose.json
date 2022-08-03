@@ -48,7 +48,7 @@
     }
   },
   "images": {
-    "large": "/drivers/SmartSensorClimate/assets/images/large.png",
-    "small": "/drivers/SmartSensorClimate/assets/images/small.png"
+    "large": "/drivers/SmartSensorClimate/assets/images/Large.png",
+    "small": "/drivers/SmartSensorClimate/assets/images/Small.png"
   }
 }
