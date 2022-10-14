@@ -997,7 +997,10 @@
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
-        "productId": "NHROTARY/DIMMER/1",
+        "productId": [
+          "NHROTARY/DIMMER/1",
+          "NHROTARY/UNIDIM/1"
+        ],
         "learnmode": {
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
