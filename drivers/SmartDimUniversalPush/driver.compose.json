@@ -1,8 +1,8 @@
 {
-  "id": "SmartDimUniversalTurn",
+  "id": "SmartDimUniversalPush",
   "name": {
-    "en": "SmartDim Turn",
-    "no": "SmartDim Vri"
+    "en": "Push Dimmer",
+    "no": "Trykk Dimmer"
   },
   "class": "light",
   "capabilities": [
@@ -16,8 +16,8 @@
   "zigbee": {
     "manufacturerName": "Schneider Electric",
     "productId": [
-      "NHROTARY/DIMMER/1",
-      "NHROTARY/UNIDIM/1"
+      "NHPB/DIMMER/1",
+      "NHPB/UNIDIM/1"
     ],
     "learnmode": {
       "instruction": {
@@ -243,3 +243,4 @@
     }
   ]
 }
+
