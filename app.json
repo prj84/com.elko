@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.elko",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "brandColor": "#be0000",
@@ -522,6 +522,7 @@
         "manufacturerName": "Schneider Electric",
         "productId": "PUCK/DIMMER/1",
         "learnmode": {
+          "image": "/drivers/SmartDimPuck/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -763,6 +764,7 @@
           "NHPB/UNIDIM/1"
         ],
         "learnmode": {
+          "image": "/drivers/SmartDimUniversalPush/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -1004,6 +1006,7 @@
           "NHROTARY/UNIDIM/1"
         ],
         "learnmode": {
+          "image": "/drivers/SmartDimUniversalTurn/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -1243,6 +1246,7 @@
         "manufacturerName": "Schneider Electric",
         "productId": "SMARTPLUG/1",
         "learnmode": {
+          "image": "/drivers/SmartPlug/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -1294,6 +1298,7 @@
         "manufacturerName": "Schneider Electric",
         "productId": "PUCK/SWITCH/1",
         "learnmode": {
+          "image": "/drivers/SmartRelayPuck/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -1416,6 +1421,7 @@
         "learnmode": {
           "image": "/drivers/SmartSensor/assets/images/include.svg",
           "instruction": {
+            "image": "/drivers/SmartSensorClimate/assets/images/pair.png",
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
           }
@@ -1441,12 +1447,14 @@
       ],
       "images": {
         "large": "/drivers/SmartStikkDobbel/assets/images/large.png",
-        "small": "/drivers/SmartStikkDobbel/assets/images/small.png"
+        "small": "/drivers/SmartStikkDobbel/assets/images/small.png",
+        "xlarge": "/drivers/SmartStikkDobbel/assets/images/xlarge.png"
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
         "productId": "SOCKET/OUTLET/2",
         "learnmode": {
+          "image": "/drivers/SmartStikkDobbel/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -1494,12 +1502,14 @@
       ],
       "images": {
         "large": "/drivers/SmartStikkEnkel/assets/images/large.png",
-        "small": "/drivers/SmartStikkEnkel/assets/images/small.png"
+        "small": "/drivers/SmartStikkEnkel/assets/images/small.png",
+        "xlarge": "/drivers/SmartStikkEnkel/assets/images/xlarge.png"
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
         "productId": "SOCKET/OUTLET/1",
         "learnmode": {
+          "image": "/drivers/SmartStikkEnkel/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -1551,6 +1561,7 @@
         "manufacturerName": "Schneider Electric",
         "productId": "NHPB/SWITCH/1",
         "learnmode": {
+          "image": "/drivers/SmartSwitchPush/assets/images/pair.png",
           "instruction": {
             "en": "Click x3 times on Setup/Reset button to start inclution",
             "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
@@ -1651,10 +1662,10 @@
         "manufacturerName": "Schneider Electric",
         "productId": "FLS/AIRLINK/4",
         "learnmode": {
-          "image": "/drivers/ESH316GLEDREMOTE/assets/images/pair.png",
+          "image": "/drivers/SmartSwitchWireless/assets/images/pair.png",
           "instruction": {
-            "en": "3x Click on pushbutton 1. Unntil green LED flashes. Wait for Homey to list device",
-            "no": "3x Klikk knapp 1 inntill LED blinker. Vent til Homey legger til enheten"
+            "no": "3 Trykk kort (< 0,5 sek.) på trykknappen 3 ganger for å koble til et tilgjengelig Zigbee-nettverk. Statuslampen blinker oransje, og lyser grønt når tilkoblingen til Zigbee-nettverket er fullført. \n\n Trykk kort (< 0,5 sek.) på trykknappen 3 ganger, og trykk deretter og hold inne trykknappen (> 10 s), så blinker statuslampen rødt. Slipp deretter opp trykknappen, så slutter statuslampen å blinke når enheten tilbakestilles riktig. Enheten starter på nytt og blinker grønt i noen sekunder. Etter tilbakestilling slås LED av for å spare batteriet.",
+            "en": "Short press (< 0,5 s) the push button 3 times to connect to an available Zigbee network. The status LED blinks amber and then turns green upon successful connection to the Zigbee network. \n\n Short press (< 0,5 s) the push button 3 times and then press and hold the push button (> 10 s), the status LED blinks red. Then release the push button, the status LED stops blinking upon successful reset of the device. The device restarts and blinks green for a few seconds. After reset, the LED turns off to save the battery."
           }
         },
         "endpoints": {
