@@ -34,7 +34,6 @@ class ESHSUPERTR extends ZigBeeDevice {
         this.addCapability("measure_temperature");
         this.addCapability('tempCalibration');
         this.addCapability('regulatorTime');
-        //this.addCapability('dateTime');
         this.addCapability('maxFloorTemp');
         this.addCapability('button.reset_kwhMeter');
         this.removeCapability('operatingMode');
@@ -165,16 +164,6 @@ class ESHSUPERTR extends ZigBeeDevice {
             }
           };
 
-//----------------------------------------------------------------------------------------------------------------------------------------------
-      /*
-        if(this.hasCapability('dateTime')) {
-          const formatDate = (date) => {
-            return [20, date.getYear() - 100, date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()];
-          };
-          this.log(formatDate);
-          zclNode.endpoints[1].clusters.thermostat.writeAttributes({ dateTime: formatDate});
-        };
-      */
 //---------------------------------------------------------------------------------------------------------------------------------------------
         // Read if Thermostat is in Regulator mode (Thermostat/Regulator) (FALSE/TRUE)
         //Poll i used since there is no way to set up att listemer to att 1029 without geting error
@@ -196,7 +185,7 @@ class ESHSUPERTR extends ZigBeeDevice {
       // Set Thermostat Maxs floor temp
       if(this.hasCapability('maxFloorTemp')) {
           const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('maxFloorTemp')
-            .catch(err => this.error('Error reading max floor temp: ', err));
+          this.catch(err => this.error('Error reading max floor temp: ', err));
           this.setCapabilityValue('maxFloorTemp', value.maxFloorTemp)
           this.log('maxFloorTemp:', value.maxFloorTemp);
           this.setSettings({
