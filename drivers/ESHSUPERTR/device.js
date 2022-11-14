@@ -11,33 +11,9 @@ class ESHSUPERTR extends ZigBeeDevice {
 
     	// this method is called when the Device is inited
     async	onNodeInit({ zclNode }) {
-        //this.enableDebug();
-        //this.printNode();
+
         this.setAvailable();
-        let settings =   this.getSettings();
-
-
-        // This is for the raw logging of zigbee trafic. Otherwise not used.
-        // const { Util } = require('homey-zigbeedriver');
-        // Util.debugZigbeeClusters(true);
-
-//----------------------------------------------------------------------------------------------------------------------------------------------
-
-        //Adds new capabilities to existing users
-        this.addCapability('sensorMode')
-        this.addCapability('childLock');
-        this.addCapability('power_status')
-        this.addCapability('thermostatLoad');
-        this.addCapability('regulatorMode');
-        this.addCapability('night_switching');
-        this.addCapability('frost_guard');
-        this.addCapability("measure_temperature");
-        this.addCapability('tempCalibration');
-        this.addCapability('regulatorTime');
-        this.addCapability('maxFloorTemp');
-        this.addCapability('button.reset_kwhMeter');
-        this.removeCapability('operatingMode');
-
+        let settings = this.getSettings();
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Action Flowcard
@@ -665,7 +641,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
         //Reset of kwh counter
-        this.registerCapabilityListener('button.reset_kwhMeter', async () => {
+        this.registerCapabilityListener('button.reset_kwh_meter', async () => {
           try {
                 this.setCapabilityValue('meter_power', 0);
                 this.log('meter_power reset to 0')

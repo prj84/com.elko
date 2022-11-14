@@ -7,7 +7,6 @@
     "no": "Sett Regulator %"
   },
 
-
   "args": [
     {
       "name": "device",
@@ -38,7 +37,6 @@
     "en": "Set Power Status",
     "no": "Skru Av/På termostat"
     },
-
 
     "args": [
         {

@@ -20,9 +20,7 @@
     "regulatorMode",
     "thermostatLoad",
     "regulatorTime",
-    "dateTime",
     "tempCalibration",
-    "displayText",
     "button.reset_kwh_meter",
     "night_switching",
     "frost_guard"
@@ -58,17 +56,17 @@
       "max": 40,
       "step": 1
     },
-        "button.reset_kwhMeter": {
-           "maintenanceAction": true,
-           "title": {
-              "en": "Reset power meter",
-              "no": "Nullstill kw/t teller"
+    "button.reset_kwh_meter": {
+        "maintenanceAction": true,
+        "title": {
+          "en": "Reset power meter",
+          "no": "Nullstill kw/t teller"
            },
            "desc": {
               "en": "Reset the accumulated power usage (kWh), note that this can not be reversed.",
               "no": "Nullstill kwt teller, OBS! Data blir slettet!"
            }
-         }
+    }
   },
   "mobile": {
     "components": [
