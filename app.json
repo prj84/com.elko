@@ -38,8 +38,8 @@
   "drivers": [
     {
       "name": {
-        "en": "ESH 316GLED Dimmer RF PF",
-        "no": "ESH 316GLED Dimmer RF PF"
+        "en": "316GLED Dimmer RF PF",
+        "no": "316GLED Dimmer RF PF"
       },
       "class": "light",
       "capabilities": [
@@ -90,8 +90,8 @@
     },
     {
       "name": {
-        "en": "ELKO Smart 316GLED Dimmer REMOTE RF PF",
-        "no": "ELKO Smart 316GLED Endevender RF PF"
+        "en": "316GLED Dimmer REMOTE RF PF",
+        "no": "316GLED Endevender RF PF"
       },
       "class": "sensor",
       "capabilities": [],
@@ -135,8 +135,8 @@
     },
     {
       "name": {
-        "en": "ESH 316GLED Pre 2019",
-        "no": "ESH 316GLED Pre 2019"
+        "en": "316GLED Pre 2019",
+        "no": "316GLED Pre 2019"
       },
       "class": "light",
       "capabilities": [
@@ -182,8 +182,8 @@
     },
     {
       "name": {
-        "en": "ESH Super TR Thermostat RF",
-        "no": "ESH Super TR Thermostat RF"
+        "en": "Super TR Thermostat RF",
+        "no": "Super TR Thermostat RF"
       },
       "class": "thermostat",
       "capabilities": [
@@ -745,8 +745,8 @@
     {
       "id": "SmartDimUniversalPush",
       "name": {
-        "en": "Push Dimmer",
-        "no": "Trykk Dimmer"
+        "en": "SmartDim Push",
+        "no": "SmartDim Trykk"
       },
       "class": "light",
       "capabilities": [
@@ -1436,8 +1436,8 @@
     {
       "id": "SmartStikkDobbel",
       "name": {
-        "en": "Smart Socket 1",
-        "no": "Smart Stikk Enkel"
+        "en": "Smart Socket Double",
+        "no": "Smart Stikk Dobbel"
       },
       "class": "socket",
       "capabilities": [
@@ -1491,7 +1491,7 @@
     {
       "id": "SmartStikkEnkel",
       "name": {
-        "en": "Smart Socket 1",
+        "en": "Smart Socket Single",
         "no": "Smart Stikk Enkel"
       },
       "class": "socket",
@@ -1645,8 +1645,8 @@
     },
     {
       "name": {
-        "en": "ELKO Smart Switch Wireless",
-        "no": "ELKO Smart Bryter Trådløs"
+        "en": "Smart Switch Wireless",
+        "no": "Smart Bryter Trådløs"
       },
       "class": "sensor",
       "capabilities": [

@@ -6,7 +6,7 @@
     "homey": "^2.6.1"
   },
   "dependencies": {
-    "homey-zigbeedriver": "^1.6.5",
-    "zigbee-clusters": "^1.4.0"
+    "homey-zigbeedriver": "^1.6.12",
+    "zigbee-clusters": "^1.5.2"
   }
 }

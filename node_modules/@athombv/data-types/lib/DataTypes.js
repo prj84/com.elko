@@ -495,6 +495,7 @@ const DataTypes = {
 // attribId    :               new DataType(233, 'attribId'     , 2   , ),
 
 // bacOID      :               new DataType(234, 'bacOID'       , 4   , ),
+  EUI48       :               new DataType(239, 'EUI48'        , 6   , EUI64ToBuf            , EUI64FromBuf                ),
   EUI64       :               new DataType(240, 'EUI64'        , 8   , EUI64ToBuf            , EUI64FromBuf                ),
   key128      :               new DataType(241, 'key128'       , 16  , key128ToBuf           , key128FromBuf               ),
 

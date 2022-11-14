@@ -185,7 +185,7 @@ class ESHSUPERTR extends ZigBeeDevice {
       // Set Thermostat Maxs floor temp
       if(this.hasCapability('maxFloorTemp')) {
           const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('maxFloorTemp')
-          this.catch(err => this.error('Error reading max floor temp: ', err));
+            .catch(err => this.error('Error reading max floor temp: ', err));
           this.setCapabilityValue('maxFloorTemp', value.maxFloorTemp)
           this.log('maxFloorTemp:', value.maxFloorTemp);
           this.setSettings({
