@@ -19,5 +19,8 @@
   },
   "1.0.10": {
     "en": "Redesigned Power meter and metering. It now uses the defined thermostat load in settings to calculate the metering based on relay. Power meter uses defined load to give a more preciese value in Energy tab. Fixed a error with regulator mode and flow. Fixed a error not able to set Power status on unit in flows"
+  },
+  "1.1.0": {
+    "en": "Fixed kWh bug, returned to old logic. Added SmartStikkDobbel & SmartStikkEnkel. Added Multiwire dimmer id's to code. Made preperations for PIR devices."
   }
 }
