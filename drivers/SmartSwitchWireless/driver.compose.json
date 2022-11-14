@@ -17,10 +17,10 @@
       "manufacturerName": "Schneider Electric",
       "productId": "FLS/AIRLINK/4",
       "learnmode": {
-        "image": "/drivers/ESH316GLEDREMOTE/assets/images/pair.png",
+        "image": "{{driverAssetsPath}}/images/pair.png",
         "instruction": {
-          "en": "3x Click on pushbutton 1. Unntil green LED flashes. Wait for Homey to list device",
-          "no": "3x Klikk knapp 1 inntill LED blinker. Vent til Homey legger til enheten"
+          "no": "3 Trykk kort (< 0,5 sek.) på trykknappen 3 ganger for å koble til et tilgjengelig Zigbee-nettverk. Statuslampen blinker oransje, og lyser grønt når tilkoblingen til Zigbee-nettverket er fullført. \n\n Trykk kort (< 0,5 sek.) på trykknappen 3 ganger, og trykk deretter og hold inne trykknappen (> 10 s), så blinker statuslampen rødt. Slipp deretter opp trykknappen, så slutter statuslampen å blinke når enheten tilbakestilles riktig. Enheten starter på nytt og blinker grønt i noen sekunder. Etter tilbakestilling slås LED av for å spare batteriet.",
+          "en": "Short press (< 0,5 s) the push button 3 times to connect to an available Zigbee network. The status LED blinks amber and then turns green upon successful connection to the Zigbee network. \n\n Short press (< 0,5 s) the push button 3 times and then press and hold the push button (> 10 s), the status LED blinks red. Then release the push button, the status LED stops blinking upon successful reset of the device. The device restarts and blinks green for a few seconds. After reset, the LED turns off to save the battery."
         }
       },
       "endpoints": {

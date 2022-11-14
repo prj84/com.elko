@@ -13,12 +13,14 @@
 
   "images": {
     "large": "{{driverAssetsPath}}/images/large.png",
-    "small": "{{driverAssetsPath}}/images/small.png"
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
   },
   "zigbee": {
     "manufacturerName": "Schneider Electric",
     "productId": "SOCKET/OUTLET/1",
     "learnmode": {
+      "image": "{{driverAssetsPath}}/images/pair.png",
       "instruction": {
         "en": "Click x3 times on Setup/Reset button to start inclution",
         "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"

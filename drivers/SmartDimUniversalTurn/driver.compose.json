@@ -20,6 +20,7 @@
       "NHROTARY/UNIDIM/1"
     ],
     "learnmode": {
+      "image": "{{driverAssetsPath}}/images/pair.png",
       "instruction": {
         "en": "Click x3 times on Setup/Reset button to start inclution",
         "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"

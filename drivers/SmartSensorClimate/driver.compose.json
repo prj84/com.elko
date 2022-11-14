@@ -42,6 +42,7 @@
     "learnmode": {
       "image": "/drivers/SmartSensor/assets/images/include.svg",
       "instruction": {
+        "image": "{{driverAssetsPath}}/images/pair.png",
         "en": "Click x3 times on Setup/Reset button to start inclution",
         "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
       }
