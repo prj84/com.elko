@@ -1,7 +1,7 @@
 {
     "name": {
-      "en": "ELKO Smart 316GLED Dimmer REMOTE RF PF",
-      "no": "ELKO Smart 316GLED Endevender RF PF"
+      "en": "316GLED Dimmer REMOTE RF PF",
+      "no": "316GLED Endevender RF PF"
     },
     "class": "sensor",
     "capabilities": [],

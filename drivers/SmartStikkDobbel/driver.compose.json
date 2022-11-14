@@ -1,8 +1,8 @@
 {
   "id": "SmartStikkEnkel",
   "name": {
-    "en": "Smart Socket 1",
-    "no": "Smart Stikk Enkel"
+    "en": "Smart Socket Double",
+    "no": "Smart Stikk Dobbel"
   },
   "class": "socket",
   "capabilities": [

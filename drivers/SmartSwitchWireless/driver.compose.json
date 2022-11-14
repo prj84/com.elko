@@ -1,7 +1,7 @@
 {
     "name": {
-      "en": "ELKO Smart Switch Wireless",
-      "no": "ELKO Smart Bryter Trådløs"
+      "en": "Smart Switch Wireless",
+      "no": "Smart Bryter Trådløs"
     },
     "class": "sensor",
     "capabilities": [

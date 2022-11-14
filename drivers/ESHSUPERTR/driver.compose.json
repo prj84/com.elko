@@ -1,7 +1,7 @@
 {
   "name": {
-    "en": "ESH Super TR Thermostat RF",
-    "no": "ESH Super TR Thermostat RF"
+    "en": "Super TR Thermostat RF",
+    "no": "Super TR Thermostat RF"
   },
   "class": "thermostat",
   "capabilities": [

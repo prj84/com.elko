@@ -1,8 +1,8 @@
 {
   "id": "SmartDimUniversalPush",
   "name": {
-    "en": "Push Dimmer",
-    "no": "Trykk Dimmer"
+    "en": "SmartDim Push",
+    "no": "SmartDim Trykk"
   },
   "class": "light",
   "capabilities": [
