@@ -15,7 +15,10 @@
   },
   "zigbee": {
     "manufacturerName": "Schneider Electric",
-    "productId": "NHPB/DIMMER/1",
+    "productId": [
+      "NHPB/DIMMER/1",
+      "NHPB/UNIDIM/1"
+    ],
     "learnmode": {
       "instruction": {
         "en": "Click x3 times on Setup/Reset button to start inclution",
