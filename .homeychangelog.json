@@ -25,5 +25,8 @@
   },
   "1.1.1": {
     "en": "Fixed kWh bug, returned to old logic. Added SmartStikkDobbel & SmartStikkEnkel. Added Multiwire dimmer id's to code. Made preperations for PIR devices. Fixed pairing instructions"
+  },
+  "1.1.2": {
+    "en": "Fixed kWh bug, returned to old logic. Added SmartStikkDobbel & SmartStikkEnkel. Added Multiwire dimmer id's to code. Made preperations for PIR devices. Fixed pairing instructions"
   }
 }
