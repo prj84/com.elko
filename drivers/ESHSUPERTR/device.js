@@ -425,7 +425,7 @@ class ESHSUPERTR extends ZigBeeDevice {
                 const Load = this.getCapabilityValue('thermostatLoad');
                 const thisUpdate = Date.now();
                 const lastUpdate = this.getStoreValue('lastUpdate');
-                switch (currentRelayState) {
+                /*switch (currentRelayState) {
                   case true:
                     this.setCapabilityValue('measure_power', Load);
                     this.log('Power load: ', Load);
@@ -444,7 +444,7 @@ class ESHSUPERTR extends ZigBeeDevice {
                       this.log('meter_power set to: ', newMeterPowerkWh)
                     }
                     break;
-                  };
+                  };*/
               });
             } catch (err) {
               this.error('Error in setting relaystate: ', err)
@@ -634,7 +634,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Power
-/*        if(this.hasCapability('measure_power')) {
+        if(this.hasCapability('measure_power')) {
           try {
           this.registerCapability('measure_power', CLUSTER.THERMOSTAT, {
             get: 'measure_power',
@@ -650,11 +650,11 @@ class ESHSUPERTR extends ZigBeeDevice {
           this.error('Error in getting measure_power: ', err);
         }
         };
-*/
+
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Meter Power
-/*        if(this.hasCapability('meter_power')) {
+        if(this.hasCapability('meter_power')) {
           try {
             this.registerCapability('meter_power', CLUSTER.THERMOSTAT, {
               get: 'measure_power',
@@ -671,7 +671,7 @@ class ESHSUPERTR extends ZigBeeDevice {
           }
         };
 
-*/
+
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 {
-  "id": "SmartPlug",
+  "id": "SmartStikkEnkel",
   "name": {
-    "en": "Smart Plug 16A",
-    "no": "Smartplugg 16A"
+    "en": "Smart Socket 1",
+    "no": "Smart Stikk Enkel"
   },
   "class": "socket",
   "capabilities": [
@@ -17,7 +17,7 @@
   },
   "zigbee": {
     "manufacturerName": "Schneider Electric",
-    "productId": "SMARTPLUG/1",
+    "productId": "SOCKET/OUTLET/2",
     "learnmode": {
       "instruction": {
         "en": "Click x3 times on Setup/Reset button to start inclution",
@@ -25,7 +25,7 @@
       }
     },
     "endpoints": {
-      "1": {
+      "6": {
         "clusters": [
           0,
           3,
