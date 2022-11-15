@@ -9,11 +9,10 @@ const ELKOSpecificThermostatCluster = require('../../lib/ELKOSpecificThermostatC
 class ESHSUPERTR extends ZigBeeDevice {
 
 
-    	// this method is called when the Device is inited
+// this method is called when the Device is inited
     async	onNodeInit({ zclNode }) {
-
         this.setAvailable();
-        let settings = this.getSettings();
+        let settings =   this.getSettings();
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Action Flowcard
@@ -35,62 +34,7 @@ class ESHSUPERTR extends ZigBeeDevice {
             this.error('Error in run listener for set regulator: ', err)
           }
         });
-/* Commented out this, unshure if this is needed atm
-// Set nightMode
-        this.startSetnightmodeAction = this.homey.flow.getActionCard('set_nightmode');
-        this.startSetnightmodeAction.registerRunListener(async( args, state) => {
-          this.log ('night_mode argument:', args.night_mode);
-          let Setnightmode = 0;
-            switch (args.night_mode) {
-              case 'Yes':
-                Setnightmode = 1;
-                break;
-              case 'No':
-                Setnightmode = 0;
-                break;
-            };
-          this.log ('Setnightmode value:', Setnightmode);
-          await args.device.zclNode.endpoints[1].clusters.thermostat
-            .writeAttributes({ night_switching: Setnightmode });
-          let Setnightmode_Capability = false;
-            switch (args.Child_Lock) {
-              case 'Yes':
-                Setnightmode_Capability = true;
-                break;
-              case 'No':
-                Setnightmode_Capability = false;
-                break;
-            };
-          this.setCapabilityValue('nightMode', Setnightmode_Capability)
-          });
-// Set FrostGuard
-        this.startSetnightmodeAction = this.homey.flow.getActionCard('set_frostguard');
-        this.startSetnightmodeAction.registerRunListener(async( args, state) => {
-          this.log ('night_mode argument:', args.frost_guard);
-          let Setfrostguard = 0;
-            switch (args.frost_guard) {
-              case 'Yes':
-                Setfrostguard = 1;
-                break;
-              case 'No':
-                Setfrostguard = 0;
-                break;
-            };
-          this.log ('Setnightmode value:', Setfrostguard);
-          await args.device.zclNode.endpoints[1].clusters.thermostat
-            .writeAttributes({ frost_guard: Setfrostguard });
-          let Setfrostguard_Capability = false;
-            switch (args.Child_Lock) {
-              case 'Yes':
-                Setfrostguard_Capability = true;
-                break;
-              case 'No':
-                Setfrostguard_Capability = false;
-                break;
-            };
-          this.setCapabilityValue('frost_guard', Setfrostguard_Capability)
-          });
-*/
+
 // Set power_status
         this.startSetnightmodeAction = this.homey.flow.getActionCard('Power');
         this.startSetnightmodeAction.registerRunListener(async( args, state) => {
@@ -141,8 +85,8 @@ class ESHSUPERTR extends ZigBeeDevice {
           };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
-        // Read if Thermostat is in Regulator mode (Thermostat/Regulator) (FALSE/TRUE)
-        //Poll i used since there is no way to set up att listemer to att 1029 without geting error
+// Read if Thermostat is in Regulator mode (Thermostat/Regulator) (FALSE/TRUE)
+//Poll i used since there is no way to set up att listemer to att 1029 without geting error
           if(this.hasCapability('regulatorMode')) {
             try {
               const currentregulatorMode = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('regulatorMode');
@@ -157,8 +101,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Thermostat Max floor temp
-
-      // Set Thermostat Maxs floor temp
+// Set Thermostat Maxs floor temp
       if(this.hasCapability('maxFloorTemp')) {
           const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('maxFloorTemp')
             .catch(err => this.error('Error reading max floor temp: ', err));
@@ -185,8 +128,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Thermostat Regulator Time
-
-      // Set Thermostat Regulator Time
+// Set Thermostat Regulator Time
       if(this.hasCapability('regulatorTime')) {
           const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('regulatorTime')
             .catch(err => this.error('Error regulator time: ', err));
@@ -211,10 +153,9 @@ class ESHSUPERTR extends ZigBeeDevice {
 
         };
 
-  //---------------------------------------------------------------------------------------------------------------------------------------------
-  // Thermostat temperature Calibration
-
-        // Set thermostat temperature Calibration
+//---------------------------------------------------------------------------------------------------------------------------------------------
+// Thermostat temperature Calibration
+// Set thermostat temperature Calibration
         if(this.hasCapability('tempCalibration')) {
             const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('tempCalibration')
               .catch(err => this.error('Error reading temp calibration: ', err));;
@@ -300,11 +241,9 @@ class ESHSUPERTR extends ZigBeeDevice {
           });
         };
 
-
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Set point with temperature wheel
-
-    // Setpoint of thermostat
+// Setpoint of thermostat
           this.registerCapabilityListener('target_temperature', async (value) => {
             try {
               const setTemp =  await zclNode.endpoints[1].clusters.thermostat
@@ -335,11 +274,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                 }
               });
 
-
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Set point with dim
-
-    // Setpoint of regulator
+// Setpoint of regulator
           this.registerCapabilityListener('dim.regulator', async (value) => {
             try {
               const setTemp = await zclNode.endpoints[1].clusters.thermostat
@@ -370,9 +307,7 @@ class ESHSUPERTR extends ZigBeeDevice {
                 }
               });
 
-
 //---------------------------------------------------------------------------------------------------------------------------------------------
-
 // Heating status - Relay On/Off - Setting Power Load - Metering power calculation
           if (this.hasCapability('heat')) {
             try {
@@ -502,7 +437,6 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Childlock
-
 // Set Childlock
         if(this.hasCapability('childLock')) {
           try {
@@ -541,7 +475,6 @@ class ESHSUPERTR extends ZigBeeDevice {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Thermostat Load
-
 // Set Thermostat Load
         if(this.hasCapability('thermostatLoad')) {
           try {
@@ -596,9 +529,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                         }
                       };
 
-
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Power
+// Average Power latest 10 minuttes - We now use floor_watt and relay to deside the active power
         /*if(this.hasCapability('measure_power')) {
           try {
           this.registerCapability('measure_power', CLUSTER.THERMOSTAT, {
@@ -615,7 +548,6 @@ class ESHSUPERTR extends ZigBeeDevice {
           this.error('Error in getting measure_power: ', err);
         }
       };*/
-
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Meter Power
@@ -635,9 +567,6 @@ class ESHSUPERTR extends ZigBeeDevice {
             this.error('Error in meter power code: ', err)
           }
         };
-
-
-
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
         //Reset of kwh counter

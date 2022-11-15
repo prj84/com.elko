@@ -1,0 +1,62 @@
+---------------------------
+        Endpoint 37
+---------------------------
+
+-----------------------------------
+Cluster: Occupancy Sensing (0x0406)
+-----------------------------------
+
+||| Attribute: Occupancy (0x0000) |||
+
+Data Type: 8-Bit Bitmap (0x18)
+.... ...1 = Occupied: True
+.... ...0 = Occupied: False
+
+
+||| Attribute: PIR Occupied to Unoccupied Delay (0x0010) (R/W) |||
+
+Data Type: 16-Bit Unsigned Integer (0x21)
+
+1 - 3599   | x Seconds
+
+
+||| Attribute: PIR Sensitivity (0xe003) |||
+
+Manufacturer Code: Schneider Electric (0x105e)
+Data Type: 8-Bit Unsigned Integer (0x20)
+
+50 (0x32)  | Low
+75 (0x4b)  | Medium
+100 (0x64) | High
+
+
+---------------------------------------
+Cluster: Manufacturer Specific (0xff19)
+---------------------------------------
+
+||| Attribute: Lux threshold (0x0000) |||
+
+Manufacturer Code: Schneider Electric (0x105e)
+Data Type: 16-Bit Unsigned Integer (0x21)
+
+1 (0x0001)     | 1 Lux
+26990 (0x696e) | 499 Lux
+30001 (0x7531) | 1000 Lux
+
+||| Attribute: Unknown (0x0001) |||
+Manufacturer Code: Schneider Electric (0x105e)
+Data Type: 8-Bit Enumeration (0x30)
+
+.... ...1 = Unknown
+
+-----------------------------------------
+Cluster: Illuminance Measurement (0x0400)
+-----------------------------------------
+
+||| Attribute: Measured Value (0x0000) |||
+
+Attribute reporting!
+
+Data Type: 16-Bit Unsigned Integer (0x21)
+Measured Value: 19913 (=97,016683 [lx])
+

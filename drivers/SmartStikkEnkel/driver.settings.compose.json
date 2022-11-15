@@ -1,0 +1,45 @@
+[
+  {
+    "id": "backlightMode",
+    "type": "dropdown",
+    "value": "consistentWithLoad",
+    "label": {
+      "en": "Status indication",
+      "no": "Statusindikasjon"
+    },
+    "hint": {
+      "en": "How to display the load indication",
+      "no": "Hvordan vise lastindikasjonen"
+    },
+    "values": [
+      {
+        "id": "consistentWithLoad",
+        "label": {
+          "en": "Consistent with load",
+          "no": "konsistent med belastning"
+        }
+      },
+      {
+        "id": "reverseWithLoad",
+        "label": {
+          "en": "Reverse with load",
+          "no": "Reversere med last"
+        }
+      },
+      {
+        "id": "alwaysOn",
+        "label": {
+          "en": "Always on",
+          "no": "Alltid på"
+        }
+      },
+      {
+        "id": "alwaysOff",
+        "label": {
+          "en": "Always off",
+          "no": "Alltid av"
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,1185 @@
+{
+  "ids": {
+    "modelId": "NHMOTION/DIMMER/1",
+    "manufacturerName": "Schneider Electric"
+  },
+  "endpoints": {
+    "endpointDescriptors": [
+      {
+        "endpointId": 3,
+        "applicationProfileId": 260,
+        "applicationDeviceId": 257,
+        "applicationDeviceVersion": 0,
+        "_reserved1": 1,
+        "inputClusters": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          8,
+          769,
+          2821
+        ],
+        "outputClusters": [
+          25
+        ]
+      },
+      {
+        "endpointId": 37,
+        "applicationProfileId": 260,
+        "applicationDeviceId": 2080,
+        "applicationDeviceVersion": 0,
+        "_reserved1": 1,
+        "inputClusters": [
+          0,
+          3,
+          1024,
+          1030,
+          2821,
+          65305
+        ],
+        "outputClusters": [
+          3,
+          6,
+          8,
+          1030
+        ]
+      },
+      {
+        "endpointId": 242,
+        "applicationProfileId": 41440,
+        "applicationDeviceId": 97,
+        "applicationDeviceVersion": 0,
+        "_reserved1": 0,
+        "inputClusters": [],
+        "outputClusters": [
+          33
+        ]
+      }
+    ],
+    "endpoints": {
+      "3": {
+        "clusters": {
+          "basic": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "zclVersion",
+                "value": 3,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 1,
+                "name": "appVersion",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 2,
+                "name": "stackVersion",
+                "value": 6,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 3,
+                "name": "hwVersion",
+                "value": 1,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 4,
+                "name": "manufacturerName",
+                "value": "Schneider Electric",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 5,
+                "name": "modelId",
+                "value": "NHMOTION/DIMMER/1",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 6,
+                "name": "dateCode",
+                "value": "",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 7,
+                "name": "powerSource",
+                "value": "mains",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 8,
+                "name": "appProfileVersion",
+                "value": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 9,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 10,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 11,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 16384,
+                "name": "swBuildId",
+                "value": "002.005.025 R",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": [
+              "factoryReset"
+            ]
+          },
+          "identify": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 1,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [
+              0
+            ],
+            "commandsReceived": []
+          },
+          "groups": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "nameSupport",
+                "value": {
+                  "type": "Buffer",
+                  "data": [
+                    0
+                  ]
+                },
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [
+              "addGroup.response",
+              "viewGroup.response",
+              "getGroupMembership.response",
+              "removeGroup.response"
+            ],
+            "commandsReceived": [
+              "addGroup",
+              "viewGroup",
+              "getGroupMembership",
+              "removeGroup",
+              "removeAllGroups",
+              "addGroupIfIdentify"
+            ]
+          },
+          "scenes": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 1,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 32,
+                  "minInterval": 5,
+                  "maxInterval": 3600,
+                  "minChange": 1,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 2,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 33,
+                  "minInterval": 5,
+                  "maxInterval": 3600,
+                  "minChange": 1,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 3,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 16,
+                  "minInterval": 5,
+                  "maxInterval": 3600,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 4,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6
+            ],
+            "commandsReceived": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          "onOff": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "onOff",
+                "value": false,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 16,
+                  "minInterval": 5,
+                  "maxInterval": 600,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 16385,
+                "name": "onTime",
+                "value": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 16386,
+                "name": "offWaitTime",
+                "value": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          },
+          "levelControl": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "currentLevel",
+                "value": 130,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 32,
+                  "minInterval": 5,
+                  "maxInterval": 600,
+                  "minChange": 1,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 15,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 17,
+                "name": "onLevel",
+                "value": 255,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 16384,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          },
+          "ballastConfiguration": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "physicalMinLevel",
+                "value": 1
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 1,
+                "name": "physicalMaxLevel",
+                "value": 254
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 2,
+                "name": "ballastStatus",
+                "value": {
+                  "type": "Buffer",
+                  "data": [
+                    0
+                  ]
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 16,
+                "name": "minLevel",
+                "value": 100
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 17,
+                "name": "maxLevel",
+                "value": 201
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          },
+          "diagnostics": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 284,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 32,
+                  "minInterval": 900,
+                  "maxInterval": 900,
+                  "minChange": 255,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 285,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 40,
+                  "minInterval": 900,
+                  "maxInterval": 900,
+                  "minChange": 127,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          }
+        },
+        "bindings": {
+          "ota": {
+            "attributes": [],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          }
+        }
+      },
+      "37": {
+        "clusters": {
+          "basic": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "zclVersion",
+                "value": 3,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 1,
+                "name": "appVersion",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 2,
+                "name": "stackVersion",
+                "value": 6,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 3,
+                "name": "hwVersion",
+                "value": 1,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 4,
+                "name": "manufacturerName",
+                "value": "Schneider Electric",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 5,
+                "name": "modelId",
+                "value": "NHMOTION/DIMMER/1",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 6,
+                "name": "dateCode",
+                "value": "",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 7,
+                "name": "powerSource",
+                "value": "mains",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 8,
+                "name": "appProfileVersion",
+                "value": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 9,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 10,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 11,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 16384,
+                "name": "swBuildId",
+                "value": "002.005.025 R",
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": [
+              "factoryReset"
+            ]
+          },
+          "identify": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 1,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [
+              0
+            ],
+            "commandsReceived": []
+          },
+          "illuminanceMeasurement": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "measuredValue",
+                "value": 22553,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 33,
+                  "minInterval": 0,
+                  "maxInterval": 60,
+                  "minChange": 441,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 1,
+                "name": "minMeasuredValue",
+                "value": 65535,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 2,
+                "name": "maxMeasuredValue",
+                "value": 65535,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          },
+          "occupancySensing": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "occupancy",
+                "value": {
+                  "type": "Buffer",
+                  "data": [
+                    0
+                  ]
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 1,
+                "name": "occupancySensorType",
+                "value": "pir"
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 2
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 16,
+                "name": "pirOccupiedToUnoccupiedDelay",
+                "value": 5
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          },
+          "diagnostics": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 284,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 32,
+                  "minInterval": 900,
+                  "maxInterval": 900,
+                  "minChange": 255,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 285,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 40,
+                  "minInterval": 900,
+                  "maxInterval": 900,
+                  "minChange": 127,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          }
+        },
+        "bindings": {
+          "identify": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 0,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 1,
+                "reportingConfiguration": {
+                  "status": "NOT_FOUND",
+                  "direction": "reported"
+                }
+              }
+            ],
+            "commandsGenerated": [
+              0
+            ],
+            "commandsReceived": []
+          },
+          "occupancySensing": {
+            "attributes": [
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 0,
+                "name": "occupancy",
+                "value": {
+                  "type": "Buffer",
+                  "data": [
+                    0
+                  ]
+                }
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 1,
+                "name": "occupancySensorType",
+                "value": "pir"
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 2
+              },
+              {
+                "acl": [
+                  "readable",
+                  "writable",
+                  "reportable"
+                ],
+                "id": 16,
+                "name": "pirOccupiedToUnoccupiedDelay",
+                "value": 5
+              },
+              {
+                "acl": [
+                  "readable",
+                  "reportable"
+                ],
+                "id": 65533,
+                "name": "clusterRevision",
+                "value": 2
+              }
+            ],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          },
+          "onOff": {
+            "attributes": [],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          },
+          "levelControl": {
+            "attributes": [],
+            "commandsGenerated": [],
+            "commandsReceived": []
+          }
+        }
+      },
+      "242": {
+        "clusters": {},
+        "bindings": {}
+      }
+    }
+  }
+}

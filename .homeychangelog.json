@@ -33,6 +33,12 @@
     "en": "Fixing termostat bug"
   },
   "1.1.4": {
-    "en": "Error fixing on zigbee driver"
+    "en": "Added new devices, cleaned up some code"
+  },
+  "1.1.5": {
+    "en": "Added new devices, cleaned up some code"
+  },
+  "1.1.6": {
+    "en": "Added new devices, cleaned up some code"
   }
 }

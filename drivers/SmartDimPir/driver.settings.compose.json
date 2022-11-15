@@ -1,0 +1,284 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "no": "Påslagsmodus",
+      "sv": "Påslagsläge",
+      "fi": "Päällekytkentätila",
+      "en": "Switch-on mode"
+    },
+    "children": [
+      {
+        "id": "onlevelMemory",
+        "type": "checkbox",
+        "value": true,
+        "label": {
+          "no": "Husk lysstyrkenivå",
+          "sv": "Kom ihåg ljusstyrkan",
+          "fi": "Muista kirkkaustaso",
+          "en": "Remember brightness level"
+        }
+      },
+      {
+        "id": "onlevelLevel",
+        "type": "number",
+        "label": {
+          "no": "Manuelt dimmenivå",
+          "sv": "Manuell dimnivå",
+          "fi": "Manuaalinen himmennysaste",
+          "en": "Manual dim level"
+        },
+        "value": 100,
+        "units": {
+          "en": "%"
+        },
+        "attr": {
+          "min": 1,
+          "max": 100
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "no": "Min/Max lysstyrke",
+      "sv": "Min/Max ljusstyrka",
+      "fi": "Min/Max kirkkaus",
+      "en": "Min/Max brightness"
+    },
+    "children": [
+      {
+        "id": "brightnessMin",
+        "type": "number",
+        "value": 1,
+        "label": {
+          "no": "Minste lysstyrke",
+          "sv": "Minsta ljusstyrka",
+          "fi": "Minimaalinen kirkkaus",
+          "en": "Minimum brigthness"
+        },
+        "units": {
+          "en": "%"
+        },
+        "attr": {
+          "min": 1,
+          "max": 40
+        }
+      },
+      {
+        "id": "brightnessMax",
+        "type": "number",
+        "label": {
+          "no": "Maksimal lysstyrke",
+          "sv": "Maximal ljusstyrka",
+          "fi": "Maksimaalinen kirkkaus",
+          "en": "Maximum brightness"
+        },
+        "value": 100,
+        "units": {
+          "en": "%"
+        },
+        "attr": {
+          "min": 60,
+          "max": 100
+        }
+      }
+    ]
+  },
+  {
+    "id": "controlMode",
+    "type": "dropdown",
+    "value": "automatic",
+    "label": {
+      "no": "Dimmetype",
+      "sv": "Dimmningstyp",
+      "fi": "Himmennystyyppi",
+      "en": "Dimming mode"
+    },
+    "values": [
+      {
+        "id": "automatic",
+        "label": {
+          "no": "Automatisk",
+          "sv": "Automatisk",
+          "fi": "Automaattinen",
+          "en": "Automatic"
+        }
+      },
+      {
+        "id": "rcMode",
+        "label": {
+          "no": "RC-modus",
+          "sv": "RC-läge",
+          "fi": "RC-tila",
+          "en": "RC mode"
+        }
+      },
+      {
+        "id": "rlMode",
+        "label": {
+          "no": "RL-modus",
+          "sv": "RL-läge",
+          "fi": "RL-tila",
+          "en": "RL mode"
+        }
+      },
+      {
+        "id": "rlLedMode",
+        "label": {
+          "no": "RL LED-modus",
+          "sv": "RL LED-läge",
+          "fi": "RL LED-tila",
+          "en": "RL LED mode"
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "no": "PIR sensor",
+      "sv": "PIR sensor",
+      "fi": "PIR anturi",
+      "en": "PIR sensor"
+    },
+    "children": [
+      {
+        "id": "pirSensitivity",
+        "type": "dropdown",
+        "label": {
+          "no": "Følsomhet",
+          "sv": "Känslighet",
+          "fi": "Herkkyys",
+          "en": "Sensitivity"
+        },
+        "value": "high",
+        "values": [
+          {
+            "id": "low",
+            "label": {
+              "no": "Lav",
+              "sv": "Låg",
+              "fi": "Matala",
+              "en": "Low"
+            }
+          },
+          {
+            "id": "medium",
+            "label": {
+              "no": "Medium",
+              "sv": "Medium",
+              "fi": "Keskikokoinen",
+              "en": "Medium"
+            }
+          },
+          {
+            "id": "high",
+            "label": {
+              "no": "Høy",
+              "sv": "Hög",
+              "fi": "Korkea",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "id": "pirOccupiedToUnoccupiedDelay",
+        "type": "number",
+        "label": {
+          "no": "Utvinningsforsinkelse",
+          "sv": "Återhämtningsfördröjning",
+          "fi": "Palautumisen viive",
+          "en": "Recovery delay"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 65535
+        }
+      },
+      {
+        "id": "luxThreshold",
+        "type": "number",
+        "label": {
+          "no": "Lux terskel",
+          "sv": "Lux tröskel",
+          "fi": "Luxin kynnys",
+          "en": "Lux threshold"
+        },
+        "value": 1,
+        "units": {
+          "en": "lux"
+        },
+        "attr": {
+          "min": 1,
+          "max": 10000
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "no": "Timer",
+      "sv": "Timer",
+      "fi": "Ajastin",
+      "en": "Timer"
+    },
+    "children": [
+      {
+        "id": "offTimer",
+        "type": "number",
+        "label": {
+          "no": "Nedstengingstidtaker",
+          "sv": "Avstängningstimer",
+          "fi": "Sammutusajastin",
+          "en": "Shutdown timer"
+        },
+        "hint": {
+          "no": "Antall sekunder før enheten slår seg av. 0 = Uendelig",
+          "sv": "Antal sekunder tills enheten slår av. 0 = Oändligt",
+          "fi": "Sekuntien määrä, kunnes laite sammuu. 0 = ääretön",
+          "en": "Number of seconds until the device turns off. 0 = Infinite"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      },
+      {
+        "id": "preWarning",
+        "type": "number",
+        "label": {
+          "no": "Avslutningsadvarsel",
+          "sv": "Avstängningsförvarning",
+          "fi": "Sammutusvaroitus",
+          "en": "Shutdown warning"
+        },
+        "hint": {
+          "no": "Enhetsindikasjon før avstenging. Antall sekunder før enheten slås av. 0 = Deaktivert",
+          "sv": "Enhetsindikering innan avstängning. Antal sekunder innan enheten slår av. 0 = Inaktiverad",
+          "fi": "Laitteen ilmaisin ennen sammutusta. Sekuntien lukumäärä ennen kuin laite sammuu. 0 = Ei käytössä",
+          "en": "Device indication before shutdown. Number of seconds before the unit switches off. 0 = Disabled"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      }
+    ]
+  }
+]

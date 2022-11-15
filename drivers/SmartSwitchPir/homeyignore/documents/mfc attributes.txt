@@ -1,0 +1,55 @@
+Cluster: On/Off (0x0006)
+Endpoint: 3
+Manufacturer Code: Schneider Electric (0x105e)
+
+Attribute Unknown
+    Attribute: 0xe000
+    Data Type: 16-Bit Unsigned Integer (0x21)
+	Access: Readable, Writeable, Reportable
+
+Attribute Unknown
+    Attribute: 0xe001
+    Data Type: 32-Bit Unsigned Integer (0x23)
+    Access: Readable, Writeable, Reportable
+
+Attribute Unknown
+    Attribute: 0xe002
+    Data Type: 8-Bit Bitmap (0x18)
+    Access: Readable, Writeable, Reportable
+
+------------------------------------------------------------------------------------------------------------------
+
+Cluster: Ballast Configuration (0x0301)
+Endpoint: 3
+Manufacturer Code: Schneider Electric (0x105e)
+
+Attribute Unknown
+    Attribute: 0xe000
+    Data Type: 8-Bit Enumeration (0x30)
+	Access: Readable, Writeable, Reportable
+
+------------------------------------------------------------------------------------------------------------------
+
+Cluster: Occupancy Sensing (0x0406)
+Endpoint: 37
+Manufacturer Code: Schneider Electric (0x105e)
+
+Attribute Unknown
+    Attribute: 0xe000
+    Data Type: 8-Bit Enumeration (0x30)
+	Access: Readable, Writeable, Reportable
+
+Attribute Unknown
+    Attribute: 0xe001
+    Data Type: 8-Bit Enumeration (0x30)
+	Access: Readable, Writeable, Reportable
+
+Attribute Unknown
+    Attribute: 0xe002
+    Data Type: 16-Bit Unsigned Integer (0x21)
+	Access: Readable, Writeable, Reportable
+
+Attribute PIR Sensitivity
+    Attribute: 0xe003
+    Data Type: 8-Bit Unsigned Integer (0x20)
+	Access: Readable, Writeable, Reportable

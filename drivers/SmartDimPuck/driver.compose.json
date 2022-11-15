@@ -10,8 +10,8 @@
     "onoff"
   ],
   "images": {
-    "large": "{{driverAssetsPath}}/images/Large.png",
-    "small": "{{driverAssetsPath}}/images/Small.png"
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
   },
   "zigbee": {
     "manufacturerName": "Schneider Electric",

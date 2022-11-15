@@ -4,7 +4,7 @@ const ELKOSMARTGenericDevice = require('../../lib/ELKOSMARTGenericDevice');
 
 class SmartStikkDobbel extends ELKOSMARTGenericDevice {
 
-  ELKOSMARTEndpoint = 1;
+  meteringFactor = 0.001;
 
 }
 module.exports = SmartStikkDobbel;
