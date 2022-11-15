@@ -1,0 +1,148 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "no": "PIR sensor",
+      "sv": "PIR sensor",
+      "fi": "PIR anturi",
+      "en": "PIR sensor"
+    },
+    "children": [
+      {
+        "id": "pirSensitivity",
+        "type": "dropdown",
+        "label": {
+          "no": "Følsomhet",
+          "sv": "Känslighet",
+          "fi": "Herkkyys",
+          "en": "Sensitivity"
+        },
+        "value": "high",
+        "values": [
+          {
+            "id": "low",
+            "label": {
+              "no": "Lav",
+              "sv": "Låg",
+              "fi": "Matala",
+              "en": "Low"
+            }
+          },
+          {
+            "id": "medium",
+            "label": {
+              "no": "Medium",
+              "sv": "Medium",
+              "fi": "Keskikokoinen",
+              "en": "Medium"
+            }
+          },
+          {
+            "id": "high",
+            "label": {
+              "no": "Høy",
+              "sv": "Hög",
+              "fi": "Korkea",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "id": "pirOccupiedToUnoccupiedDelay",
+        "type": "number",
+        "label": {
+          "no": "Utvinningsforsinkelse",
+          "sv": "Återhämtningsfördröjning",
+          "fi": "Palautumisen viive",
+          "en": "Recovery delay"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 65535
+        }
+      },
+      {
+        "id": "luxThreshold",
+        "type": "number",
+        "label": {
+          "no": "Lux terskel",
+          "sv": "Lux tröskel",
+          "fi": "Luxin kynnys",
+          "en": "Lux threshold"
+        },
+        "value": 1,
+        "units": {
+          "en": "lux"
+        },
+        "attr": {
+          "min": 1,
+          "max": 10000
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "no": "Timer",
+      "sv": "Timer",
+      "fi": "Ajastin",
+      "en": "Timer"
+    },
+    "children": [
+      {
+        "id": "offTimer",
+        "type": "number",
+        "label": {
+          "no": "Nedstengingstidtaker",
+          "sv": "Avstängningstimer",
+          "fi": "Sammutusajastin",
+          "en": "Shutdown timer"
+        },
+        "hint": {
+          "no": "Antall sekunder før enheten slår seg av. 0 = Uendelig",
+          "sv": "Antal sekunder tills enheten slår av. 0 = Oändligt",
+          "fi": "Sekuntien määrä, kunnes laite sammuu. 0 = ääretön",
+          "en": "Number of seconds until the device turns off. 0 = Infinite"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      },
+      {
+        "id": "preWarning",
+        "type": "number",
+        "label": {
+          "no": "Avslutningsadvarsel",
+          "sv": "Avstängningsförvarning",
+          "fi": "Sammutusvaroitus",
+          "en": "Shutdown warning"
+        },
+        "hint": {
+          "no": "Enhetsindikasjon før avstenging. Antall sekunder før enheten slås av. 0 = Deaktivert",
+          "sv": "Enhetsindikering innan avstängning. Antal sekunder innan enheten slår av. 0 = Inaktiverad",
+          "fi": "Laitteen ilmaisin ennen sammutusta. Sekuntien lukumäärä ennen kuin laite sammuu. 0 = Ei käytössä",
+          "en": "Device indication before shutdown. Number of seconds before the unit switches off. 0 = Disabled"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      }
+    ]
+  }
+]

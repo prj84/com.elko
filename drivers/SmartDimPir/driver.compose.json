@@ -1,0 +1,59 @@
+{
+  "id": "SmartDimPir",
+  "name": {
+    "no": "SmartDim Pir",
+    "en": "SmartDim Pir"
+  },
+  "class": "light",
+  "capabilities": [
+    "measure_luminance",
+    "dim",
+    "onoff",
+    "alarm_motion"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/WDE002374_75.png",
+    "large": "{{driverAssetsPath}}/images/WDE002374_500.png",
+    "xlarge": "{{driverAssetsPath}}/images/WDE002374_1000.png"
+  },
+  "zigbee": {
+    "manufacturerName": "Schneider Electric",
+    "productId": [
+      "NHMOTION/DIMMER/1",
+      "NHMOTION/UNIDIM/1"
+    ],
+    "learnmode": {
+      "image": "{{driverAssetsPath}}/learnmode.svg",
+      "instruction": {
+        "no": "Trykk raskt på knappen 3 ganger. Bekreft at LED-en blinker rødt.",
+        "en": "Short-press the button 3 times. Confirm that the LED is blinking red."
+      }
+    },
+    "endpoints": {
+      "3": {
+        "clusters": [
+          6,
+          8,
+          769
+        ],
+        "bindings": [
+          6,
+          8,
+          769
+        ]
+      },
+      "37": {
+        "clusters": [
+          1024,
+          1030,
+          65305
+        ],
+        "bindings": [
+          1024,
+          1030,
+          65305
+        ]
+      }
+    }
+  }
+}

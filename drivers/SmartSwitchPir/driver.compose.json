@@ -1,0 +1,57 @@
+{
+  "id": "ZB_NHMOTION_SWITCH_1",
+  "name": {
+    "no": "Bevegelsesbryter",
+    "sv": "Rörelsebrytare",
+    "fi": "Liikekytkin",
+    "en": "Motion switch"
+  },
+  "class": "light",
+  "capabilities": [
+    "measure_luminance",
+    "onoff",
+    "alarm_motion"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/WDE002367_75.png",
+    "large": "{{driverAssetsPath}}/images/WDE002367_500.png",
+    "xlarge": "{{driverAssetsPath}}/images/WDE002367_1000.png"
+  },
+  "zigbee": {
+    "manufacturerName": "Schneider Electric",
+    "productId": "NHMOTION/SWITCH/1",
+    "learnmode": {
+      "image": "{{driverAssetsPath}}/learnmode.svg",
+      "instruction": {
+        "no": "Trykk raskt på knappen 3 ganger. Bekreft at LED-en blinker rødt.",
+        "sv": "Tryck snabbt 3 gånger på knappen. Bekräfta att lysdioden blinkar rött.",
+        "fi": "Paina painiketta lyhyesti 3 kertaa. Vahvista, että LED vilkkuu punaisena.",
+        "en": "Short-press the button 3 times. Confirm that the LED is blinking red."
+      }
+    },
+    "endpoints": {
+      "1": {
+        "clusters": [
+          6,
+          8
+        ],
+        "bindings": [
+          6,
+          8
+        ]
+      },
+      "37": {
+        "clusters": [
+          1024,
+          1030,
+          65305
+        ],
+        "bindings": [
+          1024,
+          1030,
+          65305
+        ]
+      }
+    }
+  }
+}

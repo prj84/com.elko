@@ -4,8 +4,8 @@ const Homey = require('homey');
 const { ZigBeeDevice } = require('homey-zigbeedriver');
 const { Cluster, CLUSTER } = require('zigbee-clusters');
 
-const OnOffBoundCluster = require('../../lib/OnOffBoundCluster');
-const LevelControlBoundCluster = require('../../lib/LevelControlBoundCluster');
+const OnOffBoundCluster = require('../../lib/ESH316GLEDREMOTEOnOffBoundCluster');
+const LevelControlBoundCluster = require('../../lib/ESH316GLEDREMOTELevelControlBoundCluster');
 
 class ESH316GLEDREMOTE extends ZigBeeDevice {
 
