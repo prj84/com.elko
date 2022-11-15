@@ -13,15 +13,15 @@
     "alarm_motion"
   ],
   "images": {
-    "small": "{{driverAssetsPath}}/images/WDE002367_75.png",
-    "large": "{{driverAssetsPath}}/images/WDE002367_500.png",
-    "xlarge": "{{driverAssetsPath}}/images/WDE002367_1000.png"
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
   },
   "zigbee": {
     "manufacturerName": "Schneider Electric",
     "productId": "NHMOTION/SWITCH/1",
     "learnmode": {
-      "image": "{{driverAssetsPath}}/learnmode.svg",
+      "image": "{{driverAssetsPath}}/images/pair.png",
       "instruction": {
         "no": "Trykk raskt på knappen 3 ganger. Bekreft at LED-en blinker rødt.",
         "sv": "Tryck snabbt 3 gånger på knappen. Bekräfta att lysdioden blinkar rött.",

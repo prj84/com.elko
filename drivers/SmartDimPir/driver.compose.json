@@ -12,9 +12,9 @@
     "alarm_motion"
   ],
   "images": {
-    "small": "{{driverAssetsPath}}/images/WDE002374_75.png",
-    "large": "{{driverAssetsPath}}/images/WDE002374_500.png",
-    "xlarge": "{{driverAssetsPath}}/images/WDE002374_1000.png"
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
   },
   "zigbee": {
     "manufacturerName": "Schneider Electric",
@@ -23,7 +23,7 @@
       "NHMOTION/UNIDIM/1"
     ],
     "learnmode": {
-      "image": "{{driverAssetsPath}}/learnmode.svg",
+      "image": "{{driverAssetsPath}}/images/pair.png",
       "instruction": {
         "no": "Trykk raskt på knappen 3 ganger. Bekreft at LED-en blinker rødt.",
         "en": "Short-press the button 3 times. Confirm that the LED is blinking red."
