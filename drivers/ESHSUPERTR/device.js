@@ -14,6 +14,8 @@ class ESHSUPERTR extends ZigBeeDevice {
         this.setAvailable();
         let settings =   this.getSettings();
 
+        this.addCapability('sendorMode');
+
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Action Flowcard
 

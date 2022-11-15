@@ -4,8 +4,8 @@ const Homey = require('homey');
 const { ZigBeeDevice } = require('homey-zigbeedriver');
 const { Cluster, CLUSTER } = require('zigbee-clusters');
 
-const OnOffBoundCluster = require('../../lib/OnOffBoundCluster');
-const LevelControlBoundCluster = require('../../lib/LevelControlBoundCluster');
+const OnOffBoundCluster = require('../../lib/WirelessOnOffBoundCluster');
+const LevelControlBoundCluster = require('../../lib/WirelessLevelControlBoundCluster');
 const ELKOSMARTSwitchConfigurationCluster = require('../../lib/ELKOSMARTSwitchConfigurationCluster');
 
 Cluster.addCluster(ELKOSMARTSwitchConfigurationCluster);
