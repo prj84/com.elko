@@ -7,6 +7,27 @@
     },
     "children": [
       {
+        "id": "regulatorMode",
+        "type": "dropdown",
+        "value": "regulatorMode",
+        "label": { "en": "Operating Mode",
+                   "no": "Termostat/Regulator"},
+        "values": [
+          {
+            "id": "Thermostat",
+            "label": { "en": "Termostat mode",
+                       "no": "Termostat modus"
+             }
+          },
+          {
+            "id": "Regulator",
+            "label": { "en": "Regulator mode",
+                       "no": "Regulator modus"
+             }
+          }
+        ]
+      },
+      {
         "id": "floor_watt",
         "type": "number",
         "label": {
@@ -17,6 +38,18 @@
         "min": 1,
         "max": 9999,
         "units": "Watt"
+      },
+      {
+        "id": "regulator_time",
+        "type": "number",
+        "label": {
+          "en": "Time between each in/out connection of relay",
+          "no": "Tid mellom inn/utslag av rele"
+        },
+        "value": 15,
+        "min": 1,
+        "max": 20,
+        "units": "Minuttes"
       },
       {
         "id": "maxfloortemp",

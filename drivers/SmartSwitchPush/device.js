@@ -1,8 +1,8 @@
 'use strict';
 
-const ELKOSMARTGenericDevice = require('../../lib/ELKOSMARTGenericDevice');
+const ELKOSMARTDevice = require('../../lib/elkosmart_Device');
 
-class SmartSwitchPush extends ELKOSMARTGenericDevice {
+class SmartSwitchPush extends ELKOSMARTDevice {
 
 }
 

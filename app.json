@@ -182,12 +182,11 @@
     },
     {
       "name": {
-        "en": "Super TR Thermostat RF",
-        "no": "Super TR Thermostat RF"
+        "en": "Super TR Regulator RF",
+        "no": "Super TR Regulator RF"
       },
       "class": "thermostat",
       "capabilities": [
-        "target_temperature",
         "measure_temperature",
         "measure_temperature.air",
         "measure_temperature.floor",
@@ -208,11 +207,6 @@
         "frost_guard"
       ],
       "capabilitiesOptions": {
-        "target_temperature": {
-          "min": 5,
-          "max": 50,
-          "step": 0.5
-        },
         "measure_temperature.air": {
           "title": {
             "en": "Air",
@@ -308,7 +302,7 @@
         "large": "/drivers/ESHSUPERTR/assets/images/Large.png",
         "small": "/drivers/ESHSUPERTR/assets/images/Small.png"
       },
-      "id": "ESHSUPERTR",
+      "id": "ESHSUPERREG",
       "settings": [
         {
           "type": "group",
@@ -496,6 +490,574 @@
                   }
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "en": "Super TR Thermostat RF",
+        "no": "Super TR Thermostat RF"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "measure_temperature.air",
+        "measure_temperature.floor",
+        "maxFloorTemp",
+        "measure_power",
+        "meter_power",
+        "power_status",
+        "childLock",
+        "heat",
+        "sensorMode",
+        "thermostatLoad",
+        "tempCalibration",
+        "button.reset_kwh_meter",
+        "night_switching",
+        "frost_guard"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 5,
+          "max": 50,
+          "step": 0.5
+        },
+        "measure_temperature.air": {
+          "title": {
+            "en": "Air",
+            "no": "Luft"
+          }
+        },
+        "measure_temperature.floor": {
+          "title": {
+            "en": "Floor",
+            "no": "Gulv"
+          }
+        },
+        "maxFloorTemp": {
+          "min": 20,
+          "max": 40,
+          "step": 1
+        },
+        "button.reset_kwh_meter": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Reset power meter",
+            "no": "Nullstill kw/t teller"
+          },
+          "desc": {
+            "en": "Reset the accumulated power usage (kWh), note that this can not be reversed.",
+            "no": "Nullstill kwt teller, OBS! Data blir slettet!"
+          }
+        }
+      },
+      "mobile": {
+        "components": [
+          {
+            "id": "icon",
+            "capabilities": []
+          },
+          {
+            "id": "sensor",
+            "capabilities": [
+              "heat",
+              "measure_temperature.air",
+              "measure_temperature.floor",
+              "childLockSensor"
+            ],
+            "options": {
+              "icons": {
+                "heat": "/drivers/ESHSUPERTR/assets/heating.svg",
+                "childLockSensor": "/drivers/ESHSUPERTR/assets/child.svg"
+              },
+              "showTitle": true
+            }
+          },
+          {
+            "id": "thermostat",
+            "capabilities": [
+              "target_temperature"
+            ]
+          }
+        ]
+      },
+      "zigbee": {
+        "manufacturerName": "ELKO",
+        "productId": "Super TR",
+        "learnmode": {
+          "image": "/drivers/ESHSUPERTR/assets/include.svg",
+          "instruction": {
+            "en": "Click on and hold arrow up and M Button (1) until joining/pairing is displayed. Wait for Homey to list device",
+            "no": "Klikk og hold pil opp og M knappen (1.) inntil Joining/pairing vises i displayet. Vent på at Homey legger til enheten"
+          }
+        },
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              513
+            ],
+            "bindings": [
+              3,
+              513
+            ]
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/ESHSUPERTR/assets/images/Large.png",
+        "small": "/drivers/ESHSUPERTR/assets/images/Small.png"
+      },
+      "id": "ESHSUPERTR",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Thermostat Settings",
+            "no": "Termostat innstillinger"
+          },
+          "children": [
+            {
+              "id": "floor_watt",
+              "type": "number",
+              "label": {
+                "en": "Heating cable effect",
+                "no": "Varmekabel effekt"
+              },
+              "value": 2000,
+              "min": 1,
+              "max": 9999,
+              "units": "Watt"
+            },
+            {
+              "id": "maxfloortemp",
+              "type": "number",
+              "label": {
+                "en": "Max floor temperature when usin floor guard",
+                "no": "Maks temperatur ved bruk av gulvvakt"
+              },
+              "value": 40,
+              "min": 20,
+              "max": 40,
+              "units": "C"
+            },
+            {
+              "id": "temp_calibration",
+              "type": "number",
+              "label": {
+                "en": "Temperature Calibration",
+                "no": "Temperatur kalibrering"
+              },
+              "value": 20,
+              "min": -100,
+              "max": 100,
+              "units": "C"
+            },
+            {
+              "id": "SensorMode",
+              "type": "dropdown",
+              "value": "SensorMode",
+              "label": {
+                "en": "Sensor Mode",
+                "no": "Sensor Modus"
+              },
+              "values": [
+                {
+                  "id": "Air",
+                  "label": {
+                    "en": "Air Sensor",
+                    "no": "Luft Sensor"
+                  }
+                },
+                {
+                  "id": "Floor",
+                  "label": {
+                    "en": "Floor Sensor",
+                    "no": "Gulv Sensor"
+                  }
+                },
+                {
+                  "id": "Supervisor_Floor",
+                  "label": {
+                    "en": "Supervisor_Floor",
+                    "no": "Gulvvakt"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "frost_guard",
+              "type": "dropdown",
+              "value": "frost_guard",
+              "label": {
+                "en": "Frost Guard Activated?",
+                "no": "Frost Vakt Aktivert"
+              },
+              "values": [
+                {
+                  "id": "Yes",
+                  "label": {
+                    "en": "Yes",
+                    "no": "Ja"
+                  }
+                },
+                {
+                  "id": "No",
+                  "label": {
+                    "en": "No",
+                    "no": "Nei"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "night_switching",
+              "type": "dropdown",
+              "value": "night_switching",
+              "label": {
+                "en": "Night Mode Activated?",
+                "no": "Natt Modus Aktivert"
+              },
+              "values": [
+                {
+                  "id": "Yes",
+                  "label": {
+                    "en": "Yes",
+                    "no": "Ja"
+                  }
+                },
+                {
+                  "id": "No",
+                  "label": {
+                    "en": "No",
+                    "no": "Nei"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "childLock",
+              "type": "dropdown",
+              "value": "childlock",
+              "label": {
+                "en": "Child Lock Activated?",
+                "no": "Barnesikkring Aktivert"
+              },
+              "values": [
+                {
+                  "id": "Yes",
+                  "label": {
+                    "en": "Yes",
+                    "no": "Ja"
+                  }
+                },
+                {
+                  "id": "No",
+                  "label": {
+                    "en": "No",
+                    "no": "Nei"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SmartDimMultiTurn",
+      "name": {
+        "en": "SmartDim Multiwire Turn",
+        "no": "SmartDim Multiwire Vri"
+      },
+      "class": "light",
+      "capabilities": [
+        "dim",
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/SmartDimMultiTurn/assets/images/Large.png",
+        "small": "/drivers/SmartDimMultiTurn/assets/images/Small.png"
+      },
+      "zigbee": {
+        "manufacturerName": "Schneider Electric",
+        "productId": "NHROTARY/UNIDIM/1",
+        "learnmode": {
+          "image": "/drivers/SmartDimMultiTurn/assets/images/pair.png",
+          "instruction": {
+            "en": "Click x3 times on Setup/Reset button to start inclution",
+            "no": "Klikk 3 ganger på Setup/Reset knappen for å starte inkludering"
+          }
+        },
+        "endpoints": {
+          "3": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              8,
+              769
+            ],
+            "bindings": [
+              6,
+              8,
+              769
+            ]
+          },
+          "21": {
+            "clusters": [
+              65303
+            ],
+            "bindings": []
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "transition_time",
+          "type": "number",
+          "label": {
+            "en": "Dim duration"
+          },
+          "hint": {
+            "en": "This setting determines the time in seconds it takes to dim from one level to another. Note: this setting can be overriden by the duration value in a Flow Card.",
+            "no": "Bestemmer tiden i sekunder fra et dimmer intervall til et annet. OBS: Denne innstillingen kan overstyres ved hjelp av Flow"
+          },
+          "value": 0,
+          "units": {
+            "en": "s",
+            "no": "s"
+          },
+          "attr": {
+            "min": 0,
+            "max": 6553
+          }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Switch-on Mode",
+            "no": "Påslagsmodus"
+          },
+          "children": [
+            {
+              "id": "onlevel_memory",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "en": "Remember brigthness level",
+                "no": "Husk Dim %"
+              }
+            },
+            {
+              "id": "onlevel_level",
+              "type": "number",
+              "label": {
+                "en": "Manual dim level",
+                "no": "Manuell dim %"
+              },
+              "value": 100,
+              "units": {
+                "en": "%",
+                "no": "%"
+              },
+              "attr": {
+                "min": 1,
+                "max": 100
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Min/Max Brightness",
+            "no": "Min/Max Dim"
+          },
+          "children": [
+            {
+              "id": "brightness_min",
+              "type": "number",
+              "value": 1,
+              "label": {
+                "en": "Minimum Brigthness",
+                "no": "Minimum Dim"
+              },
+              "units": {
+                "en": "Value",
+                "no": "Verdi"
+              },
+              "attr": {
+                "min": 1,
+                "max": 254
+              }
+            },
+            {
+              "id": "brightness_max",
+              "type": "number",
+              "label": {
+                "en": "Maximum Brigthness",
+                "no": "Maximum Dim"
+              },
+              "value": 254,
+              "units": {
+                "en": "Value",
+                "no": "Value"
+              },
+              "attr": {
+                "min": 1,
+                "max": 254
+              }
+            }
+          ]
+        },
+        {
+          "id": "Control_mode",
+          "type": "dropdown",
+          "value": "Automatic",
+          "label": {
+            "en": "Default mode",
+            "no": "Dimmer modus"
+          },
+          "values": [
+            {
+              "id": "Automatic",
+              "label": {
+                "en": "Automatic",
+                "no": "Automatisk"
+              }
+            },
+            {
+              "id": "RL_LED_Mode",
+              "label": {
+                "en": "RL LED Mode",
+                "no": "RL LED Modus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "wiring_mode",
+          "type": "dropdown",
+          "value": "Automatic",
+          "label": {
+            "en": "Wiring mode",
+            "no": "2 eller 3 kablet modus"
+          },
+          "values": [
+            {
+              "id": "wiremode2",
+              "label": {
+                "en": "2 cable wiring",
+                "no": "2 kablet modus"
+              }
+            },
+            {
+              "id": "wiremode3",
+              "label": {
+                "en": "3 wired mode",
+                "no": "3 kablet modus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "backlightMode",
+          "type": "dropdown",
+          "value": "consistentWithLoad",
+          "label": {
+            "en": "Status indication",
+            "no": "Statusindikasjon"
+          },
+          "hint": {
+            "en": "How to display the load indication",
+            "no": "Hvordan vise lastindikasjonen"
+          },
+          "values": [
+            {
+              "id": "consistentWithLoad",
+              "label": {
+                "en": "Consistent with load",
+                "no": "konsistent med belastning"
+              }
+            },
+            {
+              "id": "reverseWithLoad",
+              "label": {
+                "en": "Reverse with load",
+                "no": "Reversere med last"
+              }
+            },
+            {
+              "id": "alwaysOn",
+              "label": {
+                "en": "Always on",
+                "no": "Alltid på"
+              }
+            },
+            {
+              "id": "alwaysOff",
+              "label": {
+                "en": "Always off",
+                "no": "Alltid av"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Timer",
+            "no": "Timer"
+          },
+          "children": [
+            {
+              "id": "onoff_offtimer",
+              "type": "number",
+              "label": {
+                "en": "Off timer",
+                "no": "Off timer"
+              },
+              "hint": {
+                "en": "0=disabled",
+                "no": "0=deaktivert"
+              },
+              "value": 0,
+              "units": {
+                "en": "s",
+                "no": "s"
+              },
+              "attr": {
+                "min": 0,
+                "max": 86400
+              }
+            },
+            {
+              "id": "onoff_prewarning",
+              "type": "number",
+              "label": {
+                "en": "Prewarning",
+                "no": "Forvarsel"
+              },
+              "hint": {
+                "en": "Indicates the end of the timer by slowly dimming down 0=disabled",
+                "no": "Indikerer slutten på timeren ved å langsomt dimme ned, 0=deaktivert"
+              },
+              "value": 0,
+              "units": {
+                "en": "s",
+                "no": "s"
+              },
+              "attr": {
+                "min": 0,
+                "max": 86400
+              }
             }
           ]
         }
@@ -1129,7 +1691,9 @@
             ]
           },
           "21": {
-            "clusters": [],
+            "clusters": [
+              65303
+            ],
             "bindings": []
           }
         }
@@ -1268,6 +1832,49 @@
               "label": {
                 "en": "RL LED Mode",
                 "no": "RL LED Modus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "backlightMode",
+          "type": "dropdown",
+          "value": "consistentWithLoad",
+          "label": {
+            "en": "Status indication",
+            "no": "Statusindikasjon"
+          },
+          "hint": {
+            "en": "How to display the load indication",
+            "no": "Hvordan vise lastindikasjonen"
+          },
+          "values": [
+            {
+              "id": "consistentWithLoad",
+              "label": {
+                "en": "Consistent with load",
+                "no": "konsistent med belastning"
+              }
+            },
+            {
+              "id": "reverseWithLoad",
+              "label": {
+                "en": "Reverse with load",
+                "no": "Reversere med last"
+              }
+            },
+            {
+              "id": "alwaysOn",
+              "label": {
+                "en": "Always on",
+                "no": "Alltid på"
+              }
+            },
+            {
+              "id": "alwaysOff",
+              "label": {
+                "en": "Always off",
+                "no": "Alltid av"
               }
             }
           ]
@@ -1342,10 +1949,7 @@
       },
       "zigbee": {
         "manufacturerName": "Schneider Electric",
-        "productId": [
-          "NHROTARY/DIMMER/1",
-          "NHROTARY/UNIDIM/1"
-        ],
+        "productId": "NHROTARY/DIMMER/1",
         "learnmode": {
           "image": "/drivers/SmartDimUniversalTurn/assets/images/pair.png",
           "instruction": {
@@ -1371,7 +1975,9 @@
             ]
           },
           "21": {
-            "clusters": [],
+            "clusters": [
+              65303
+            ],
             "bindings": []
           }
         }
@@ -1510,6 +2116,49 @@
               "label": {
                 "en": "RL LED Mode",
                 "no": "RL LED Modus"
+              }
+            }
+          ]
+        },
+        {
+          "id": "backlightMode",
+          "type": "dropdown",
+          "value": "consistentWithLoad",
+          "label": {
+            "en": "Status indication",
+            "no": "Statusindikasjon"
+          },
+          "hint": {
+            "en": "How to display the load indication",
+            "no": "Hvordan vise lastindikasjonen"
+          },
+          "values": [
+            {
+              "id": "consistentWithLoad",
+              "label": {
+                "en": "Consistent with load",
+                "no": "konsistent med belastning"
+              }
+            },
+            {
+              "id": "reverseWithLoad",
+              "label": {
+                "en": "Reverse with load",
+                "no": "Reversere med last"
+              }
+            },
+            {
+              "id": "alwaysOn",
+              "label": {
+                "en": "Always on",
+                "no": "Alltid på"
+              }
+            },
+            {
+              "id": "alwaysOff",
+              "label": {
+                "en": "Always off",
+                "no": "Alltid av"
               }
             }
           ]
@@ -1980,7 +2629,7 @@
         "no": "SmartBryter Pir",
         "en": "SmartSwitch Pir"
       },
-      "class": "light",
+      "class": "socket",
       "capabilities": [
         "measure_luminance",
         "onoff",
@@ -1998,8 +2647,6 @@
           "image": "/drivers/SmartSwitchPir/assets/images/pair.png",
           "instruction": {
             "no": "Trykk raskt på knappen 3 ganger. Bekreft at LED-en blinker rødt.",
-            "sv": "Tryck snabbt 3 gånger på knappen. Bekräfta att lysdioden blinkar rött.",
-            "fi": "Paina painiketta lyhyesti 3 kertaa. Vahvista, että LED vilkkuu punaisena.",
             "en": "Short-press the button 3 times. Confirm that the LED is blinking red."
           }
         },
@@ -2574,7 +3221,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=ESHSUPERTR"
+            "filter": "driver_id=ESHSUPERREG"
           },
           {
             "name": "device",
@@ -2599,7 +3246,49 @@
         ]
       },
       {
-        "id": "Power",
+        "id": "Power_reg",
+        "title": {
+          "en": "Set Power Status",
+          "no": "Skru Av/På termostat"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=ESHSUPERREG"
+          },
+          {
+            "type": "device",
+            "name": "device"
+          },
+          {
+            "type": "dropdown",
+            "name": "Power",
+            "title": {
+              "en": "Set Power Status",
+              "sv": "Skru Av/På termostat"
+            },
+            "values": [
+              {
+                "id": "Yes",
+                "label": {
+                  "en": "Yes",
+                  "no": "Ja"
+                }
+              },
+              {
+                "id": "No",
+                "label": {
+                  "en": "No",
+                  "no": "Nei"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Power_therm",
         "title": {
           "en": "Set Power Status",
           "no": "Skru Av/På termostat"
@@ -2686,16 +3375,6 @@
       "setable": true,
       "insights": false,
       "uiComponent": null
-    },
-    "displayText": {
-      "type": "string",
-      "title": {
-        "en": "Display Text",
-        "no": "Skjerm tekst"
-      },
-      "getable": true,
-      "setable": false,
-      "insights": false
     },
     "frost_guard": {
       "type": "boolean",

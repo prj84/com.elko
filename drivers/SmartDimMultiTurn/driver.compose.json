@@ -1,8 +1,8 @@
 {
-  "id": "SmartDimUniversalTurn",
+  "id": "SmartDimMultiTurn",
   "name": {
-    "en": "SmartDim Turn",
-    "no": "SmartDim Vri"
+    "en": "SmartDim Multiwire Turn",
+    "no": "SmartDim Multiwire Vri"
   },
   "class": "light",
   "capabilities": [
@@ -15,7 +15,7 @@
   },
   "zigbee": {
     "manufacturerName": "Schneider Electric",
-    "productId": "NHROTARY/DIMMER/1",
+    "productId": "NHROTARY/UNIDIM/1",
     "learnmode": {
       "image": "{{driverAssetsPath}}/images/pair.png",
       "instruction": {
@@ -119,15 +119,15 @@
           "value": 1,
           "label": {
             "en": "Minimum Brigthness",
-            "no": "Minimum Dim %"
+            "no": "Minimum Dim"
           },
           "units": {
-            "en": "%",
-            "no": "%"
+            "en": "Value",
+            "no": "Verdi"
           },
           "attr": {
             "min": 1,
-            "max": 40
+            "max": 254
           }
         },
         {
@@ -135,16 +135,16 @@
           "type": "number",
           "label": {
             "en": "Maximum Brigthness",
-            "no": "Maximum Dim %"
+            "no": "Maximum Dim"
           },
-          "value": 100,
+          "value": 254,
           "units": {
-            "en": "%",
-            "no": "%"
+            "en": "Value",
+            "no": "Value"
           },
           "attr": {
-            "min": 60,
-            "max": 100
+            "min": 1,
+            "max": 254
           }
         }
       ]
@@ -166,24 +166,35 @@
            }
         },
         {
-          "id": "RC_Mode",
-          "label": {
-            "en": "RC Mode",
-            "no": "RC Modus"
-          }
-        },
-        {
-          "id": "RL_Mode",
-          "label": {
-            "en": "RL Mode",
-            "no": "RL Modus"
-          }
-        },
-        {
           "id": "RL_LED_Mode",
           "label": {
             "en": "RL LED Mode",
             "no": "RL LED Modus"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wiring_mode",
+      "type": "dropdown",
+      "value": "Automatic",
+      "label": {
+        "en": "Wiring mode",
+        "no": "2 eller 3 kablet modus"
+      },
+      "values": [
+        {
+          "id": "wiremode2",
+          "label": {
+            "en": "2 cable wiring",
+            "no": "2 kablet modus"
+           }
+        },
+        {
+          "id": "wiremode3",
+          "label": {
+            "en": "3 wired mode",
+            "no": "3 kablet modus"
           }
         }
       ]

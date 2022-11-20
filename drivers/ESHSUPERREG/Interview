@@ -1,0 +1,258 @@
+
+  "ids": {
+    "modelId": "Super TR",
+    "manufacturerName": "ELKO"
+  },
+  "endpoints": {
+    "endpointDescriptors": [
+      {
+        "endpointId": 1,
+        "applicationProfileId": 260,
+        "applicationDeviceId": 769,
+        "applicationDeviceVersion": 0,
+        "_reserved1": 0,
+        "inputClusters": [
+          0,
+          3,
+          513
+        ],
+        "outputClusters": []
+      }
+    ],
+    "endpoints": {
+      "1": {
+        "clusters": {
+          "basic": {
+            "attributes": [
+              {
+                "id": 0,
+                "name": "zclVersion",
+                "value": 1,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 32,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "minChange": 255,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 4,
+                "name": "manufacturerName",
+                "value": "ELKO",
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 66,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 5,
+                "name": "modelId",
+                "value": "Super TR",
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 66,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 7,
+                "name": "powerSource",
+                "value": "unknown",
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 48,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "status": "SUCCESS"
+                }
+              }
+            ],
+            "commandsGenerated": "UNSUP_GENERAL_COMMAND",
+            "commandsReceived": "UNSUP_GENERAL_COMMAND"
+          },
+          "identify": {
+            "attributes": [
+              {
+                "id": 0,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 33,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "minChange": 65535,
+                  "status": "SUCCESS"
+                }
+              }
+            ],
+            "commandsGenerated": "UNSUP_GENERAL_COMMAND",
+            "commandsReceived": "UNSUP_GENERAL_COMMAND"
+          },
+          "thermostat": {
+            "attributes": [
+              {
+                "id": 0,
+                "name": "localTemperature",
+                "value": 2560,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 41,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "minChange": -32768,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 3,
+                "name": "absMinHeatSetpointLimit",
+                "value": 5,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 41,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "minChange": -32768,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 4,
+                "name": "absMaxHeatSetpointLimit",
+                "value": 50,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 41,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "minChange": -32768,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 17, // 5 - 40 for thermostat mode, 0 - 100 for regulator mode
+                "name": "occupiedCoolingSetpoint",
+                "value": 2600,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 41,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "minChange": -32768,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 18,
+                "name": "occupiedHeatingSetpoint",
+                "value": 1500,
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 41,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "minChange": -32768,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 27,
+                "name": "controlSequenceOfOperation",
+                "value": "heating",
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 48,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 28,
+                "name": "systemMode",
+                "value": "auto",
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 48,
+                  "minInterval": 65535,
+                  "maxInterval": 65535,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 1025, // 0-9999 - specify Load in Watt
+                "reportingConfiguration": {
+                  "direction": "reported",
+                  "attributeDataType": 33,
+                  "minInterval": 0,
+                  "maxInterval": 0,
+                  "minChange": 0,
+                  "status": "SUCCESS"
+                }
+              },
+              {
+                "id": 1026 //Display text as hex string
+              },
+              {
+                "id": 1027 //sensor mode - 00=luftføler, 01=gulvføler, 03=gulv vakt
+              },
+              {
+                "id": 1028 //Regulator time (1-20) 0x0404	regulator time 	1 - 20	The time between each in / out connection when measured temperature is within + -0.5°C relative to set temperature. Choose a long time for (slow) concrete floors and a short time (quick) hardwood floors
+              },
+              {
+                "id": 1029 //value:0=thermostat mode 1=regulator mode
+              },
+              {
+                "id": 1030 //value:01=device on ??=device off)
+              },
+              {
+                "id": 1031 //date & time - 0x0407	datetime 	 	write only (read returns zero size), format: yymdHMS (2014-08-29 11:12:59 = [14,0e,08,1d,0b,0c,3b])
+              },
+              {
+                "id": 1032 // Average power consumption last 10 min
+              },
+              {
+                "id": 1033 //Floor temperature
+              },
+              {
+                "id": 1041 //Night Switching - 0x0411	night switching	 	Setting to enable/disable the nightly temp. sink
+              },
+              {
+                "id": 1042 //Frost guard - 0x0412	frost guard	 	Setting to enable/disable the frost guard
+              },
+              {
+                "id": 1043 // child lock - 00=unlocked 01=locked
+              },
+              {
+                "id": 1044 //Max Floor temp 20-40c
+              },
+              {
+                "id": 1045 //Relay state - Heating/No Heating
+              },
+              {
+                "id": 1046 //version info - 0x0416	version	 	Format:byte 0 radio module hw version, byte 1 radio module sw version major, byte 2 radio module sw version minor, byte 3 elko sw version major, byte 4 elko sw version minor, byte 5 elko sw version patch, byte 6 elko sw version type (R = Radio)
+              },
+              {
+                "id": 1047 //Calibration -100 - 100
+               },
+              {
+                "id": 1048 //Last message id
+              },
+              {
+                "id": 1049 //Last message status
+              }
+            ],
+            "commandsGenerated": "UNSUP_GENERAL_COMMAND",
+            "commandsReceived": "UNSUP_GENERAL_COMMAND"
+          }
+        },
+        "bindings": {}
+      }
+    }
+  }

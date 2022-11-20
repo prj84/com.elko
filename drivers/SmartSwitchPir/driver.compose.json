@@ -4,7 +4,7 @@
     "no": "SmartBryter Pir",
     "en": "SmartSwitch Pir"
   },
-  "class": "light",
+  "class": "socket",
   "capabilities": [
     "measure_luminance",
     "onoff",

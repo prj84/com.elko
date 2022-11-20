@@ -6,7 +6,7 @@ const { Cluster, CLUSTER } = require('zigbee-clusters');
 
 const OnOffBoundCluster = require('../../lib/WirelessOnOffBoundCluster');
 const LevelControlBoundCluster = require('../../lib/WirelessLevelControlBoundCluster');
-const ELKOSMARTSwitchConfigurationCluster = require('../../lib/ELKOSMARTSwitchConfigurationCluster');
+const ELKOSMARTSwitchConfigurationCluster = require('../../lib/elkosmart_SwitchConfigurationCluster');
 
 Cluster.addCluster(ELKOSMARTSwitchConfigurationCluster);
 

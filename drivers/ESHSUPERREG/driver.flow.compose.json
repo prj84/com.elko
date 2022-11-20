@@ -1,7 +1,38 @@
 {
   "actions": [
 {
-    "id": "Power_therm",
+  "id": "set_regulator",
+  "title": {
+    "en": "Set Regulator %",
+    "no": "Sett Regulator %"
+  },
+
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "$filter": "driver_id=ESHSUPERTR"
+    },
+    {
+      "name": "set_regulator",
+      "type": "number",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "label": "%",
+      "title": {
+        "en": "Regulator %",
+        "no": "Regulator %"
+      },
+      "placeholder": {
+        "en": "Ex. 50%",
+        "no": "F.eks 50%"
+      }
+    }
+  ]
+},
+{
+    "id": "Power_reg",
     "title": {
     "en": "Set Power Status",
     "no": "Skru Av/På termostat"

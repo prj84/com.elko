@@ -1,11 +1,10 @@
 {
   "name": {
-    "en": "Super TR Thermostat RF",
-    "no": "Super TR Thermostat RF"
+    "en": "Super TR Regulator RF",
+    "no": "Super TR Regulator RF"
   },
   "class": "thermostat",
   "capabilities": [
-    "target_temperature",
     "measure_temperature",
     "measure_temperature.air",
     "measure_temperature.floor",
@@ -16,18 +15,16 @@
     "childLock",
     "heat",
     "sensorMode",
+    "dim.regulator",
+    "regulatorMode",
     "thermostatLoad",
+    "regulatorTime",
     "tempCalibration",
     "button.reset_kwh_meter",
     "night_switching",
     "frost_guard"
   ],
   "capabilitiesOptions": {
-    "target_temperature": {
-      "min": 5,
-      "max": 50,
-      "step": 0.5
-    },
     "measure_temperature.air": {
       "title": {
         "en": "Air",
@@ -39,6 +36,14 @@
         "en": "Floor",
         "no": "Gulv"
       }
+    },
+    "dim.regulator": {
+      "title": {
+        "en": "Regulator %",
+        "no": "Regulator %"
+      },
+      "min": 0,
+      "max": 1
     },
     "maxFloorTemp": {
       "min": 20,
