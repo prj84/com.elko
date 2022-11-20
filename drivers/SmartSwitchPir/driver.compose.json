@@ -22,8 +22,6 @@
       "image": "{{driverAssetsPath}}/images/pair.png",
       "instruction": {
         "no": "Trykk raskt på knappen 3 ganger. Bekreft at LED-en blinker rødt.",
-        "sv": "Tryck snabbt 3 gånger på knappen. Bekräfta att lysdioden blinkar rött.",
-        "fi": "Paina painiketta lyhyesti 3 kertaa. Vahvista, että LED vilkkuu punaisena.",
         "en": "Short-press the button 3 times. Confirm that the LED is blinking red."
       }
     },
