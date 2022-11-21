@@ -4,7 +4,7 @@ const Homey = require('homey');
 const { ZigBeeDevice } = require('homey-zigbeedriver');
 const { ZCLNode, CLUSTER } = require('zigbee-clusters');
 const ELKOSpecificThermostatCluster = require('../../lib/elkosmart_SpecificThermostatCluster');
-
+const ELKOSMARTDevice = require('../../lib/elkosmart_Device');
 
 class ESHSUPERTR extends ZigBeeDevice {
 
@@ -24,9 +24,9 @@ class ESHSUPERTR extends ZigBeeDevice {
 //----------------------------------------------------------------------------------------------------------------------------------------------
 
         //Adds new capabilities to existing users
-        this.addCapability('sensorMode')
+        this.addCapability('sensorMode');
         this.addCapability('childLock');
-        this.addCapability('power_status')
+        this.addCapability('power_status');
         this.addCapability('thermostatLoad');
         this.addCapability('regulatorMode');
         this.addCapability('night_switching');
@@ -37,7 +37,9 @@ class ESHSUPERTR extends ZigBeeDevice {
         this.addCapability('maxFloorTemp');
         this.addCapability('button.reset_kwhMeter');
         this.removeCapability('operatingMode');
-        this.removeCapability('dateTime')
+        this.removeCapability('dateTime');
+        this.removeCapability('displayText')
+
 
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
@@ -102,9 +104,9 @@ class ESHSUPERTR extends ZigBeeDevice {
             this.log('sensorMode in attribute is:', currentSensorMode.sensorMode);
             this.setCapabilityValue('sensorMode', currentSensorMode.sensorMode);
             this.log('sensorMode set to:', currentSensorMode.sensorMode);
-            this.setSettings({
-                sensorMode: currentSensorMode,
-              });
+            //this.setSettings({
+              //  sensorMode: currentSensorMode,
+              //});
             } catch (err) {
               this.error('Error in setting Sensor Mode: ', err);
             }
@@ -126,6 +128,32 @@ class ESHSUPERTR extends ZigBeeDevice {
           };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
+// Thermostat Load
+
+// Set Thermostat Load
+          if(this.hasCapability('thermostatLoad')) {
+              try {
+                  const value =   zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('thermostatLoad');
+                    this.log('thermostatLoad:', value.thermostatLoad);
+                    this.setCapabilityValue('thermosatLoad', value.thermostatLoad);
+                    //this.setSettings({
+                      //  floor_watt: value.thermostatLoad,
+                    //});
+
+                    this.registerCapabilityListener('thermostatLoad', async (value) => {
+                      const load =   zclNode.endpoints[1].clusters.thermostat
+                        .writeAttributes({ thermostatLoad: value });
+                      this.log ('thermostatLoad set to:', load);
+                      //this.setSettings({
+                          //floor_watt: value,
+                      //});
+                      });
+                    } catch (err) {
+                      this.error('Error in thermosat load code: ', err)
+                    }
+                  };
+
+//---------------------------------------------------------------------------------------------------------------------------------------------
 // Thermostat Max floor temp
 
       // Set Thermostat Maxs floor temp
@@ -134,24 +162,24 @@ class ESHSUPERTR extends ZigBeeDevice {
             .catch(err => this.error('Error reading max floor temp: ', err));
           this.setCapabilityValue('maxFloorTemp', value.maxFloorTemp)
           this.log('maxFloorTemp:', value.maxFloorTemp);
-          this.setSettings({
-            maxfloortemp: value.maxFloorTemp,
-          });
+          //this.setSettings({
+            //maxfloortemp: value.maxFloorTemp,
+          //});
 
           this.registerCapabilityListener('maxFloorTemp', async (value) => {
             try {
-            const max_temp = await zclNode.endpoints[1].clusters.thermostat
-              .writeAttributes({ maxFloorTemp: value });
-            await this.log ('maxFloorTemp set to:', max_temp);
-            await this.setSettings({
-                maxfloortemp: max_temp,
-              });
+              const max_temp = await zclNode.endpoints[1].clusters.thermostat
+                .writeAttributes({ maxFloorTemp: value });
+              await this.log ('maxFloorTemp set to:', max_temp);
+              //await this.setSettings({
+                  //maxfloortemp: max_temp,
+                //});
             } catch (err) {
               this.error('Error setting max floor temp; ', err);
             }
         });
 
-        };
+      };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Thermostat Regulator Time
@@ -162,18 +190,18 @@ class ESHSUPERTR extends ZigBeeDevice {
             .catch(err => this.error('Error regulator time: ', err));
           this.setCapabilityValue('regulatorTime', value.regulatorTime)
           this.log('regulatorTime:', value.regulatorTime);
-          this.setSettings({
-            regulator_time: value.regulatorTime,
-          });
+          //this.setSettings({
+            //regulator_time: value.regulatorTime,
+          //});
 
           this.registerCapabilityListener('regulatorTime', async (value) => {
             try {
             const time = await zclNode.endpoints[1].clusters.thermostat
               .writeAttributes({ regulatorTime: value });
             await this.log ('regulatorTime set to:', time);
-            await this.setSettings({
-                regulator_time: time,
-              });
+            //await this.setSettings({
+                //regulator_time: time,
+              //});
             } catch (err) {
               this.error('Error in setting regulator time: ', err);
             }
@@ -190,18 +218,18 @@ class ESHSUPERTR extends ZigBeeDevice {
               .catch(err => this.error('Error reading temp calibration: ', err));;
             this.setCapabilityValue('tempCalibration', value.tempCalibration)
             this.log('tempCalibration:', value.tempCalibration);
-            this.setSettings({
-              temp_calibration: value.tempCalibration,
-            });
+            //this.setSettings({
+              //temp_calibration: value.tempCalibration,
+            //});
 
             this.registerCapabilityListener('tempCalibration', async (value) => {
               try {
                 const temp = await zclNode.endpoints[1].clusters.thermostat
                   .writeAttributes({ tempCalibration: value });
                 await this.log ('tempCalibration set to:', temp);
-                await this.setSettings({
-                  temp_calibration: temp,
-                });
+                //await this.setSettings({
+                  //temp_calibration: temp,
+                //});
               } catch (err) {
                 this.error('Error in setting temp calibration; ', err);
               }
@@ -394,9 +422,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                 this.log ('night_switching trying to set to:', value);
                   zclNode.endpoints[1].clusters.thermostat
                     .writeAttributes({ night_switching : value });
-                    this.setSettings({
-                      night_switching: value,
-                    });
+                    //this.setSettings({
+                      //night_switching: value,
+                    //});
                     this.log ('night_switching set to:', value)
                 });
               } catch (err) {
@@ -418,9 +446,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                 try {
                   this.log('night_switching?: ', currentState);
                   this.setCapabilityValue('night_switching', currentState);
-                  this.setSettings({
-                    night_switching: currentState,
-                  });
+                  //this.setSettings({
+                    //night_switching: currentState,
+                  //});
                 } catch (err) {
                   this.error('Error in setting Night switching: ', err)
                 }
@@ -438,9 +466,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                   this.log ('frost_guard trying to set to:', value);
                     zclNode.endpoints[1].clusters.thermostat
                       .writeAttributes({ frost_guard : value });
-                      this.setSettings({
-                        frost_guard: value,
-                      });
+                      //this.setSettings({
+                        //frost_guard: value,
+                      //});
                       this.log ('frost_guard set to:', value)
                   });
               } catch (err) {
@@ -461,9 +489,9 @@ class ESHSUPERTR extends ZigBeeDevice {
               zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.frost_guard', (currentState) => {
                 this.log('frost_guard?: ', currentState);
                 this.setCapabilityValue('frost_guard', currentState);
-                this.setSettings({
-                  frost_guard: currentState,
-                });
+                //this.setSettings({
+                  //frost_guard: currentState,
+                //});
               });
             } catch (err) {
               this.error('Error in frost guard code: ', err)
@@ -480,9 +508,9 @@ class ESHSUPERTR extends ZigBeeDevice {
                  this.log ('childLock trying to set to:', value);
                   zclNode.endpoints[1].clusters.thermostat
                     .writeAttributes({ childLock : value });
-                    this.setSettings({
-                      childLock: value,
-                    });
+                    //this.setSettings({
+                      //childLock: value,
+                    //});
                     this.log ('childLock set to:', value)
                 });
 
@@ -500,40 +528,15 @@ class ESHSUPERTR extends ZigBeeDevice {
                   zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.childLock', (value) => {
                     this.log('childLock attribute value?', value)
                     this.setCapabilityValue('childLock', value);
-                    this.setSettings({
-                      childLock: value,
-                    });
+                    //this.setSettings({
+                      //childLock: value,
+                    //});
                   });
                 } catch (err) {
                   this.error('Error in childlock code:', err)
                 }
               };
 
-//---------------------------------------------------------------------------------------------------------------------------------------------
-// Thermostat Load
-
-// Set Thermostat Load
-        if(this.hasCapability('thermostatLoad')) {
-          try {
-              const value =   zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('thermostatLoad');
-              this.log('thermostatLoad:', value.thermostatLoad);
-              this.setCapabilityValue('thermosatLoad', value.thermostatLoad);
-              this.setSettings({
-                  floor_watt: value.thermostatLoad,
-                });
-
-              this.registerCapabilityListener('thermostatLoad', async (value) => {
-                const load =   zclNode.endpoints[1].clusters.thermostat
-                  .writeAttributes({ thermostatLoad: value });
-                this.log ('thermostatLoad set to:', load);
-                this.setSettings({
-                    floor_watt: value,
-                  });
-            });
-          } catch (err) {
-            this.error('Error in thermosat load code: ', err)
-          }
-        };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Set power_status
@@ -627,21 +630,21 @@ class ESHSUPERTR extends ZigBeeDevice {
 //Defines mode and set the needed capability
   async onUpdateMode(value) {
     try {
-        if (value === 0) {
+        if (value === false) {
         await this.addCapability('target_temperature');
         await this.addCapability('measure_temperature');
         await this.removeCapability('dim.regulator');
-        await this.setSettings({
-            regulatorMode: 0,
-          });
+        //await this.setSettings({
+            //regulatorMode: false
+          //});
         await this.log('Added target_temperature, removed dim.regulator')
-      } else if (value === 1) {
+      } else if (value === true) {
         await this.removeCapability('target_temperature');
         await this.removeCapability('measure_temperature');
         await this.addCapability('dim.regulator');
-        await this.setSettings({
-            regulatorMode: 1,
-          });
+        //await this.setSettings({
+            //regulatorMode: true
+          //});
         await this.log('Added dim.regulator, removed target_temperature')
       }
     } catch (err) {
@@ -686,23 +689,23 @@ class ESHSUPERTR extends ZigBeeDevice {
         };
         if (event.changedKeys.includes('regulatorMode')) {
           this.log('Regulator mode changed: ', event.newSettings.regulatorMode);
-          let SetRegulatorMode = 0;
+          let SetRegulatorMode = false;
             switch (event.newSettings.regulatorMode) {
-              case 'Thermostat':
-                SetRegulatorMode = 0;
+              case false:
+                SetRegulatorMode = false;
                 break;
-              case 'Regulator':
-                SetRegulatorMode = 1;
+              case true:
+                SetRegulatorMode = true;
                 break;
             };
           this.zclNode.endpoints[1].clusters.thermostat
             .writeAttributes({ regulatorMode: SetRegulatorMode});
             switch (SetRegulatorMode) {
-              case 0:
+              case false:
                 this.removeCapability('dim.regulator');
                 this.addCapability('target_temperature')
                 break;
-              case 1:
+              case true:
                 this.addCapability('dim.regulator');
                 this.removeCapability('target_temperature')
                 break;
@@ -710,17 +713,17 @@ class ESHSUPERTR extends ZigBeeDevice {
             this.setCapabilityValue('regulatorMode', event.newSettings.regulatorMode);
             this.log('RegulatorMode attribute set to:', event.newSettings.regulatorMode)
           };
-          if (event.changedKeys.includes('SensorMode')) {
-            this.log('SensorMode changed: ', event.newSettings.SensorMode);
+          if (event.changedKeys.includes('sensorMode')) {
+            this.log('sensorMode changed: ', event.newSettings.sensorMode);
             let SetSensorMode = 0;
-              switch (event.newSettings.SensorMode) {
-                case 'Air':
+              switch (event.newSettings.sensorMode) {
+                case 'air':
                   SetSensorMode = 0;
                   break;
-                case 'Floor':
+                case 'floor':
                   SetSensorMode = 1;
                   break;
-                case 'Supervisor_Floor':
+                case 'supervisor_Floor':
                   SetSensorMode = 3;
                   break;
               };
@@ -731,13 +734,13 @@ class ESHSUPERTR extends ZigBeeDevice {
             };
           if (event.changedKeys.includes('frost_guard')) {
             this.log('frost_guard changed: ', event.newSettings.frost_guard);
-            let Setfrost_guard = 0;
+            let Setfrost_guard = false;
               switch (event.newSettings.frost_guard) {
-                case 'Yes':
-                  Setfrost_guard = 1;
+                case true:
+                  Setfrost_guard = true;
                   break;
-                case 'No':
-                  Setfrost_guard = 0;
+                case false:
+                  Setfrost_guard = false;
                   break;
               };
             this.zclNode.endpoints[1].clusters.thermostat
@@ -747,13 +750,13 @@ class ESHSUPERTR extends ZigBeeDevice {
             };
           if (event.changedKeys.includes('night_switching')) {
             this.log('night_switching changed: ', event.newSettings.night_switching);
-            let Setnight_switching = 0;
+            let Setnight_switching = false;
               switch (event.newSettings.night_switching) {
-                case 'Yes':
-                  Setnight_switching = 1;
+                case true:
+                  Setnight_switching = true;
                   break;
-                case 'No':
-                  Setnight_switching = 0;
+                case false:
+                  Setnight_switching = false;
                   break;
               };
             this.zclNode.endpoints[1].clusters.thermostat
@@ -763,13 +766,13 @@ class ESHSUPERTR extends ZigBeeDevice {
             };
           if (event.changedKeys.includes('childLock')) {
             this.log('childLock changed: ', event.newSettings.childLock);
-            let SetchildLock = 0;
+            let SetchildLock = false;
               switch (event.newSettings.childLock) {
-                case 'Yes':
-                  SetchildLock = 1;
+                case true:
+                  SetchildLock = true;
                   break;
-                case 'No':
-                  SetchildLock = 0;
+                case false:
+                  SetchildLock = false;
                   break;
               };
             this.zclNode.endpoints[1].clusters.thermostat
