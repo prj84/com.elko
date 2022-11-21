@@ -1,0 +1,224 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Switch-on Mode",
+      "no": "Påslagsmodus"
+    },
+    "children": [
+      {
+        "id": "onlevelMemory",
+        "type": "checkbox",
+        "value": true,
+        "label": {
+          "en": "Remember brigthness level",
+          "no": "Husk lysstyrkenivå"
+        }
+      },
+      {
+        "id": "onlevelLevel",
+        "type": "number",
+        "label": {
+          "en": "Manual dim level",
+          "no": "Manuell dimmenivå"
+        },
+        "value": 100,
+        "units": {
+          "en": "%",
+          "no": "%"
+        },
+        "attr": {
+          "min": 1,
+          "max": 100
+        }
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Min/Max Brightness",
+      "no": "Min/Max Dim"
+    },
+    "children": [
+      {
+        "id": "brightnessMin",
+        "type": "number",
+        "value": 1,
+        "label": {
+          "en": "Minimum Brigthness",
+          "no": "Minimum Dim"
+        },
+        "units": {
+          "en": "%",
+          "no": "%"
+        },
+        "attr": {
+          "min": 1,
+          "max": 254
+        }
+      },
+      {
+        "id": "brightnessMax",
+        "type": "number",
+        "label": {
+          "en": "Maximum Brigthness",
+          "no": "Maximum Dim"
+        },
+        "value": 254,
+        "units": {
+          "en": "%",
+          "no": "%"
+        },
+        "attr": {
+          "min": 1,
+          "max": 254
+        }
+      }
+    ]
+  },
+  {
+    "id": "controlMode",
+    "type": "dropdown",
+    "value": "automatic",
+    "label": {
+      "en": "Default mode",
+      "no": "Dimmetype"
+    },
+    "values": [
+      {
+        "id": "automatic",
+        "label": {
+          "en": "Automatic",
+          "no": "Automatisk"
+         }
+      },
+      {
+        "id": "rlLedMode",
+        "label": {
+          "en": "RL LED Mode",
+          "no": "RL LED Modus"
+        }
+      }
+    ]
+  },
+  {
+    "id": "wiringMode",
+    "type": "dropdown",
+    "value": "",
+    "label": {
+      "en": "Wiring mode",
+      "no": "2 eller 3 kablet modus"
+    },
+    "values": [
+      {
+        "id": "wiredmode2",
+        "label": {
+          "en": "2 cable wiring",
+          "no": "Uten nøytralleder"
+         }
+      },
+      {
+        "id": "wiredmode3",
+        "label": {
+          "en": "3 wired mode",
+          "no": "Med nøytralleder"
+        }
+      }
+    ]
+  },
+  {
+"id": "backlightMode",
+"type": "dropdown",
+"value": "consistentWithLoad",
+"label": {
+  "en": "Status indication",
+  "no": "Statusindikasjon"
+},
+"hint": {
+  "en": "How to display the load indication",
+  "no": "Hvordan vise lastindikasjonen"
+},
+"values": [
+  {
+    "id": "consistentWithLoad",
+    "label": {
+      "en": "Consistent with load",
+      "no": "konsistent med belastning"
+    }
+  },
+  {
+    "id": "reverseWithLoad",
+    "label": {
+      "en": "Reverse with load",
+      "no": "Reversere med last"
+    }
+  },
+  {
+    "id": "alwaysOn",
+    "label": {
+      "en": "Always on",
+      "no": "Alltid på"
+    }
+  },
+  {
+    "id": "alwaysOff",
+    "label": {
+      "en": "Always off",
+      "no": "Alltid av"
+    }
+  }
+]
+},
+  {
+    "type": "group",
+    "label": {
+      "en": "Timer",
+      "no": "Timer"
+    },
+    "children": [
+      {
+        "id": "offTimer",
+        "type": "number",
+        "label": {
+          "en": "Off timer",
+          "no": "Off timer"
+        },
+        "hint": {
+          "en": "Number of seconds until the device turns off. 0=disabled",
+          "no": "Antall sekunder før enheten slår seg av- 0=deaktivert"
+        },
+        "value": 0,
+        "units": {
+          "en": "s",
+          "no": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      },
+      {
+        "id": "prewarning",
+        "type": "number",
+        "label": {
+          "en": "Prewarning",
+          "no": "Forvarsel"
+        },
+        "hint": {
+          "en": "Indicates the end of the timer by slowly dimming down 0=disabled",
+          "no": "Indikerer slutten på timeren ved å langsomt dimme ned, 0=deaktivert"
+        },
+        "value": 0,
+        "units": {
+          "en": "s",
+          "no": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      }
+    ]
+  }
+]

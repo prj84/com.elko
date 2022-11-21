@@ -1,0 +1,93 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Timer"
+    },
+    "children": [
+      {
+        "id": "offTimer",
+        "type": "number",
+        "label": {
+          "en": "Shutdown timer",
+          "no": "Nedstengingstidtaker"
+        },
+        "hint": {
+          "en": "Number of seconds until the device turns off. 0 = Infinite",
+          "no": "Antall sekunder før enheten slår seg av. 0 = Uendelig"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      },
+      {
+        "id": "preWarning",
+        "type": "number",
+        "label": {
+          "en": "Shutdown warning",
+          "no": "Avslutningsadvarsel"
+        },
+        "hint": {
+          "en": "Device indication before shutdown. Number of seconds before the unit switches off. 0 = Disabled",
+          "no": "Enhetsindikasjon før avstenging. Antall sekunder før enheten slås av. 0 = Deaktivert"
+        },
+        "value": 0,
+        "units": {
+          "en": "s"
+        },
+        "attr": {
+          "min": 0,
+          "max": 86400
+        }
+      }
+    ]
+  },
+  {
+    "id": "backlightMode",
+    "type": "dropdown",
+    "value": "consistentWithLoad",
+    "label": {
+      "en": "Status indication",
+      "no": "Statusindikasjon"
+    },
+    "hint": {
+      "en": "How to display the load indication",
+      "no": "Hvordan vise lastindikasjonen"
+    },
+    "values": [
+      {
+        "id": "consistentWithLoad",
+        "label": {
+          "en": "Consistent with load",
+          "no": "konsistent med belastning"
+        }
+      },
+      {
+        "id": "reverseWithLoad",
+        "label": {
+          "en": "Reverse with load",
+          "no": "Reversere med last"
+        }
+      },
+      {
+        "id": "alwaysOn",
+        "label": {
+          "en": "Always on",
+          "no": "Alltid på"
+        }
+      },
+      {
+        "id": "alwaysOff",
+        "label": {
+          "en": "Always off",
+          "no": "Alltid av"
+        }
+      }
+    ]
+  }
+]
