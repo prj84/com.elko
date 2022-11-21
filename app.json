@@ -182,11 +182,12 @@
     },
     {
       "name": {
-        "en": "Super TR Regulator RF",
-        "no": "Super TR Regulator RF"
+        "en": "ESH Super TR Thermostat RF",
+        "no": "ESH Super TR Thermostat RF"
       },
       "class": "thermostat",
       "capabilities": [
+        "target_temperature",
         "measure_temperature",
         "measure_temperature.air",
         "measure_temperature.floor",
@@ -201,12 +202,20 @@
         "regulatorMode",
         "thermostatLoad",
         "regulatorTime",
+        "dateTime",
         "tempCalibration",
+        "displayText",
         "button.reset_kwh_meter",
+        "dateTime",
         "night_switching",
         "frost_guard"
       ],
       "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 5,
+          "max": 50,
+          "step": 0.5
+        },
         "measure_temperature.air": {
           "title": {
             "en": "Air",
@@ -232,317 +241,7 @@
           "max": 40,
           "step": 1
         },
-        "button.reset_kwh_meter": {
-          "maintenanceAction": true,
-          "title": {
-            "en": "Reset power meter",
-            "no": "Nullstill kw/t teller"
-          },
-          "desc": {
-            "en": "Reset the accumulated power usage (kWh), note that this can not be reversed.",
-            "no": "Nullstill kwt teller, OBS! Data blir slettet!"
-          }
-        }
-      },
-      "mobile": {
-        "components": [
-          {
-            "id": "icon",
-            "capabilities": []
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "heat",
-              "measure_temperature.air",
-              "measure_temperature.floor",
-              "childLockSensor"
-            ],
-            "options": {
-              "icons": {
-                "heat": "/drivers/ESHSUPERTR/assets/heating.svg",
-                "childLockSensor": "/drivers/ESHSUPERTR/assets/child.svg"
-              },
-              "showTitle": true
-            }
-          },
-          {
-            "id": "thermostat",
-            "capabilities": [
-              "target_temperature"
-            ]
-          }
-        ]
-      },
-      "zigbee": {
-        "manufacturerName": "ELKO",
-        "productId": "Super TR",
-        "learnmode": {
-          "image": "/drivers/ESHSUPERTR/assets/include.svg",
-          "instruction": {
-            "en": "Click on and hold arrow up and M Button (1) until joining/pairing is displayed. Wait for Homey to list device",
-            "no": "Klikk og hold pil opp og M knappen (1.) inntil Joining/pairing vises i displayet. Vent på at Homey legger til enheten"
-          }
-        },
-        "endpoints": {
-          "1": {
-            "clusters": [
-              0,
-              3,
-              513
-            ],
-            "bindings": [
-              3,
-              513
-            ]
-          }
-        }
-      },
-      "images": {
-        "large": "/drivers/ESHSUPERTR/assets/images/Large.png",
-        "small": "/drivers/ESHSUPERTR/assets/images/Small.png"
-      },
-      "id": "ESHSUPERREG",
-      "settings": [
-        {
-          "type": "group",
-          "label": {
-            "en": "Thermostat Settings",
-            "no": "Termostat innstillinger"
-          },
-          "children": [
-            {
-              "id": "regulatorMode",
-              "type": "dropdown",
-              "value": "regulatorMode",
-              "label": {
-                "en": "Operating Mode",
-                "no": "Termostat/Regulator"
-              },
-              "values": [
-                {
-                  "id": "Thermostat",
-                  "label": {
-                    "en": "Termostat mode",
-                    "no": "Termostat modus"
-                  }
-                },
-                {
-                  "id": "Regulator",
-                  "label": {
-                    "en": "Regulator mode",
-                    "no": "Regulator modus"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "floor_watt",
-              "type": "number",
-              "label": {
-                "en": "Heating cable effect",
-                "no": "Varmekabel effekt"
-              },
-              "value": 2000,
-              "min": 1,
-              "max": 9999,
-              "units": "Watt"
-            },
-            {
-              "id": "regulator_time",
-              "type": "number",
-              "label": {
-                "en": "Time between each in/out connection of relay",
-                "no": "Tid mellom inn/utslag av rele"
-              },
-              "value": 15,
-              "min": 1,
-              "max": 20,
-              "units": "Minuttes"
-            },
-            {
-              "id": "maxfloortemp",
-              "type": "number",
-              "label": {
-                "en": "Max floor temperature when usin floor guard",
-                "no": "Maks temperatur ved bruk av gulvvakt"
-              },
-              "value": 40,
-              "min": 20,
-              "max": 40,
-              "units": "C"
-            },
-            {
-              "id": "temp_calibration",
-              "type": "number",
-              "label": {
-                "en": "Temperature Calibration",
-                "no": "Temperatur kalibrering"
-              },
-              "value": 20,
-              "min": -100,
-              "max": 100,
-              "units": "C"
-            },
-            {
-              "id": "SensorMode",
-              "type": "dropdown",
-              "value": "SensorMode",
-              "label": {
-                "en": "Sensor Mode",
-                "no": "Sensor Modus"
-              },
-              "values": [
-                {
-                  "id": "Air",
-                  "label": {
-                    "en": "Air Sensor",
-                    "no": "Luft Sensor"
-                  }
-                },
-                {
-                  "id": "Floor",
-                  "label": {
-                    "en": "Floor Sensor",
-                    "no": "Gulv Sensor"
-                  }
-                },
-                {
-                  "id": "Supervisor_Floor",
-                  "label": {
-                    "en": "Supervisor_Floor",
-                    "no": "Gulvvakt"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "frost_guard",
-              "type": "dropdown",
-              "value": "frost_guard",
-              "label": {
-                "en": "Frost Guard Activated?",
-                "no": "Frost Vakt Aktivert"
-              },
-              "values": [
-                {
-                  "id": "Yes",
-                  "label": {
-                    "en": "Yes",
-                    "no": "Ja"
-                  }
-                },
-                {
-                  "id": "No",
-                  "label": {
-                    "en": "No",
-                    "no": "Nei"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "night_switching",
-              "type": "dropdown",
-              "value": "night_switching",
-              "label": {
-                "en": "Night Mode Activated?",
-                "no": "Natt Modus Aktivert"
-              },
-              "values": [
-                {
-                  "id": "Yes",
-                  "label": {
-                    "en": "Yes",
-                    "no": "Ja"
-                  }
-                },
-                {
-                  "id": "No",
-                  "label": {
-                    "en": "No",
-                    "no": "Nei"
-                  }
-                }
-              ]
-            },
-            {
-              "id": "childLock",
-              "type": "dropdown",
-              "value": "childlock",
-              "label": {
-                "en": "Child Lock Activated?",
-                "no": "Barnesikkring Aktivert"
-              },
-              "values": [
-                {
-                  "id": "Yes",
-                  "label": {
-                    "en": "Yes",
-                    "no": "Ja"
-                  }
-                },
-                {
-                  "id": "No",
-                  "label": {
-                    "en": "No",
-                    "no": "Nei"
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": {
-        "en": "Super TR Thermostat RF",
-        "no": "Super TR Thermostat RF"
-      },
-      "class": "thermostat",
-      "capabilities": [
-        "target_temperature",
-        "measure_temperature",
-        "measure_temperature.air",
-        "measure_temperature.floor",
-        "maxFloorTemp",
-        "measure_power",
-        "meter_power",
-        "power_status",
-        "childLock",
-        "heat",
-        "sensorMode",
-        "thermostatLoad",
-        "tempCalibration",
-        "button.reset_kwh_meter",
-        "night_switching",
-        "frost_guard"
-      ],
-      "capabilitiesOptions": {
-        "target_temperature": {
-          "min": 5,
-          "max": 50,
-          "step": 0.5
-        },
-        "measure_temperature.air": {
-          "title": {
-            "en": "Air",
-            "no": "Luft"
-          }
-        },
-        "measure_temperature.floor": {
-          "title": {
-            "en": "Floor",
-            "no": "Gulv"
-          }
-        },
-        "maxFloorTemp": {
-          "min": 20,
-          "max": 40,
-          "step": 1
-        },
-        "button.reset_kwh_meter": {
+        "button.reset_kwhMeter": {
           "maintenanceAction": true,
           "title": {
             "en": "Reset power meter",
@@ -622,6 +321,31 @@
           },
           "children": [
             {
+              "id": "regulatorMode",
+              "type": "dropdown",
+              "value": "regulatorMode",
+              "label": {
+                "en": "Operating Mode",
+                "no": "Termostat/Regulator"
+              },
+              "values": [
+                {
+                  "id": "Thermostat",
+                  "label": {
+                    "en": "Termostat mode",
+                    "no": "Termostat modus"
+                  }
+                },
+                {
+                  "id": "Regulator",
+                  "label": {
+                    "en": "Regulator mode",
+                    "no": "Regulator modus"
+                  }
+                }
+              ]
+            },
+            {
               "id": "floor_watt",
               "type": "number",
               "label": {
@@ -632,6 +356,18 @@
               "min": 1,
               "max": 9999,
               "units": "Watt"
+            },
+            {
+              "id": "regulator_time",
+              "type": "number",
+              "label": {
+                "en": "Time between each in/out connection of relay",
+                "no": "Tid mellom inn/utslag av rele"
+              },
+              "value": 15,
+              "min": 1,
+              "max": 20,
+              "units": "Minuttes"
             },
             {
               "id": "maxfloortemp",
@@ -3114,7 +2850,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=ESHSUPERREG"
+            "filter": "driver_id=ESHSUPERTR"
           },
           {
             "name": "device",
@@ -3139,49 +2875,7 @@
         ]
       },
       {
-        "id": "Power_reg",
-        "title": {
-          "en": "Set Power Status",
-          "no": "Skru Av/På termostat"
-        },
-        "args": [
-          {
-            "type": "device",
-            "name": "device",
-            "filter": "driver_id=ESHSUPERREG"
-          },
-          {
-            "type": "device",
-            "name": "device"
-          },
-          {
-            "type": "dropdown",
-            "name": "Power",
-            "title": {
-              "en": "Set Power Status",
-              "sv": "Skru Av/På termostat"
-            },
-            "values": [
-              {
-                "id": "Yes",
-                "label": {
-                  "en": "Yes",
-                  "no": "Ja"
-                }
-              },
-              {
-                "id": "No",
-                "label": {
-                  "en": "No",
-                  "no": "Nei"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": "Power_therm",
+        "id": "Power",
         "title": {
           "en": "Set Power Status",
           "no": "Skru Av/På termostat"

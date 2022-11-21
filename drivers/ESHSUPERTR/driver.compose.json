@@ -20,11 +20,8 @@
     "regulatorMode",
     "thermostatLoad",
     "regulatorTime",
-    "dateTime",
     "tempCalibration",
-    "displayText",
     "button.reset_kwh_meter",
-    "dateTime",
     "night_switching",
     "frost_guard"
   ],
