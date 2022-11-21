@@ -43,5 +43,8 @@
   },
   "1.1.7": {
     "en": "Added support for new ELKO Smart Multiwire dimmers, smart sockets, pir dimmer and switch. Fixed power metering bug on thermostat and max_floor_temp bug. When adding thermostats in future please go to Advanced settings to set all settings to get correct power, temperature reports, and also correct functionality regarding thermostat or regulator."
+  },
+  "1.1.8": {
+    "en": "Building and fixing settings, some work under the hood making it more stabile, if you are using Super TR Thermostat as regulator, please readd as Super TR regulator device."
   }
 }
