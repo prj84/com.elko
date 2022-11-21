@@ -2,8 +2,8 @@
   {
     "type": "group",
     "label": {
-      "no": "Påslagsmodus",
-      "sv": "Påslagsläge"
+      "en": "Switch-on mode",
+      "no": "Påslagsmodus"
     },
     "children": [
       {
