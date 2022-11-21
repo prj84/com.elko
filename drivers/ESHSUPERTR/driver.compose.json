@@ -1,7 +1,7 @@
 {
   "name": {
-    "en": "Super TR Thermostat RF",
-    "no": "Super TR Thermostat RF"
+    "en": "ESH Super TR Thermostat RF",
+    "no": "ESH Super TR Thermostat RF"
   },
   "class": "thermostat",
   "capabilities": [
@@ -16,9 +16,15 @@
     "childLock",
     "heat",
     "sensorMode",
+    "dim.regulator",
+    "regulatorMode",
     "thermostatLoad",
+    "regulatorTime",
+    "dateTime",
     "tempCalibration",
+    "displayText",
     "button.reset_kwh_meter",
+    "dateTime",
     "night_switching",
     "frost_guard"
   ],
@@ -40,22 +46,30 @@
         "no": "Gulv"
       }
     },
+    "dim.regulator": {
+      "title": {
+        "en": "Regulator %",
+        "no": "Regulator %"
+      },
+      "min": 0,
+      "max": 1
+    },
     "maxFloorTemp": {
       "min": 20,
       "max": 40,
       "step": 1
     },
-    "button.reset_kwh_meter": {
-        "maintenanceAction": true,
-        "title": {
-          "en": "Reset power meter",
-          "no": "Nullstill kw/t teller"
+        "button.reset_kwhMeter": {
+           "maintenanceAction": true,
+           "title": {
+              "en": "Reset power meter",
+              "no": "Nullstill kw/t teller"
            },
            "desc": {
               "en": "Reset the accumulated power usage (kWh), note that this can not be reversed.",
               "no": "Nullstill kwt teller, OBS! Data blir slettet!"
            }
-    }
+         }
   },
   "mobile": {
     "components": [
