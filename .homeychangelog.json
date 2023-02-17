@@ -49,5 +49,8 @@
   },
   "1.1.9": {
     "en": "Updated settings handling on all devices. Rebuilt settings on Thermostat. Better handling on Thermostat <-> Regulator change. Introduced new ELKO Smart devices. Multiwire turn dimmer added as own device to add settings"
+  },
+  "1.1.11": {
+    "en": "Bug fixes on Super TR"
   }
 }
