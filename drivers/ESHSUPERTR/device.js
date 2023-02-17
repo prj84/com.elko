@@ -103,20 +103,22 @@ class ESHSUPERTR extends ZigBeeDevice {
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Sensor mode
 
-        if(this.hasCapability('sensorMode')) {
-          try {
+          if(this.hasCapability('sensorMode')) {
+            try {
             const currentSensorMode = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('sensor');
             this.log('sensorMode in attribute is:', currentSensorMode.sensor);
             this.setCapabilityValue('sensorMode', currentSensorMode.sensor);
             this.log('sensorMode set to:', currentSensorMode.sensor);
             this.setSettings({
-                sensorMode: currentSensorMode.sensor,
-              });
+            sensorMode: currentSensorMode.sensor,
+            });
             this.log('Sensor Setting set to:', currentSensorMode.sensor);
             } catch (err) {
-              this.error('Error in setting Sensor Mode: ', err);
+            this.error('Error in setting Sensor Mode: ', err);
             }
-          };
+            } else {
+            this.error('Sensor Mode capability not found.');
+            };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
         // Read if Thermostat is in Regulator mode (Thermostat/Regulator) (FALSE/TRUE)
@@ -137,6 +139,7 @@ class ESHSUPERTR extends ZigBeeDevice {
 // Thermostat Load
 
 // Set Thermostat Load
+        try{ 
           if(this.hasCapability('thermostatLoad')) {
             const value = zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('load');
             
@@ -162,21 +165,26 @@ class ESHSUPERTR extends ZigBeeDevice {
                 floor_watt: thermostatLoad,
               });
             });
+            }
+          } catch (error) {
+            console.error('Error: Can not set the thermostatLoad', error);
             };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Thermostat Max floor temp
 
       // Set Thermostat Maxs floor temp
-      if(this.hasCapability('maxFloorTemp')) {
+      try {
+        if(this.hasCapability('maxFloorTemp')) {
+
           const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('maxFloorTemperature')
             .catch(err => this.error('Error reading max floor temp: ', err));
           this.setCapabilityValue('maxFloorTemp', value.maxFloorTemperature)
           this.log('maxFloorTemp:', value.maxFloorTemperature);
-          this.setSettings({
+          await this.setSettings({
             maxfloortemp: value.maxFloorTemperature,
           }).catch(err => this.error('Error setting maxfloortemp setting: ', err));
-
+      
           this.registerCapabilityListener('maxFloorTemp', async (value) => {
             try {
               const max_temp = await zclNode.endpoints[1].clusters.thermostat
@@ -188,79 +196,93 @@ class ESHSUPERTR extends ZigBeeDevice {
             } catch (err) {
               this.error('Error setting max floor temp; ', err);
             }
-        });
-
-      };
+          });
+        } else {
+          const defaultMaxFloorTemp = 28;
+          this.setCapabilityValue('maxFloorTemp', defaultMaxFloorTemp);
+          await this.setSettings({
+            maxfloortemp: defaultMaxFloorTemp,
+          }).catch((err) =>
+          this.error('Error setting maxfloortemp setting: ', err)
+          );
+          }
+        } catch (err) {
+        this.error('Error in catch all block: ', err);
+        };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Thermostat Regulator Time
 
       // Set Thermostat Regulator Time
-      if(this.hasCapability('regulatorTime')) {
+        try {
+          if(this.hasCapability('regulatorTime')) {
           const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('regulatorTime')
-            .catch(err => this.error('Error regulator time: ', err));
+          .catch(err => this.error('Error regulator time: ', err));
           this.setCapabilityValue('regulatorTime', value.regulatorTime)
           this.log('regulatorTime:', value.regulatorTime);
           this.setSettings({
-            regulator_time: value.regulatorTime,
+          regulator_time: value.regulatorTime,
           }).catch(err => this.error('Error setting regulator_time setting: ', err));
 
           this.registerCapabilityListener('regulatorTime', async (value) => {
             try {
               const time = await zclNode.endpoints[1].clusters.thermostat
               .writeAttributes({ regulatorTime: value });
-            await this.log ('regulatorTime set to:', time);
-            await this.setSettings({
-                regulator_time: time,
-              }).catch(err => this.error('Error setting regulator_time setting: ', err));
+              await this.log ('regulatorTime set to:', time);
+              await this.setSettings({
+                  regulator_time: time,
+                }).catch(err => this.error('Error setting regulator_time setting: ', err));
             } catch (err) {
               this.error('Error in setting regulator_time: ', err);
             }
-        });
-
+          });
+        }
+        } catch (err) {
+        this.error('Error: ', err);
         };
+
 
   //---------------------------------------------------------------------------------------------------------------------------------------------
   // Thermostat temperature Calibration
 
         // Set thermostat temperature Calibration
         if(this.hasCapability('tempCalibration')) {
-            const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('calibration')
-              .catch(err => this.error('Error reading temp calibration: ', err));;
-            this.setCapabilityValue('tempCalibration', value.calibration)
-            this.log('tempCalibration:', value.calibration);
-            this.setSettings({
-              temp_calibration: value.calibration,
-            }).catch(err => this.error('Error setting temp_calibration setting: ', err));
-
-            this.registerCapabilityListener('tempCalibration', async (value) => {
-              try {
-                const temp = await zclNode.endpoints[1].clusters.thermostat
-                  .writeAttributes({ calibration: value });
-                await this.log ('tempCalibration set to:', temp);
-                await this.setSettings({
-                  temp_calibration: temp,
-                }).catch(err => this.error('Error setting temp_calibration setting: ', err));
-              } catch (err) {
-                this.error('Error in setting temp calibration; ', err);
-              }
+          try {
+          const value = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('calibration');
+          this.setCapabilityValue('tempCalibration', value.calibration);
+          this.log('tempCalibration:', value.calibration);
+          await this.setSettings({
+          temp_calibration: value.calibration,
           });
-
+          this.registerCapabilityListener('tempCalibration', async (value) => {
+          try {
+          const temp = await zclNode.endpoints[1].clusters.thermostat
+          .writeAttributes({ calibration: value });
+          this.log('tempCalibration set to:', temp);
+          await this.setSettings({
+          temp_calibration: temp,
+          });
+          } catch (err) {
+          this.error('Error in setting temp calibration: ', err);
+          }
+          });
+          } catch (err) {
+          this.error('Error reading temp calibration: ', err);
+          }
           };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Air Temperature
 // measure_temperature
-        if (this.hasCapability('measure_temperature.air')) {
-
+        try {
+          if (this.hasCapability('measure_temperature.air')) {
           await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-            localTemperature: {
-              minInterval: 60,
-              maxInterval: 600,
-              minChange: 1
-            }
+          localTemperature: {
+          minInterval: 60,
+          maxInterval: 600,
+          minChange: 1
+          }
           });
-
 
           zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.localTemperature', (currentTempValue) => {
             try {
@@ -274,263 +296,262 @@ class ESHSUPERTR extends ZigBeeDevice {
                 this.setCapabilityValue('measure_temperature', temp_air);
                 this.log('Measure temperature updated based on temp_mode: air', temp_air)
               }
-          } catch (err) {
-            this.error('Error in reading and setting local temperature: ', err);
-          }
+            } catch (err) {
+              this.error('Error in reading and setting local temperature: ', err);
+            }
           });
-        };
+
+        }
+      } catch (err) {
+        this.error('Error in setting up temperature measurement: ', err);
+      };
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
 // Floor Temperature
 // measure_temperature
-        if (this.hasCapability('measure_temperature.floor')) {
+            try{
+              if (this.hasCapability('measure_temperature.floor')) {
 
-            await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-              externalTemperature: {
-              minInterval: 60,
-              maxInterval: 600,
-              minChange: 1
-            }
-          });
+                await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
+                  externalTemperature: {
+                  minInterval: 60,
+                  maxInterval: 600,
+                  minChange: 1
+                }
+              });
 
-          zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.externalTemperature', (currentTempValue) => {
-            try {
-              const temp_floor = currentTempValue > -5000 ? Math.round((currentTempValue / 100) * 10) / 10 : null;
-              this.log('temperature floor: ', temp_floor);
-              //const sensorMode = this.getCapabilityValue('sensorMode');
-              const sensorMode = settings.sensorMode
-              this.log('sensor_mode: ', sensorMode);
-              this.setCapabilityValue('measure_temperature.floor', temp_floor);
-              if (sensorMode === 'floor'){
-                this.setCapabilityValue('measure_temperature', temp_floor);
-                this.log('Measure temperature updated based on temp_mode: floor', temp_floor)
+              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.externalTemperature', (currentTempValue) => {
+                try {
+                  const temp_floor = currentTempValue > -5000 ? Math.round((currentTempValue / 100) * 10) / 10 : null;
+                  this.log('temperature floor: ', temp_floor);
+                  //const sensorMode = this.getCapabilityValue('sensorMode');
+                  const sensorMode = settings.sensorMode
+                  this.log('sensor_mode: ', sensorMode);
+                  this.setCapabilityValue('measure_temperature.floor', temp_floor);
+                  if (sensorMode === 'floor'){
+                    this.setCapabilityValue('measure_temperature', temp_floor);
+                    this.log('Measure temperature updated based on temp_mode: floor', temp_floor)
+                  }
+                } catch (err) {
+                  this.error('Error in reading and setting floor temperature: ', err);
+                }
+              });
               }
-            } catch (err) {
-              this.error('Error in reading and setting floor temperature: ', err)
-            }
-          });
-        };
+             } catch (err) {
+                this.error('Error in setting up temperature measurement: ', err);
+              };
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Setpoint with temperature wheel
 
     // Setpoint of thermostat
-    if (this.hasCapability('target_temperature')) {  
-          this.registerCapabilityListener('target_temperature', async (value) => {
-              const setTemp =  await zclNode.endpoints[1].clusters.thermostat
-                .writeAttributes({ occupiedHeatingSetpoint: Math.round (value*100) });
-              this.log ('target_temperature set to:', value)
-          });
+    try{
+      if (this.hasCapability('target_temperature')) {  
+              this.registerCapabilityListener('target_temperature', async (value) => {
+                  const setTemp =  await zclNode.endpoints[1].clusters.thermostat
+                    .writeAttributes({ occupiedHeatingSetpoint: Math.round (value*100) });
+                  this.log ('target_temperature set to:', value)
+              });
 
-        // Configure reporting
-        zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-          occupiedHeatingSetpoint: {
-            minInterval: 0,
-            maxInterval: 600,
-            minChange: 1
-          }
-        });
+            // Configure reporting
+            zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
+              occupiedHeatingSetpoint: {
+                minInterval: 0,
+                maxInterval: 600,
+                minChange: 1
+              }
+            });
 
-        // And listen for incoming attribute reports by binding a listener on the cluster
-        zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.occupiedHeatingSetpoint', (occupiedHeatingSetpoint) => {
-            const setTemp = (((occupiedHeatingSetpoint / 100) * 10) /10);
-            this.setCapabilityValue('target_temperature', setTemp);
-            this.log('target_temperature', setTemp)
-        });
-    };
+            // And listen for incoming attribute reports by binding a listener on the cluster
+            zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.occupiedHeatingSetpoint', (occupiedHeatingSetpoint) => {
+                const setTemp = (((occupiedHeatingSetpoint / 100) * 10) /10);
+                this.setCapabilityValue('target_temperature', setTemp);
+                this.log('target_temperature', setTemp)
+            });
+        };
+      } catch (error) {
+        this.error('Error in setting taget_temperature', error);
+      };
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Setpoint with dim
 
     // Setpoint of regulator
-    if (this.hasCapability('target_temperature')) {  
-      this.registerCapabilityListener('dim.regulator', async (value) => {
-          const setTemp = await zclNode.endpoints[1].clusters.thermostat
-            .writeAttributes({ occupiedHeatingSetpoint: Math.round ((value * 10000 / 10)*10) });
-          this.log ('Regulator % set to:', value)
-        });
+      try{
+        if (this.hasCapability('target_temperature')) {  
+          this.registerCapabilityListener('dim.regulator', async (value) => {
+              const setTemp = await zclNode.endpoints[1].clusters.thermostat
+                .writeAttributes({ occupiedHeatingSetpoint: Math.round ((value * 10000 / 10)*10) });
+              this.log ('Regulator % set to:', value)
+            });
 
-        // Configure reporting
-        zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-          occupiedHeatingSetpoint: {
-            minInterval: 0,
-            maxInterval: 600,
-            minChange: 1
-          }
-        });
+            // Configure reporting
+            zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
+              occupiedHeatingSetpoint: {
+                minInterval: 0,
+                maxInterval: 600,
+                minChange: 1
+              }
+            });
 
-        // And listen for incoming attribute reports by binding a listener on the cluster
-        zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.occupiedHeatingSetpoint', (occupiedHeatingSetpoint) => {
-            const setTemp = (((occupiedHeatingSetpoint / 10000) * 10) /10);
-            this.setCapabilityValue('dim.regulator', setTemp);
-            this.log('Regulator %', setTemp)
-        });
-      };
+            // And listen for incoming attribute reports by binding a listener on the cluster
+            zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.occupiedHeatingSetpoint', (occupiedHeatingSetpoint) => {
+                const setTemp = (((occupiedHeatingSetpoint / 10000) * 10) /10);
+                this.setCapabilityValue('dim.regulator', setTemp);
+                this.log('Regulator %', setTemp)
+            });
+          };
+        } catch (error) {
+          this.error('Error in setting dim.regulator', error);
+        };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 
 // Heating status - Relay On/Off - Setting Power Load - Metering power calculation
-          if (this.hasCapability('heat')) {
-                zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-                relayState: {
-                  minInterval: 0,
-                  maxInterval: 600,
-                  minChange: 1
-                }
-              });
+          try {
+            if (this.hasCapability('heat')) {
+            zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
+            relayState: {
+            minInterval: 0,
+            maxInterval: 600,
+            minChange: 1
+            }
+            });
 
-              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.relayState', (currentRelayState) => {
-                this.log('Relay state?: ', currentRelayState);
-                this.setCapabilityValue('heat', currentRelayState);
-                const Load = settings.floor_watt;
-                //const thisUpdate = Date.now();
-                //const lastUpdate = this.getStoreValue('lastUpdate');
-                switch (currentRelayState) {
-                  case true:
-                    this.setCapabilityValue('measure_power', Load);
-                    this.log('Power load: ', Load);
-                    //this.setStoreValue('lastUpdate', thisUpdate);
-                    //this.log('lastUpdate set to: ', thisUpdate)
-                    break;
-                  case false:
-                    this.setCapabilityValue('measure_power', 0);
-                    this.log('Power load: ', 0);
-                    /*if (lastUpdate) {
-                      const curMeterPowerkWh = this.getCapabilityValue('meter_power') || 0;
-                      this.log('Current meter_power value: ', curMeterPowerkWh);
-                      const newMeterPowerkWh = ((Load * ((thisUpdate - lastUpdate) / (1000 * 3600000))) + curMeterPowerkWh);
-                      this.log('New meter_power value: ', newMeterPowerkWh);
-                      this.setCapabilityValue('meter_power', newMeterPowerkWh);
-                      this.log('meter_power set to: ', newMeterPowerkWh)
-                    }*/
-                    break;
-                  };
-              });
-            
+            zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.relayState', (currentRelayState) => {
+              this.log('Relay state?: ', currentRelayState);
+              this.setCapabilityValue('heat', currentRelayState);
+              const Load = settings.floor_watt;
+              switch (currentRelayState) {
+                case true:
+                  this.setCapabilityValue('measure_power', Load);
+                  this.log('Power load: ', Load);
+                  break;
+                case false:
+                  this.setCapabilityValue('measure_power', 0);
+                  this.log('Power load: ', 0);
+                  break;
+              };
+            });
+
+            };
+          } catch (error) {
+          this.error('Error occurred: ', err);
           };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // night_switching
-          if(this.hasCapability('night_switching')) {
-            try {
-              this.registerCapabilityListener('night_switching', async (value) => {
-                this.log ('night_switching trying to set to:', value);
-                  zclNode.endpoints[1].clusters.thermostat
-                    .writeAttributes({ nightSwitching : value });
-                    //this.setSettings({
-                      //night_switching: value,
-                    //});
-                    this.log ('night_switching set to:', value)
-                });
-              } catch (err) {
-                this.error('Error in reading and setting night switching setting: ', err)
-              }
-          };
-
           if (this.hasCapability('night_switching')) {
             try {
-                zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-                  nightSwitching: {
-                  minInterval: 0,
-                  maxInterval: 600,
-                  minChange: 1
-                }
-              });
-
-              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.nightSwitching', (currentState) => {
+              this.registerCapabilityListener('night_switching', async (value) => {
                 try {
-                  this.log('night_switching?: ', currentState);
-                  this.setCapabilityValue('night_switching', currentState);
-                  //this.setSettings({
-                    //night_switching: currentState,
-                  //});
+                  this.log('night_switching trying to set to:', value);
+                  await zclNode.endpoints[1].clusters.thermostat.writeAttributes({ nightSwitching: value });
+                  this.log('night_switching set to:', value);
                 } catch (err) {
-                  this.error('Error in setting Night switching: ', err)
+              this.error('Error in writing night_switching attribute: ', err);
                 }
               });
             } catch (err) {
-              this.error('Error on night switching code: ', err)
+            this.error('Error in registering night_switching listener: ', err);
             }
           };
+            
+          if (this.hasCapability('night_switching')) {
+            try {
+              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
+                nightSwitching: {
+                minInterval: 0,
+                maxInterval: 600,
+                minChange: 1
+                }
+              });
+            
+            zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.nightSwitching', (currentState) => {
+              try {
+                this.log('night_switching?: ', currentState);
+                this.setCapabilityValue('night_switching', currentState);
+              } catch (err) {
+                this.error('Error in setting night_switching capability value: ', err);
+                }
+            });
 
+            } catch (err) {
+            this.error('Error in configuring night_switching reporting or setting up listener: ', err);
+            }
+          };
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // frost_guard
-          if(this.hasCapability('frost_guard')) {
-            try {
-                this.registerCapabilityListener('frost_guard', async (value) => {
-                  this.log ('frost_guard trying to set to:', value);
-                    zclNode.endpoints[1].clusters.thermostat
-                      .writeAttributes({ frostGuard : value });
-                      //this.setSettings({
-                        //frost_guard: value,
-                      //});
-                      this.log ('frost_guard set to:', value)
-                  });
+        if (this.hasCapability('frost_guard')) {
+          try {
+            this.registerCapabilityListener('frost_guard', async (value) => {
+              try {
+                this.log('frost_guard trying to set to:', value);
+                zclNode.endpoints[1].clusters.thermostat
+                .writeAttributes({ frostGuard: value });
+                this.log('frost_guard set to:', value);
               } catch (err) {
-                this.error('Error in reading and setting frost guard setting: ', err)
-              }
+            this.error('Error in writing frost guard attribute:', err);
+          }
+          });
+          } catch (err) {
+            this.error('Error in registering frost guard capability listener:', err);
+          }
           };
-
+          
           if (this.hasCapability('frost_guard')) {
             try {
-                zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-                  frostGuard: {
-                  minInterval: 0,
-                  maxInterval: 600,
-                  minChange: 1
-                }
-              });
+              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
+                frostGuard: {
+                minInterval: 0,
+                maxInterval: 600,
+                minChange: 1
+              }
+          });
 
-              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.frostGuard', (currentState) => {
-                this.log('frost_guard?: ', currentState);
-                this.setCapabilityValue('frost_guard', currentState);
-                //this.setSettings({
-                  //frost_guard: currentState,
-                //});
-              });
+          zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.frostGuard', (currentState) => {
+            try {
+              this.log('frost_guard?: ', currentState);
+              this.setCapabilityValue('frost_guard', currentState);
             } catch (err) {
-              this.error('Error in frost guard code: ', err)
+              this.error('Error in setting frost guard capability value:', err);
             }
-          };
+          });
+
+            } catch (err) {
+              this.error('Error in configuring frost guard reporting:', err);
+              }
+            };
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Childlock
 
 // Set Childlock
-        if(this.hasCapability('childLock')) {
-          try {
+          if (this.hasCapability('childLock')) {
+            try {
               this.registerCapabilityListener('childLock', async (value) => {
-                 this.log ('childLock trying to set to:', value);
-                  zclNode.endpoints[1].clusters.thermostat
-                    .writeAttributes({ childLock : value });
-                    //this.setSettings({
-                      //childLock: value,
-                    //});
-                    this.log ('childLock set to:', value)
-                });
+                this.log('childLock trying to set to:', value);
+                zclNode.endpoints[1].clusters.thermostat
+                  .writeAttributes({ childLock: value });
+                this.log('childLock set to:', value)
+              });
 
-
-                  // Configure reporting
-                    zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
-                    childLock: {
-                      minInterval: 0,
-                      maxInterval: 600,
-                      minChange: 1
-                    }
-                  });
-
-                  // And listen for incoming attribute reports by binding a listener on the cluster
-                  zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.childLock', (value) => {
-                    this.log('childLock attribute value?', value)
-                    this.setCapabilityValue('childLock', value);
-                    //this.setSettings({
-                      //childLock: value,
-                    //});
-                  });
-                } catch (err) {
-                  this.error('Error in childlock code:', err)
+              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].configureReporting({
+                childLock: {
+                  minInterval: 0,
+                  maxInterval: 600,
+                  minChange: 1
                 }
-              };
+              });
+
+              zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].on('attr.childLock', (value) => {
+                this.log('childLock attribute value?', value)
+                this.setCapabilityValue('childLock', value);
+              });
+            } catch (error) {
+              this.error('Error in childLock code:', error)
+            }
+          };
 
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
@@ -564,34 +585,13 @@ class ESHSUPERTR extends ZigBeeDevice {
                         }
                       };
 
-
-//---------------------------------------------------------------------------------------------------------------------------------------------
-// Power
-        /*if(this.hasCapability('measure_power')) {
-          try {
-          this.registerCapability('measure_power', CLUSTER.THERMOSTAT, {
-            get: 'measure_power',
-            reportParser: value => Math.round(Int16Array.from([value])[0]),
-            report: 'measure_power',
-            getOpts: {
-              getOnLine: true,
-              getOnStart: true,
-              pollInterval: 600000
-            },
-          });
-        } catch(err) {
-          this.error('Error in getting measure_power: ', err);
-        }
-        };*/
-
-
 //---------------------------------------------------------------------------------------------------------------------------------------------
 // Meter Power
         if(this.hasCapability('meter_power')) {
           try {
             this.registerCapability('meter_power', CLUSTER.THERMOSTAT, {
               get: 'meanPower',
-              reportParser: value => (((Math.round(Int16Array.from([value])[0])/60)/1000)+ this.getCapabilityValue('meter_power')),
+              reportParser: value => (((Math.round(Int16Array.from([value])[0])/600)/1000)+ this.getCapabilityValue('meter_power')),
               report: 'meanPower',
               getOpts: {
                 getOnLine: true,
