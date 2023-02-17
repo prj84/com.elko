@@ -23,7 +23,7 @@
     "small": "/assets/images/small.jpg"
   },
   "author": {
-    "name": "Pål Raymond Johansen",
+    "name": "Pål Hefre",
     "email": "prj_84@hotmail.com"
   },
   "contributing": {
@@ -3053,7 +3053,7 @@
       "uiComponent": null
     },
     "sensorMode": {
-      "type": "number",
+      "type": "string",
       "title": {
         "en": "Sensor mode",
         "no": "Sensor modus"

@@ -1,5 +1,5 @@
 {
-  "type": "number",
+  "type": "string",
   "title": {
     "en": "Sensor mode",
     "no": "Sensor modus"
