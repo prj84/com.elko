@@ -710,7 +710,7 @@ class ESHSUPERTR extends ZigBeeDevice {
           };
           if (event.changedKeys.includes('sensorMode')) {
             this.log('sensorMode changed: ', event.newSettings.sensorMode);
-            const SetSensorMode = 0;
+            const SetSensorMode = 'air';
               switch (event.newSettings.sensorMode) {
                 case 'air':
                   SetSensorMode = 'air';
@@ -718,7 +718,7 @@ class ESHSUPERTR extends ZigBeeDevice {
                 case 'floor':
                   SetSensorMode = 'floor';
                   break;
-                case 'supervisor_Floor':
+                case 'supervisor_floor':
                   SetSensorMode = 'supervisor_floor';
                   break;
               };
