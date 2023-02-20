@@ -31,7 +31,7 @@ class ESHSUPERTR extends ZigBeeDevice {
         this.addCapability('regulatorMode');
         this.addCapability('night_switching');
         this.addCapability('frost_guard');
-        this.addCapability("measure_temperature");
+        this.addCapability('measure_temperature');
         this.addCapability('tempCalibration');
         this.addCapability('regulatorTime');
         this.addCapability('maxFloorTemp');
