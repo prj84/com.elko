@@ -101,7 +101,7 @@ class ESHSUPERTR extends ZigBeeDevice {
           });
 
 //----------------------------------------------------------------------------------------------------------------------------------------------
-// Sensor mode
+// sensorMode
 
           if(this.hasCapability('sensorMode')) {
             try {
@@ -109,10 +109,22 @@ class ESHSUPERTR extends ZigBeeDevice {
             this.log('sensorMode in attribute is:', currentSensorMode.sensor);
             this.setCapabilityValue('sensorMode', currentSensorMode.sensor);
             this.log('sensorMode set to:', currentSensorMode.sensor);
+            const setSensorMode = "air"
+            switch (currentSensorMode.sensor) {
+              case 0x00:
+                setSensorMode = "air";
+                break;
+              case 0x01:
+                setSensorMode = "floor";
+                break;
+              case 0x03:
+                setSensorMode = "supervisor_floor";
+                break;
+            };
             this.setSettings({
-            sensorMode: currentSensorMode.sensor,
+            sensorMode: setSensorMode,
             });
-            this.log('Sensor Setting set to:', currentSensorMode.sensor);
+            this.log('Sensor Setting set to:', setSensorMode);
             } catch (err) {
             this.error('Error in setting Sensor Mode: ', err);
             }
@@ -128,7 +140,18 @@ class ESHSUPERTR extends ZigBeeDevice {
               const currentregulatorMode = await zclNode.endpoints[1].clusters[CLUSTER.THERMOSTAT.NAME].readAttributes('regulatorMode');
               await this.log('regulatorMode in attribute is:', currentregulatorMode.regulatorMode);
               await this.setCapabilityValue('regulatorMode', currentregulatorMode.regulatorMode);
-              await this.log('regulatorMode set to:', currentregulatorMode.regulatorMode);
+              const setRegulatorMode = false
+              switch (currentregulatorMode.regulatorMode) {
+                case 0x00:
+                  setRegulatorMode = true;
+                  break;
+                case 0x01:
+                  setRegulatorMode = false;
+                  break;
+              };
+              this.setSettings({
+                regulatorMode: setRegulatorMode,
+                });
               await this.onUpdateMode(currentregulatorMode.regulatorMode);
             } catch (err) {
                this.error('Error setting regulator mode', err);
@@ -531,8 +554,7 @@ class ESHSUPERTR extends ZigBeeDevice {
             try {
               this.registerCapabilityListener('childLock', async (value) => {
                 this.log('childLock trying to set to:', value);
-                zclNode.endpoints[1].clusters.thermostat
-                  .writeAttributes({ childLock: value });
+                zclNode.endpoints[1].clusters.thermostat.writeAttributes({ childLock: value });
                 this.log('childLock set to:', value)
               });
 
@@ -629,17 +651,17 @@ class ESHSUPERTR extends ZigBeeDevice {
         await this.addCapability('target_temperature');
         await this.addCapability('measure_temperature');
         await this.removeCapability('dim.regulator');
-        //await this.setSettings({
-            //regulatorMode: false
-          //});
+        await this.setSettings({
+            regulatorMode: false
+          });
         await this.log('Added target_temperature, removed dim.regulator')
       } else if (value === true) {
         await this.removeCapability('target_temperature');
         await this.removeCapability('measure_temperature');
         await this.addCapability('dim.regulator');
-        //await this.setSettings({
-            //regulatorMode: true
-          //});
+        await this.setSettings({
+            regulatorMode: true
+          });
         await this.log('Added dim.regulator, removed target_temperature')
       }
     } catch (err) {
@@ -761,13 +783,13 @@ class ESHSUPERTR extends ZigBeeDevice {
             };
           if (event.changedKeys.includes('childLock')) {
             this.log('childLock changed: ', event.newSettings.childLock);
-            const SetchildLock = false;
+            const SetchildLock = 0;
               switch (event.newSettings.childLock) {
                 case true:
-                  SetchildLock = true;
+                  SetchildLock = 1;
                   break;
                 case false:
-                  SetchildLock = false;
+                  SetchildLock = 0;
                   break;
               };
             this.zclNode.endpoints[1].clusters.thermostat
