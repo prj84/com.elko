@@ -61,5 +61,8 @@
   },
   "1.1.14": {
     "en": "Bug fixes on Super TR"
+  },
+  "1.1.15": {
+    "en": "Bug Fixes - Fixed Super TR settings bug, maxFloorTemp bug etc. Added new MultiWire dimmer"
   }
 }
